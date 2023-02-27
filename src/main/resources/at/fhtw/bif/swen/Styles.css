@@ -1,0 +1,11 @@
+Button {
+
+}
+
+ .label {
+   -fx-padding: 5;
+ }
+
+ .text-field {
+    -fx-padding: 10 50 10 50;
+ }
