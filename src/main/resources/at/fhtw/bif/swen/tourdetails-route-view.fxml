@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<?import javafx.scene.image.ImageView?>
+<AnchorPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="at.fhtw.bif.swen.controller.TourdetailsRouteController"
+            prefHeight="400.0" prefWidth="600.0">
+    <!-- Map -->
+    <HBox>
+        <ImageView />
+    </HBox>
+
+    <TabPane>
+        <Tab text="Tour logs" closable="false">
+            <VBox>
+                <HBox>
+                    <Button text="+"/>
+                    <Button text="-"/>
+                    <Button text="..."/>
+                </HBox>
+                <TableView maxWidth="Infinity">
+                    <columns>
+                        <TableColumn text="Date/Time"/>
+                        <TableColumn text="Comment"/>
+                        <TableColumn text="Difficulty"/>
+                        <TableColumn text="Total time"/>
+                        <TableColumn text="Rating"/>
+                    </columns>
+                </TableView>
+            </VBox>
+        </Tab>
+    </TabPane>
+
+</AnchorPane>

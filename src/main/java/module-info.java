@@ -5,4 +5,6 @@ module at.fhtw.bif.swen {
 
     opens at.fhtw.bif.swen to javafx.fxml;
     exports at.fhtw.bif.swen;
+    exports at.fhtw.bif.swen.controller;
+    opens at.fhtw.bif.swen.controller to javafx.fxml;
 }
