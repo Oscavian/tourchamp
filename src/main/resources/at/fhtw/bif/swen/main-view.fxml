@@ -6,25 +6,23 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<BorderPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="at.fhtw.bif.swen.controller.MainController"
-            prefHeight="400.0" prefWidth="600.0">
+<?import javafx.scene.canvas.Canvas?>
+<GridPane xmlns="http://javafx.com/javafx"
+           xmlns:fx="http://javafx.com/fxml"
+           fx:controller="at.fhtw.bif.swen.controller.MainController">
+    <fx:include source="menubar-view.fxml" GridPane.rowIndex="0" GridPane.columnIndex="0" GridPane.columnSpan="3"/>
+    <fx:include source="searchbar-view.fxml"  GridPane.rowIndex="1" GridPane.columnIndex="0" GridPane.columnSpan="1"/>
+    <fx:include source="tourlist-view.fxml" GridPane.rowIndex="2" GridPane.columnIndex="0"/>
+    <fx:include source="tourdetails-view.fxml" GridPane.rowIndex="1" GridPane.columnIndex="1" GridPane.rowSpan="2"/>
 
-    <top>
-        <VBox>
-            <Label text="Search..."/>
-            <TextField maxWidth="Infinity"/>
-        </VBox>
-    </top>
+    <rowConstraints>
+        <RowConstraints vgrow="NEVER"/>
+        <RowConstraints vgrow="NEVER"/>
+        <RowConstraints vgrow="ALWAYS"/>
+    </rowConstraints>
+    <columnConstraints>
+        <ColumnConstraints percentWidth="30"/>
+        <ColumnConstraints hgrow="ALWAYS"/>
+    </columnConstraints>
 
-    <left>
-        <fx:include source="tourlist-view.fxml"/>
-    </left>
-    
-    <center>
-        <fx:include source="tourdetails-view.fxml"/>
-    </center>
-
-
-</BorderPane>
+</GridPane>
