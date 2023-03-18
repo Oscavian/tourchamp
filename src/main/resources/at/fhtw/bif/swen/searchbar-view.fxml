@@ -8,9 +8,8 @@
 
 <VBox xmlns="http://javafx.com/javafx"
             xmlns:fx="http://javafx.com/fxml"
-            fx:controller="at.fhtw.bif.swen.SearchbarController">
-
+            fx:controller="at.fhtw.bif.swen.controller.SearchbarController">
     <Label text="Search..."/>
-    <TextField maxWidth="Infinity"/>
+    <TextField fx:id="searchValue" maxWidth="Infinity" onAction="#search"/>
 
 </VBox>

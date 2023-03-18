@@ -8,10 +8,13 @@
 
 <VBox xmlns="http://javafx.com/javafx"
             xmlns:fx="http://javafx.com/fxml"
-            fx:controller="at.fhtw.bif.swen.MenubarController">
+            fx:controller="at.fhtw.bif.swen.controller.MenubarController">
     <MenuBar>
         <menus>
-            <Menu text="File"/>
+            <Menu text="File">
+                <MenuItem text="Import"/>
+                <MenuItem text="Export"/>
+            </Menu>
             <Menu text="Options"/>
             <Menu text="About"/>
         </menus>

@@ -18,12 +18,16 @@
 
         <MenuBar GridPane.columnIndex="0" GridPane.columnSpan="3" GridPane.rowIndex="0" style="-fx-alignment: center">
             <menus>
-                <Menu text="Add"/>
-                <Menu text="Remove"/>
-                <Menu text="Options"/>
+                <Menu>
+                    <graphic>
+                        <Label fx:id="add" text="Add" onMouseClicked="#addTour"/>
+                    </graphic>
+                </Menu>
+                <Menu text="Remove" />
+                <Menu text="Options" />
             </menus>
         </MenuBar>
-        <ListView GridPane.halignment="CENTER"
+        <ListView fx:id="tourList" GridPane.halignment="CENTER"
                   GridPane.valignment="CENTER"
                   GridPane.columnIndex="0" GridPane.columnSpan="3" GridPane.rowIndex="2"/>
     </children>

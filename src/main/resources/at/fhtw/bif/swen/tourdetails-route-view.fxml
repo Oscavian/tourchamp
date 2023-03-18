@@ -9,7 +9,7 @@
 <?import javafx.scene.image.ImageView?>
 <GridPane xmlns="http://javafx.com/javafx"
       xmlns:fx="http://javafx.com/fxml"
-      fx:controller="at.fhtw.bif.swen.controller.TourdetailsRouteController"
+      fx:controller="at.fhtw.bif.swen.controller.TourDetailsRouteController"
       alignment="center">
 
     <!-- Map -->

@@ -8,7 +8,7 @@
 
 <TabPane xmlns="http://javafx.com/javafx"
             xmlns:fx="http://javafx.com/fxml"
-            fx:controller="at.fhtw.bif.swen.controller.TourdetailsController">
+            fx:controller="at.fhtw.bif.swen.controller.TourDetailsController">
         <Tab text="General" closable="false">
                 <fx:include source="tourdetails-general-view.fxml"/>
         </Tab>
