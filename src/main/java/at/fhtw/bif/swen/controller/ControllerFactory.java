@@ -18,7 +18,7 @@ public class ControllerFactory {
 
     public Object create(Class controllerClass) throws Exception {
         if (controllerClass == MainController.class) {
-            return new MainController();
+            return new MainController(); //this.tourListModel
         } else if (controllerClass == MenubarController.class) {
             return new MenubarController();
         } else if (controllerClass == SearchbarController.class) {

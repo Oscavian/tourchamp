@@ -5,28 +5,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="cbdfb15b-a979-4793-87ac-8d649901cf59" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/at/fhtw/bif/swen/TourItemListCell.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/at/fhtw/bif/swen/controller/ControllerFactory.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/at/fhtw/bif/swen/controller/TourListItemController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/at/fhtw/bif/swen/model/SearchbarModel.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/at/fhtw/bif/swen/model/TourListModel.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/at/fhtw/bif/swen/model/TourModel.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/at/fhtw/bif/swen/tourlistitem-view.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/at/fhtw/bif/swen/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/at/fhtw/bif/swen/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/at/fhtw/bif/swen/MenubarController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/at/fhtw/bif/swen/controller/MenubarController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/at/fhtw/bif/swen/SearchbarController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/at/fhtw/bif/swen/controller/SearchbarController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/at/fhtw/bif/swen/TourItemListCell.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/at/fhtw/bif/swen/TourItemListCell.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/at/fhtw/bif/swen/controller/ControllerFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/at/fhtw/bif/swen/controller/ControllerFactory.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/at/fhtw/bif/swen/controller/MainController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/at/fhtw/bif/swen/controller/MainController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/at/fhtw/bif/swen/controller/TourListController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/at/fhtw/bif/swen/controller/TourListController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/at/fhtw/bif/swen/controller/TourdetailsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/at/fhtw/bif/swen/controller/TourDetailsController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/at/fhtw/bif/swen/controller/TourdetailsGeneralController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/at/fhtw/bif/swen/controller/TourDetailsGeneralController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/at/fhtw/bif/swen/controller/TourdetailsRouteController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/at/fhtw/bif/swen/controller/TourDetailsRouteController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/module-info.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/at/fhtw/bif/swen/menubar-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/at/fhtw/bif/swen/menubar-view.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/at/fhtw/bif/swen/searchbar-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/at/fhtw/bif/swen/searchbar-view.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/at/fhtw/bif/swen/tourdetails-general-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/at/fhtw/bif/swen/tourdetails-general-view.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/at/fhtw/bif/swen/tourdetails-route-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/at/fhtw/bif/swen/tourdetails-route-view.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/at/fhtw/bif/swen/tourdetails-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/at/fhtw/bif/swen/tourdetails-view.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/at/fhtw/bif/swen/model/TourListModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/at/fhtw/bif/swen/model/TourListModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/at/fhtw/bif/swen/main-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/at/fhtw/bif/swen/main-view.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/at/fhtw/bif/swen/tourlist-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/at/fhtw/bif/swen/tourlist-view.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -109,7 +94,10 @@
       <workItem from="1677506421348" duration="856000" />
       <workItem from="1678207675640" duration="1503000" />
       <workItem from="1678540324997" duration="4529000" />
-      <workItem from="1679158388012" duration="13784000" />
+      <workItem from="1679158388012" duration="16201000" />
+      <workItem from="1679180589480" duration="189000" />
+      <workItem from="1679205193530" duration="6000" />
+      <workItem from="1679205405908" duration="9739000" />
     </task>
     <servers />
   </component>
@@ -126,6 +114,16 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <breakpoint enabled="true" type="java-exception">
+          <properties class="java.lang.IllegalArgumentException" package="java.lang" />
+          <option name="timeStamp" value="1" />
+        </breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

@@ -12,4 +12,6 @@ public class TourListModel {
     }
 
     public void addTour(TourModel tour) {this.tours.add(tour);}
+
+    public void removeTour(TourModel tour) {this.tours.remove(tour);}
 }
