@@ -25,17 +25,12 @@ public class TourListController implements Initializable {
     @FXML
     public ListView<TourModel> tourList = new ListView<>();
 
-
-    private TourListModel tourListModel;
+    private final TourListModel tourListModel;
     private Consumer<TourItemListCell> selectedTourListItem;
-
-
 
     public TourListController(TourListModel tourListModel) {
         this.tourListModel = tourListModel;
     }
-
-
 
     public void selectedTourListItem(ActionEvent actionEvent) {
 

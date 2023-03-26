@@ -15,14 +15,12 @@ public class MainController implements Initializable {
 
     private TourListModel tourListModel;
 
-    @FXML
-    private TourListController tourListController;
-
-   // @FXML
-   // private TourDetailsController tourDetailsController;
 
     @FXML
-    private TourDetailsGeneralController tourDetailsGeneralController;
+    public TourListController tourListController;
+
+    @FXML
+    public TourDetailsGeneralController tourDetailsGeneralController;
 
 
     public MainController(TourListModel tourListModel) {

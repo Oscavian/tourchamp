@@ -19,12 +19,6 @@ public class Main extends Application {
         stage.setScene(scene);
         stage.show();
 
-        //FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("main-view.fxml"));
-        //Scene scene = new Scene(fxmlLoader.load(), 1600, 900);
-        //scene.getStylesheets().add(String.valueOf(Main.class.getResource("Styles.css")));
-        //stage.setTitle("Hello!");
-        //stage.setScene(scene);
-        //stage.show();
     }
 
     private FXMLLoader getFxmlLoader(ControllerFactory factory) {
