@@ -1,6 +1,7 @@
 package at.fhtw.bif.swen.controller;
 
 import at.fhtw.bif.swen.TourItemListCell;
+import at.fhtw.bif.swen.model.TourDetailsGeneralModel;
 import at.fhtw.bif.swen.model.TourListModel;
 import at.fhtw.bif.swen.model.TourModel;
 import javafx.beans.value.ChangeListener;
@@ -42,7 +43,6 @@ public class TourListController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        this.addListener(p -> this.tourListModel.addTour(new TourModel()));
         this.tourList.setItems(this.tourListModel.getTours());
         this.tourList.setCellFactory(
                 tourModelListView -> new TourItemListCell(p -> this.deleteTour(p))

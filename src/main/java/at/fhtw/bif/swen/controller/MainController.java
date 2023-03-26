@@ -26,6 +26,8 @@ public class MainController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-      //  this.tourListController.addListener(p -> this.tourListModel.addTour(new TourModel()));
+    //    this.tourDetailsGeneralController.addListener(
+    //            p -> this.tourListModel.addTour(TourModel.From(p))
+    //    );
     }
 }

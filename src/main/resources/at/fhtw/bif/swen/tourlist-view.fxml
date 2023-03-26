@@ -23,7 +23,7 @@
                     <graphic>
                         <Label fx:id="add" text="Add" onMouseClicked="#addTour"/>
                     </graphic>
-                </Menu>
+                </Menu>-->
                 <Menu>
                     <graphic>
                         <Label fx:id="edit" text="Edit" disable="true"/>
