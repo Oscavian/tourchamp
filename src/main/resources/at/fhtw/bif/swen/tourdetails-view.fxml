@@ -15,7 +15,7 @@
         <Tab text="Route" closable="false">
                 <fx:include source="tourdetails-route-view.fxml"/>
         </Tab>
-        <Tab text="Misc" closable="false">
+        <Tab text="Logs" closable="false">
 
         </Tab>
 </TabPane>

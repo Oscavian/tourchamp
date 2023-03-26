@@ -17,14 +17,20 @@ public class TourItemListCell extends javafx.scene.control.ListCell<TourModel> {
 
     @Override
     public void updateItem(TourModel tour, boolean empty) {
+
         System.out.println("Call to updateItem");
-        super.updateItem(tour, empty);
 
         if (empty || tour == null) {
             setText(null);
             setGraphic(null);
             return;
         }
+
+
+
+        super.updateItem(tour, empty);
+
+
 
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("tourlistitem-view.fxml"));
         try {

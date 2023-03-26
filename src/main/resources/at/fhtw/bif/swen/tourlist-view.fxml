@@ -36,7 +36,6 @@
                 </Menu>
             </menus>
         </MenuBar>
-        <Button fx:id="testButton" text="testButton" onAction="#addTour"/>
         <ListView fx:id="tourList" GridPane.halignment="CENTER"
                   GridPane.valignment="CENTER"
                   GridPane.columnIndex="0" GridPane.columnSpan="3" GridPane.rowIndex="2">
