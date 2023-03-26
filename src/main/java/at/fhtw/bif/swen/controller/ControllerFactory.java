@@ -24,8 +24,9 @@ public class ControllerFactory {
     }
 
     public Object create(Class controllerClass) throws Exception {
-        if (controllerClass == MainController.class) {
-            return new MainController(); //this.tourListModel
+        if (controllerClass == TourDetailsGeneralController.class) {
+            System.out.println("tourdetailsgeneralcontroller init test.");
+            return new TourDetailsGeneralController(this.tourDetailsGeneralModel);
         } else if (controllerClass == MenubarController.class) {
             return new MenubarController();
         } else if (controllerClass == SearchbarController.class) {
@@ -34,8 +35,8 @@ public class ControllerFactory {
             return new TourListController(this.tourListModel);
         } else if (controllerClass == TourDetailsController.class) {
             return new TourDetailsController();
-        } else if (controllerClass == TourDetailsGeneralController.class) {
-            return new TourDetailsGeneralController(this.tourDetailsGeneralModel);
+        } else if (controllerClass == MainController.class) {
+            return new MainController(this.tourListModel);
         } else if (controllerClass == TourDetailsRouteController.class) {
             return new TourDetailsRouteController();
         } else {

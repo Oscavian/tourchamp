@@ -1,5 +1,6 @@
 package at.fhtw.bif.swen.controller;
 
+import at.fhtw.bif.swen.Main;
 import at.fhtw.bif.swen.model.TourDetailsGeneralModel;
 import at.fhtw.bif.swen.model.TourListModel;
 import at.fhtw.bif.swen.model.TourModel;
@@ -17,17 +18,21 @@ public class MainController implements Initializable {
     @FXML
     private TourListController tourListController;
 
+   // @FXML
+   // private TourDetailsController tourDetailsController;
+
     @FXML
-    private TourDetailsController tourDetailsController;
+    private TourDetailsGeneralController tourDetailsGeneralController;
 
- //   @FXML
-  //  private TourDetailsGeneralController tourDetailsGeneralController;
 
+    public MainController(TourListModel tourListModel) {
+        this.tourListModel = tourListModel;
+    }
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-    //    this.tourDetailsGeneralController.addListener(
-    //            p -> this.tourListModel.addTour(TourModel.From(p))
-    //    );
+        this.tourDetailsGeneralController.addListener(
+                p -> this.tourListModel.addTour(TourModel.From(p))
+        );
     }
 }
