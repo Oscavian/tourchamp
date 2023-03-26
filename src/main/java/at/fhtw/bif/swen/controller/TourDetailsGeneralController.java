@@ -48,7 +48,6 @@ public class TourDetailsGeneralController implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
         tourDetailName.textProperty().bindBidirectional(tourDetailsGeneralModel.nameProperty());
-
         tourDetailDescription.textProperty().bindBidirectional(tourDetailsGeneralModel.descriptionProperty());
         tourDetailFrom.textProperty().bindBidirectional(tourDetailsGeneralModel.fromProperty());
         tourDetailTo.textProperty().bindBidirectional(tourDetailsGeneralModel.toProperty());
