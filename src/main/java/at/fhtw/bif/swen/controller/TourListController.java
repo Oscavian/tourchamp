@@ -17,36 +17,29 @@ import java.util.ResourceBundle;
 import java.util.function.Consumer;
 
 public class TourListController implements Initializable {
-
-    private TourListModel tourListModel;
-
-    private Consumer<TourModel> newTourListener;
-    private Consumer<TourItemListCell> selectedTourListItem;
-
-    @FXML
-    public ListView<TourModel> tourList = new ListView<>();
-
     @FXML
     private Label delete;
     @FXML
     private Label edit;
+    @FXML
+    public ListView<TourModel> tourList = new ListView<>();
 
-    public void addTour(MouseEvent mouseEvent) {
-        this.newTourListener.accept(new TourModel());
+
+    private TourListModel tourListModel;
+    private Consumer<TourItemListCell> selectedTourListItem;
+
+
+
+    public TourListController(TourListModel tourListModel) {
+        this.tourListModel = tourListModel;
     }
+
+
 
     public void selectedTourListItem(ActionEvent actionEvent) {
 
     }
 
-
-    public void addListener(Consumer<TourModel> listenToNewTour) {
-        this.newTourListener = listenToNewTour;
-    }
-
-    public TourListController(TourListModel tourListModel) {
-        this.tourListModel = tourListModel;
-    }
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         this.addListener(p -> this.tourListModel.addTour(new TourModel()));

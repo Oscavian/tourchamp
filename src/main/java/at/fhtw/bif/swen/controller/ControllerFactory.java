@@ -3,6 +3,7 @@ package at.fhtw.bif.swen.controller;
 import at.fhtw.bif.swen.model.SearchbarModel;
 import at.fhtw.bif.swen.model.TourListModel;
 import at.fhtw.bif.swen.model.TourModel;
+import javafx.fxml.Initializable;
 
 public class ControllerFactory {
 

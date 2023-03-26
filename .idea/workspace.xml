@@ -4,10 +4,25 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="cbdfb15b-a979-4793-87ac-8d649901cf59" name="Changes" comment="">
+    <list default="true" id="cbdfb15b-a979-4793-87ac-8d649901cf59" name="Changes" comment="Created first GUI draft.">
+      <change afterPath="$PROJECT_DIR$/src/main/java/at/fhtw/bif/swen/model/TourDetailsGeneralModel.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/at/fhtw/bif/swen/TourItemListCell.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/at/fhtw/bif/swen/TourItemListCell.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/at/fhtw/bif/swen/tourdetails-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/at/fhtw/bif/swen/tourdetails-view.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/at/fhtw/bif/swen/controller/ControllerFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/at/fhtw/bif/swen/controller/ControllerFactory.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/at/fhtw/bif/swen/controller/MainController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/at/fhtw/bif/swen/controller/MainController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/at/fhtw/bif/swen/controller/TourListController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/at/fhtw/bif/swen/controller/TourListController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/at/fhtw/bif/swen/model/TourModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/at/fhtw/bif/swen/model/TourModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/module-info.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/at/fhtw/bif/swen/main-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/at/fhtw/bif/swen/main-view.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/at/fhtw/bif/swen/tourdetails-general-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/at/fhtw/bif/swen/tourdetails-general-view.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/at/fhtw/bif/swen/tourlist-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/at/fhtw/bif/swen/tourlist-view.fxml" afterDir="false" />
+    </list>
+    <list id="12786b16-4310-4068-8245-b91c0b1e110a" name="Changes by alex" comment="">
+      <change beforePath="$PROJECT_DIR$/src/main/java/at/fhtw/bif/swen/controller/ControllerFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/at/fhtw/bif/swen/controller/ControllerFactory.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/at/fhtw/bif/swen/controller/MainController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/at/fhtw/bif/swen/controller/MainController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/at/fhtw/bif/swen/controller/TourDetailsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/at/fhtw/bif/swen/controller/TourDetailsController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/at/fhtw/bif/swen/controller/TourDetailsGeneralController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/at/fhtw/bif/swen/controller/TourDetailsGeneralController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/at/fhtw/bif/swen/controller/TourListController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/at/fhtw/bif/swen/controller/TourListController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/at/fhtw/bif/swen/tourlist-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/at/fhtw/bif/swen/tourlist-view.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -26,6 +41,41 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="LineStatusTrackerManager">
+    <file path="$PROJECT_DIR$/src/main/java/at/fhtw/bif/swen/controller/ControllerFactory.java">
+      <ranges>
+        <range start1="3" end1="3" start2="3" end2="4" changelist="12786b16-4310-4068-8245-b91c0b1e110a" />
+        <range start1="5" end1="5" start2="6" end2="7" changelist="cbdfb15b-a979-4793-87ac-8d649901cf59" />
+        <range start1="11" end1="11" start2="13" end2="15" changelist="12786b16-4310-4068-8245-b91c0b1e110a" />
+        <range start1="16" end1="16" start2="20" end2="23" changelist="12786b16-4310-4068-8245-b91c0b1e110a" />
+        <range start1="30" end1="31" start2="37" end2="38" changelist="12786b16-4310-4068-8245-b91c0b1e110a" />
+      </ranges>
+    </file>
+    <file path="$PROJECT_DIR$/src/main/resources/at/fhtw/bif/swen/tourlist-view.fxml">
+      <ranges>
+        <range start1="20" end1="22" start2="20" end2="22" changelist="cbdfb15b-a979-4793-87ac-8d649901cf59" />
+        <range start1="25" end1="26" start2="25" end2="26" changelist="12786b16-4310-4068-8245-b91c0b1e110a" />
+      </ranges>
+    </file>
+    <file path="$PROJECT_DIR$/src/main/java/at/fhtw/bif/swen/controller/MainController.java">
+      <ranges>
+        <range start1="2" end1="2" start2="2" end2="3" changelist="cbdfb15b-a979-4793-87ac-8d649901cf59" />
+        <range start1="18" end1="19" start2="19" end2="26" changelist="cbdfb15b-a979-4793-87ac-8d649901cf59" />
+        <range start1="21" end1="22" start2="28" end2="31" changelist="12786b16-4310-4068-8245-b91c0b1e110a" />
+      </ranges>
+    </file>
+    <file path="$PROJECT_DIR$/src/main/java/at/fhtw/bif/swen/controller/TourListController.java">
+      <ranges>
+        <range start1="3" end1="3" start2="3" end2="4" changelist="12786b16-4310-4068-8245-b91c0b1e110a" />
+        <range start1="19" end1="28" start2="20" end2="20" changelist="cbdfb15b-a979-4793-87ac-8d649901cf59" />
+        <range start1="32" end1="32" start2="24" end2="31" changelist="cbdfb15b-a979-4793-87ac-8d649901cf59" />
+        <range start1="33" end1="35" start2="32" end2="35" changelist="cbdfb15b-a979-4793-87ac-8d649901cf59" />
+        <range start1="36" end1="36" start2="36" end2="38" changelist="cbdfb15b-a979-4793-87ac-8d649901cf59" />
+        <range start1="41" end1="49" start2="43" end2="43" changelist="cbdfb15b-a979-4793-87ac-8d649901cf59" />
+        <range start1="51" end1="52" start2="45" end2="45" changelist="12786b16-4310-4068-8245-b91c0b1e110a" />
+      </ranges>
+    </file>
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />

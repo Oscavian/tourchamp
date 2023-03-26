@@ -6,34 +6,41 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
+<?import javafx.scene.canvas.Canvas?>
 <AnchorPane xmlns="http://javafx.com/javafx"
             xmlns:fx="http://javafx.com/fxml"
             fx:controller="at.fhtw.bif.swen.controller.TourDetailsGeneralController"
             prefHeight="400.0" prefWidth="600.0">
-    <VBox>
+    <VBox style="-fx-alignment: center">
         <Label text="Name"/>
-        <TextField />
+        <TextField fx:id="tourDetailName"/>
 
         <Label text="Description"/>
-        <TextField />
+        <TextField fx:id="tourDetailDescription"/>
 
         <Label text="From"/>
-        <TextField />
+        <TextField fx:id="tourDetailFrom"/>
 
-        <Label text="To" />
-        <TextField />
+        <Label text="To"/>
+        <TextField fx:id="tourDetailTo"/>
 
         <Label text="transport type"/>
-        <TextField />
+        <TextField fx:id="tourDetailTransportType"/>
 
         <Label text="tour distance"/>
-        <TextField />
+        <TextField fx:id="tourDetailTourDistance"/>
 
-        <Label text="estimated time"/>
-        <TextField />
+        <Label text="duration"/>
+        <TextField fx:id="tourDetailDuration"/>
 
         <Label text="route information"/>
-        <TextField />
+        <TextField fx:id="tourDetailRouteInfo"/>
 
+        <Label fx:id="tourDetailChildFriendliness" text="child friendliness"/>
+        <Label fx:id="tourDetailPopularity" text="popularity"/>
+        <Button text="Add" onAction="#addTour"/>
+        <Button text="Save" onAction="#onTourDetailSave"/>
     </VBox>
+
+
 </AnchorPane>

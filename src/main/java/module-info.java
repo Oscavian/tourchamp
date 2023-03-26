@@ -1,6 +1,7 @@
 module at.fhtw.bif.swen {
     requires javafx.controls;
     requires javafx.fxml;
+    requires lombok;
 
 
     opens at.fhtw.bif.swen to javafx.fxml;
