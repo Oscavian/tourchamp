@@ -10,7 +10,7 @@
             xmlns:fx="http://javafx.com/fxml"
             fx:controller="at.fhtw.bif.swen.controller.TourDetailsController">
         <Tab text="General" closable="false">
-                <fx:include source="tourdetails-general-view.fxml"/>
+                <fx:include fx:id="tourDetailsGeneral" source="tourdetails-general-view.fxml"/>
         </Tab>
         <Tab text="Route" closable="false">
                 <fx:include source="tourdetails-route-view.fxml"/>

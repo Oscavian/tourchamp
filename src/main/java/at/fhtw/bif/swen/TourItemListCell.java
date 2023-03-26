@@ -40,7 +40,7 @@ public class TourItemListCell extends javafx.scene.control.ListCell<TourModel> {
         }
 
         var controller = (TourListItemController)fxmlLoader.getController();
-        controller.setTour(new TourModel()); //todo change to tourdetaildata
+        controller.setTour(tour); //todo change to tourdetaildata
         controller.addListenerForDeleteTour(this.onDeleteTourCallBack);
         setGraphic(controller.getTourItemBox());
     }

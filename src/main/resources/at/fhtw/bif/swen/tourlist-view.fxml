@@ -17,8 +17,7 @@
 
         <MenuBar GridPane.columnIndex="0" GridPane.columnSpan="3" GridPane.rowIndex="0" style="-fx-alignment: center">
             <menus>
-          <!--      <Menu>
-          // add button moved to tourdetailsgeneralview for now
+       <!--         <Menu>
                     <graphic>
                         <Label fx:id="add" text="Add" onMouseClicked="#addTour"/>
                     </graphic>

@@ -8,9 +8,9 @@ import javafx.fxml.Initializable;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class TourDetailsController {
-   /* @FXML
-    private TourDetailsGeneralController tourDetailsGeneralController;
+public class TourDetailsController implements Initializable {
+    @FXML
+    public TourDetailsGeneralController tourDetailsGeneralController;
 
     private final TourListModel tourListModel;
 
@@ -22,5 +22,5 @@ public class TourDetailsController {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         this.tourDetailsGeneralController.addListener(p -> this.tourListModel.addTour(TourModel.From(p)));
 
-    }*/
+    }
 }

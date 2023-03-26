@@ -20,7 +20,7 @@ public class MainController implements Initializable {
     public TourListController tourListController;
 
     @FXML
-    public TourDetailsGeneralController tourDetailsGeneralController;
+    public TourDetailsController tourDetailsController;
 
 
     public MainController(TourListModel tourListModel) {
@@ -29,7 +29,7 @@ public class MainController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        this.tourDetailsGeneralController.addListener(
+        this.tourDetailsController.tourDetailsGeneralController.addListener(
                 p -> this.tourListModel.addTour(TourModel.From(p))
         );
     }

@@ -14,8 +14,8 @@
     <fx:include source="menubar-view.fxml" GridPane.rowIndex="0" GridPane.columnIndex="0" GridPane.columnSpan="3"/>
     <fx:include source="searchbar-view.fxml"  GridPane.rowIndex="1" GridPane.columnIndex="0" GridPane.columnSpan="1"/>
     <fx:include fx:id="tourList" source="tourlist-view.fxml" GridPane.rowIndex="2" GridPane.columnIndex="0"/>
-    <!--<fx:include source="tourdetails-view.fxml" GridPane.rowIndex="1" GridPane.columnIndex="1" GridPane.rowSpan="2"/>-->
-    <fx:include fx:id="tourDetailsGeneral" source="tourdetails-general-view.fxml" GridPane.rowIndex="1" GridPane.columnIndex="1" GridPane.rowSpan="2"/>
+    <fx:include fx:id="tourDetails" source="tourdetails-view.fxml" GridPane.rowIndex="1" GridPane.columnIndex="1" GridPane.rowSpan="2"/>
+<!--    <fx:include fx:id="tourDetailsGeneral" source="tourdetails-general-view.fxml" GridPane.rowIndex="1" GridPane.columnIndex="1" GridPane.rowSpan="2"/>-->
 
     <rowConstraints>
         <RowConstraints vgrow="NEVER"/>
