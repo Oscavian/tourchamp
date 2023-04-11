@@ -29,8 +29,20 @@ public class MainController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        /* set consumer for adding new tours*/
         this.tourDetailsController.tourDetailsGeneralController.addListener(
-                p -> this.tourListModel.addTour(TourModel.From(p))
+                p -> {this.tourListModel.addTour(TourModel.From(p));
+                      this.tourDetailsController.tourDetailsGeneral.setDisable(true);}
+        );
+
+        this.tourListController.initFormForNewTourListener( // list
+                // details
+                () -> { this.tourDetailsController.tourDetailsGeneralController.initNewTour();
+                        this.tourDetailsController.tourDetailsGeneral.setDisable(false);
+                });
+
+        this.tourDetailsController.tourDetailsGeneralController.setCancelListener(
+                () -> this.tourDetailsController.tourDetailsGeneral.setDisable(true)
         );
     }
 }

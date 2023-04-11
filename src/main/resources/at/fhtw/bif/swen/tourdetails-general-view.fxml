@@ -11,7 +11,7 @@
             xmlns:fx="http://javafx.com/fxml"
             fx:controller="at.fhtw.bif.swen.controller.TourDetailsGeneralController"
             prefHeight="400.0" prefWidth="600.0">
-    <VBox style="-fx-alignment: center">
+    <VBox fx:id="tourForm" style="-fx-alignment: center">
         <Label text="Name"/>
         <TextField fx:id="tourDetailName"/>
 
@@ -38,8 +38,11 @@
 
         <Label fx:id="tourDetailChildFriendliness" text="child friendliness"/>
         <Label fx:id="tourDetailPopularity" text="popularity"/>
-        <Button text="Add" onAction="#addTour"/>
-        <Button text="Save" onAction="#onTourDetailSave"/>
+        <HBox fx:id="buttons">
+            <Button text="Save" onAction="#saveTour"/>
+            <Button text="Cancel" onAction="#cancel"/>
+        </HBox>
+
     </VBox>
 
 

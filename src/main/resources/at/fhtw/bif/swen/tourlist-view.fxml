@@ -17,11 +17,11 @@
 
         <MenuBar GridPane.columnIndex="0" GridPane.columnSpan="3" GridPane.rowIndex="0" style="-fx-alignment: center">
             <menus>
-       <!--         <Menu>
+                <Menu>
                     <graphic>
-                        <Label fx:id="add" text="Add" onMouseClicked="#addTour"/>
+                        <Label fx:id="add" text="Add" onMouseClicked="#initFormForNewTour"/>
                     </graphic>
-                </Menu>-->
+                </Menu>
                 <Menu>
                     <graphic>
                         <Label fx:id="edit" text="Edit" disable="true"/>

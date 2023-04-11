@@ -17,9 +17,6 @@ public class TourItemListCell extends javafx.scene.control.ListCell<TourModel> {
 
     @Override
     public void updateItem(TourModel tour, boolean empty) {
-
-        System.out.println("Call to updateItem");
-
         if (empty || tour == null) {
             setText(null);
             setGraphic(null);
@@ -41,6 +38,7 @@ public class TourItemListCell extends javafx.scene.control.ListCell<TourModel> {
 
         var controller = (TourListItemController)fxmlLoader.getController();
         controller.setTour(tour); //todo change to tourdetaildata
+        System.out.println(tour.getName());
         controller.addListenerForDeleteTour(this.onDeleteTourCallBack);
         setGraphic(controller.getTourItemBox());
     }

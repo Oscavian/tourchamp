@@ -4,13 +4,15 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="cbdfb15b-a979-4793-87ac-8d649901cf59" name="Changes" comment="Created first GUI draft.">
+    <list default="true" id="cbdfb15b-a979-4793-87ac-8d649901cf59" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/at/fhtw/bif/swen/TourItemListCell.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/at/fhtw/bif/swen/TourItemListCell.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/at/fhtw/bif/swen/controller/MainController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/at/fhtw/bif/swen/controller/MainController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/at/fhtw/bif/swen/controller/TourDetailsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/at/fhtw/bif/swen/controller/TourDetailsController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/at/fhtw/bif/swen/main-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/at/fhtw/bif/swen/main-view.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/at/fhtw/bif/swen/tourdetails-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/at/fhtw/bif/swen/tourdetails-view.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/at/fhtw/bif/swen/controller/TourDetailsGeneralController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/at/fhtw/bif/swen/controller/TourDetailsGeneralController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/at/fhtw/bif/swen/controller/TourListController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/at/fhtw/bif/swen/controller/TourListController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/at/fhtw/bif/swen/tourdetails-general-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/at/fhtw/bif/swen/tourdetails-general-view.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/at/fhtw/bif/swen/tourlist-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/at/fhtw/bif/swen/tourlist-view.fxml" afterDir="false" />
     </list>
     <list id="12786b16-4310-4068-8245-b91c0b1e110a" name="Changes by alex" comment="" />
     <option name="SHOW_DIALOG" value="false" />
@@ -57,7 +59,7 @@
     &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
     &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
     &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;reference.settingsdialog.IDE.editor.colors.Code With Me&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.sourceCode.YAML&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
 }</component>
@@ -100,6 +102,10 @@
       <workItem from="1679469911429" duration="3002000" />
       <workItem from="1679841828223" duration="171000" />
       <workItem from="1679842023131" duration="1381000" />
+      <workItem from="1680446076641" duration="2254000" />
+      <workItem from="1680462838784" duration="5000" />
+      <workItem from="1680721752833" duration="12472000" />
+      <workItem from="1681224554795" duration="1253000" />
     </task>
     <servers />
   </component>

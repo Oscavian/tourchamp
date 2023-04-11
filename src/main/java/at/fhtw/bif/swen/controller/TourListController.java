@@ -24,17 +24,15 @@ public class TourListController implements Initializable {
     private Label edit;
     @FXML
     public ListView<TourModel> tourList = new ListView<>();
-
     private final TourListModel tourListModel;
+    //private Consumer<TourItemListCell> initTourFormListener;
+    private Runnable initTourFormListener;
     private Consumer<TourItemListCell> selectedTourListItem;
 
     public TourListController(TourListModel tourListModel) {
         this.tourListModel = tourListModel;
     }
 
-    public void selectedTourListItem(ActionEvent actionEvent) {
-
-    }
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -47,6 +45,7 @@ public class TourListController implements Initializable {
             @Override
             public void changed(ObservableValue<? extends TourModel> observableValue, TourModel tourModel, TourModel t1) {
                 if (true) {
+                    System.out.println(observableValue.getValue());
                     delete.disableProperty().set(false);
                     edit.disableProperty().set(false);
                 } else {
@@ -57,6 +56,21 @@ public class TourListController implements Initializable {
                 System.out.println("Item selected");
             }
         });
+    }
+
+    // todo: change method name
+    // https://stackoverflow.com/questions/29945627/java-8-lambda-void-argument
+    // set eventhandler for "runnable"
+    public void initFormForNewTourListener(Runnable initTourFormListener) {
+        this.initTourFormListener = initTourFormListener;
+    }
+
+    public void initFormForNewTour(MouseEvent actionEvent){
+        this.initTourFormListener.run();
+    }
+
+    public void selectedTourListItem(ActionEvent actionEvent) {
+
     }
 
     public void deleteTour(TourModel model) {
