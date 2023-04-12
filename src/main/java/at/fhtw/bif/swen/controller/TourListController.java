@@ -47,7 +47,9 @@ public class TourListController implements Initializable {
             public void changed(ObservableValue<? extends TourModel> observableValue, TourModel tourModel, TourModel t1) {
                 if(observableValue != null) {
                     System.out.println(observableValue.getValue());
+
                     selectedTourListItem.accept(observableValue.getValue());
+
                     delete.disableProperty().set(false);
                     edit.disableProperty().set(false);
                 } else {

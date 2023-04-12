@@ -49,7 +49,7 @@ public class MainController implements Initializable {
         this.tourListController.setSelectedListener(
                 // selected list it
                 p -> {
-                    this.tourDetailsController.tourDetailsGeneralController.tourDetailsGeneralModel = TourDetailsGeneralModel.From(p);
+                    this.tourDetailsController.tourDetailsGeneralController.setTourDetailsGeneralModel(TourDetailsGeneralModel.From(p));;
                     System.out.println("in consumer:" + p.getName());
                 }
 

@@ -34,6 +34,19 @@ public class TourDetailsGeneralController implements Initializable {
     public Label tourDetailPopularity;
     public HBox buttons;
 
+    public void setTourDetailsGeneralModel(TourDetailsGeneralModel tourDetailsGeneralModel) {
+        this.tourDetailsGeneralModel.setName(tourDetailsGeneralModel.getName());
+        this.tourDetailsGeneralModel.setTourDistance(tourDetailsGeneralModel.getTourDistance());
+        this.tourDetailsGeneralModel.setTo(tourDetailsGeneralModel.getTo());
+        this.tourDetailsGeneralModel.setFrom(tourDetailsGeneralModel.getFrom());
+        this.tourDetailsGeneralModel.setDescription(tourDetailsGeneralModel.getDescription());
+        this.tourDetailsGeneralModel.setDuration(tourDetailsGeneralModel.getDuration());
+        this.tourDetailsGeneralModel.setPopularity(tourDetailsGeneralModel.getPopularity());
+        this.tourDetailsGeneralModel.setChildFriendliness(tourDetailsGeneralModel.getChildFriendliness());
+        this.tourDetailsGeneralModel.setTransportType(tourDetailsGeneralModel.getTransportType());
+        this.tourDetailsGeneralModel.setRouteInfo(tourDetailsGeneralModel.getRouteInfo());
+    }
+
     public TourDetailsGeneralModel tourDetailsGeneralModel;
     private Consumer<TourDetailsGeneralModel> saveTourListener;
     private Runnable cancelListener;

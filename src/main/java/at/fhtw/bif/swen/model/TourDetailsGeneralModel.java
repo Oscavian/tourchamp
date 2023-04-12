@@ -26,6 +26,7 @@ public class TourDetailsGeneralModel {
         newInstance.routeInfo.set(source.getRouteInfo());
         newInstance.childFriendliness.set(source.getChildFriendliness());
         newInstance.popularity.set(source.getPopularity());
+        newInstance.transportType.set(source.getTransportType());
         return newInstance;
     }
 
@@ -111,5 +112,41 @@ public class TourDetailsGeneralModel {
 
     public void setName(String name) {
         this.name.set(name);
+    }
+
+    public void setDescription(String description) {
+        this.description.set(description);
+    }
+
+    public void setFrom(String from) {
+        this.from.set(from);
+    }
+
+    public void setTo(String to) {
+        this.to.set(to);
+    }
+
+    public void setTourDistance(String tourDistance) {
+        this.tourDistance.set(tourDistance);
+    }
+
+    public void setDuration(String duration) {
+        this.duration.set(duration);
+    }
+
+    public void setRouteInfo(String routeInfo) {
+        this.routeInfo.set(routeInfo);
+    }
+
+    public void setChildFriendliness(String childFriendliness) {
+        this.childFriendliness.set(childFriendliness);
+    }
+
+    public void setPopularity(String popularity) {
+        this.popularity.set(popularity);
+    }
+
+    public void setTransportType(String transportType) {
+        this.transportType.set(transportType);
     }
 }

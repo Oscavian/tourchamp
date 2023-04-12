@@ -28,6 +28,7 @@ public class TourModel {
         newInstance.routeInfo.set(source.getRouteInfo());
         newInstance.childFriendliness.set(source.getChildFriendliness());
         newInstance.popularity.set(source.getPopularity());
+        newInstance.transportType.set(source.getTransportType());
         return newInstance;
     }
 
