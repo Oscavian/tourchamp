@@ -17,6 +17,7 @@ import java.net.URL;
 import java.util.ResourceBundle;
 import java.util.concurrent.Callable;
 import java.util.function.Consumer;
+import java.util.function.Supplier;
 
 
 public class TourDetailsGeneralController implements Initializable {
@@ -33,8 +34,7 @@ public class TourDetailsGeneralController implements Initializable {
     public Label tourDetailPopularity;
     public HBox buttons;
 
-    private TourDetailsGeneralModel tourDetailsGeneralModel;
-
+    public TourDetailsGeneralModel tourDetailsGeneralModel;
     private Consumer<TourDetailsGeneralModel> saveTourListener;
     private Runnable cancelListener;
 

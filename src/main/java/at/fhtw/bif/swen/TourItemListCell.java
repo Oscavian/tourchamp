@@ -23,8 +23,6 @@ public class TourItemListCell extends javafx.scene.control.ListCell<TourModel> {
             return;
         }
 
-
-
         super.updateItem(tour, empty);
 
 

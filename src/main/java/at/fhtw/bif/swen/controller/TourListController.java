@@ -27,7 +27,8 @@ public class TourListController implements Initializable {
     private final TourListModel tourListModel;
     //private Consumer<TourItemListCell> initTourFormListener;
     private Runnable initTourFormListener;
-    private Consumer<TourItemListCell> selectedTourListItem;
+    private Consumer<TourModel> selectedTourListItem;
+
 
     public TourListController(TourListModel tourListModel) {
         this.tourListModel = tourListModel;
@@ -44,8 +45,9 @@ public class TourListController implements Initializable {
         tourList.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<TourModel>() {
             @Override
             public void changed(ObservableValue<? extends TourModel> observableValue, TourModel tourModel, TourModel t1) {
-                if (true) {
+                if(observableValue != null) {
                     System.out.println(observableValue.getValue());
+                    selectedTourListItem.accept(observableValue.getValue());
                     delete.disableProperty().set(false);
                     edit.disableProperty().set(false);
                 } else {
@@ -69,10 +71,9 @@ public class TourListController implements Initializable {
         this.initTourFormListener.run();
     }
 
-    public void selectedTourListItem(ActionEvent actionEvent) {
-
+    public void setSelectedListener(Consumer<TourModel> selectedTourListItem) {
+        this.selectedTourListItem = selectedTourListItem;
     }
-
     public void deleteTour(TourModel model) {
         this.tourListModel.removeTour(model);
     }

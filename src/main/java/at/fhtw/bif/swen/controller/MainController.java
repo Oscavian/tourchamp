@@ -32,7 +32,8 @@ public class MainController implements Initializable {
         /* set consumer for adding new tours*/
         this.tourDetailsController.tourDetailsGeneralController.addListener(
                 p -> {this.tourListModel.addTour(TourModel.From(p));
-                      this.tourDetailsController.tourDetailsGeneral.setDisable(true);}
+                     // this.tourDetailsController.tourDetailsGeneral.setDisable(true);
+                    }
         );
 
         this.tourListController.initFormForNewTourListener( // list
@@ -43,6 +44,15 @@ public class MainController implements Initializable {
 
         this.tourDetailsController.tourDetailsGeneralController.setCancelListener(
                 () -> this.tourDetailsController.tourDetailsGeneral.setDisable(true)
+        );
+
+        this.tourListController.setSelectedListener(
+                // selected list it
+                p -> {
+                    this.tourDetailsController.tourDetailsGeneralController.tourDetailsGeneralModel = TourDetailsGeneralModel.From(p);
+                    System.out.println("in consumer:" + p.getName());
+                }
+
         );
     }
 }

@@ -15,6 +15,19 @@ public class TourDetailsGeneralModel {
     private final StringProperty childFriendliness = new SimpleStringProperty();
     private final StringProperty popularity = new SimpleStringProperty();
 
+    public static TourDetailsGeneralModel From(TourModel source) {
+        var newInstance = new TourDetailsGeneralModel();
+        newInstance.name.set(source.getName());
+        newInstance.description.set(source.getDescription());
+        newInstance.from.set(source.getFrom());
+        newInstance.to.set(source.getTo());
+        newInstance.tourDistance.set(source.getTourDistance());
+        newInstance.duration.set(source.getDuration());
+        newInstance.routeInfo.set(source.getRouteInfo());
+        newInstance.childFriendliness.set(source.getChildFriendliness());
+        newInstance.popularity.set(source.getPopularity());
+        return newInstance;
+    }
 
     public String getName() {
         return name.get();
