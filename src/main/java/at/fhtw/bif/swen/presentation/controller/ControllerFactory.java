@@ -1,10 +1,10 @@
-package at.fhtw.bif.swen.controller;
+package at.fhtw.bif.swen.presentation.controller;
 
-import at.fhtw.bif.swen.model.SearchbarModel;
-import at.fhtw.bif.swen.model.TourDetailsGeneralModel;
-import at.fhtw.bif.swen.model.TourListModel;
-import at.fhtw.bif.swen.model.TourModel;
-import javafx.fxml.Initializable;
+import at.fhtw.bif.swen.persistence.repositories.TourRepository;
+import at.fhtw.bif.swen.presentation.model.SearchbarModel;
+import at.fhtw.bif.swen.presentation.model.TourDetailsGeneralModel;
+import at.fhtw.bif.swen.presentation.model.TourListModel;
+import at.fhtw.bif.swen.presentation.model.TourModel;
 
 public class ControllerFactory {
 
@@ -14,13 +14,13 @@ public class ControllerFactory {
     private final TourDetailsGeneralModel tourDetailsGeneralModel;
     private final TourModel tourModel;
 
+
     public ControllerFactory() {
         // instantiate models
         this.searchbarModel = new SearchbarModel();
         this.tourListModel = new TourListModel();
         this.tourDetailsGeneralModel = new TourDetailsGeneralModel();
         this.tourModel = new TourModel();
-
     }
 
     public Object create(Class controllerClass) throws Exception {

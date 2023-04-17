@@ -1,23 +1,16 @@
-package at.fhtw.bif.swen.controller;
+package at.fhtw.bif.swen.presentation.controller;
 
-import at.fhtw.bif.swen.model.TourDetailsGeneralModel;
-import at.fhtw.bif.swen.model.TourModel;
+import at.fhtw.bif.swen.presentation.model.TourDetailsGeneralModel;
 import javafx.event.ActionEvent;
-import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Cursor;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
-import javafx.scene.layout.Background;
-import javafx.scene.layout.ConstraintsBase;
 import javafx.scene.layout.HBox;
 
-import java.lang.reflect.Field;
 import java.net.URL;
 import java.util.ResourceBundle;
-import java.util.concurrent.Callable;
 import java.util.function.Consumer;
-import java.util.function.Supplier;
 
 
 public class TourDetailsGeneralController implements Initializable {
@@ -34,6 +27,10 @@ public class TourDetailsGeneralController implements Initializable {
     public Label tourDetailPopularity;
     public HBox buttons;
 
+    public TourDetailsGeneralModel tourDetailsGeneralModel;
+    private Consumer<TourDetailsGeneralModel> saveTourListener;
+    private Runnable cancelListener;
+
     public void setTourDetailsGeneralModel(TourDetailsGeneralModel tourDetailsGeneralModel) {
         this.tourDetailsGeneralModel.setName(tourDetailsGeneralModel.getName());
         this.tourDetailsGeneralModel.setTourDistance(tourDetailsGeneralModel.getTourDistance());
@@ -46,10 +43,6 @@ public class TourDetailsGeneralController implements Initializable {
         this.tourDetailsGeneralModel.setTransportType(tourDetailsGeneralModel.getTransportType());
         this.tourDetailsGeneralModel.setRouteInfo(tourDetailsGeneralModel.getRouteInfo());
     }
-
-    public TourDetailsGeneralModel tourDetailsGeneralModel;
-    private Consumer<TourDetailsGeneralModel> saveTourListener;
-    private Runnable cancelListener;
 
     public TourDetailsGeneralController(TourDetailsGeneralModel tourDetailsGeneralModel) {
         this.tourDetailsGeneralModel = tourDetailsGeneralModel;
@@ -79,6 +72,7 @@ public class TourDetailsGeneralController implements Initializable {
     public void saveTour(ActionEvent actionEvent) {
         this.saveTourListener.accept(this.tourDetailsGeneralModel);
         this.buttons.setVisible(false);
+
     }
 
     public void setCancelListener(Runnable cancelListener) {

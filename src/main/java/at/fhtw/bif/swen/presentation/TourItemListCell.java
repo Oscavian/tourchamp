@@ -1,7 +1,7 @@
-package at.fhtw.bif.swen;
+package at.fhtw.bif.swen.presentation;
 
-import at.fhtw.bif.swen.controller.TourListItemController;
-import at.fhtw.bif.swen.model.TourModel;
+import at.fhtw.bif.swen.presentation.controller.TourListItemController;
+import at.fhtw.bif.swen.presentation.model.TourModel;
 import javafx.fxml.FXMLLoader;
 
 import java.io.IOException;

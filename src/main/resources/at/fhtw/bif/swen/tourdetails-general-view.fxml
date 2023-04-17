@@ -9,7 +9,7 @@
 <?import javafx.scene.canvas.Canvas?>
 <AnchorPane xmlns="http://javafx.com/javafx"
             xmlns:fx="http://javafx.com/fxml"
-            fx:controller="at.fhtw.bif.swen.controller.TourDetailsGeneralController"
+            fx:controller="at.fhtw.bif.swen.presentation.controller.TourDetailsGeneralController"
             prefHeight="400.0" prefWidth="600.0">
     <VBox fx:id="tourForm" style="-fx-alignment: center">
         <Label text="Name"/>

@@ -1,6 +1,7 @@
 package at.fhtw.bif.swen;
 
-import at.fhtw.bif.swen.controller.ControllerFactory;
+import at.fhtw.bif.swen.persistence.repositories.TourRepository;
+import at.fhtw.bif.swen.presentation.controller.ControllerFactory;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.JavaFXBuilderFactory;
@@ -10,6 +11,8 @@ import javafx.stage.Stage;
 import java.io.IOException;
 
 public class Main extends Application {
+
+    TourRepository tourRepository;
     @Override
     public void start(Stage stage) throws IOException {
         ControllerFactory factory = new ControllerFactory();

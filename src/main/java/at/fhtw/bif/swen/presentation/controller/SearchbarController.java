@@ -1,6 +1,6 @@
-package at.fhtw.bif.swen.controller;
+package at.fhtw.bif.swen.presentation.controller;
 
-import at.fhtw.bif.swen.model.SearchbarModel;
+import at.fhtw.bif.swen.presentation.model.SearchbarModel;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;

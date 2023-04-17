@@ -1,6 +1,4 @@
-package at.fhtw.bif.swen.controller;
-
-import java.util.function.Consumer;
+package at.fhtw.bif.swen.presentation.controller;
 
 public class MenubarController {
     //listener for Import/Export

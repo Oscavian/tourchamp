@@ -7,7 +7,7 @@
 <?import javafx.scene.layout.*?>
 
 <HBox xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml"
-            fx:id="box" fx:controller="at.fhtw.bif.swen.controller.TourListItemController">
+            fx:id="box" fx:controller="at.fhtw.bif.swen.presentation.controller.TourListItemController">
     <children>
         <Label fx:id="name" style="-fx-label-padding: 10; -fx-alignment: center-left"/>
         <Region HBox.hgrow="ALWAYS"></Region>

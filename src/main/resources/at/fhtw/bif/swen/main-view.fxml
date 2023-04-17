@@ -9,7 +9,7 @@
 <?import javafx.scene.canvas.Canvas?>
 <GridPane xmlns="http://javafx.com/javafx"
            xmlns:fx="http://javafx.com/fxml"
-           fx:controller="at.fhtw.bif.swen.controller.MainController">
+           fx:controller="at.fhtw.bif.swen.presentation.controller.MainController">
 
     <fx:include source="menubar-view.fxml" GridPane.rowIndex="0" GridPane.columnIndex="0" GridPane.columnSpan="3"/>
     <fx:include source="searchbar-view.fxml"  GridPane.rowIndex="1" GridPane.columnIndex="0" GridPane.columnSpan="1"/>

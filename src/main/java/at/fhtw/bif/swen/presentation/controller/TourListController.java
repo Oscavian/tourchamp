@@ -1,12 +1,10 @@
-package at.fhtw.bif.swen.controller;
+package at.fhtw.bif.swen.presentation.controller;
 
-import at.fhtw.bif.swen.TourItemListCell;
-import at.fhtw.bif.swen.model.TourDetailsGeneralModel;
-import at.fhtw.bif.swen.model.TourListModel;
-import at.fhtw.bif.swen.model.TourModel;
+import at.fhtw.bif.swen.presentation.TourItemListCell;
+import at.fhtw.bif.swen.presentation.model.TourListModel;
+import at.fhtw.bif.swen.presentation.model.TourModel;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;

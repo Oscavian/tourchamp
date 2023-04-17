@@ -1,4 +1,4 @@
-package at.fhtw.bif.swen.model;
+package at.fhtw.bif.swen.presentation.model;
 
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
