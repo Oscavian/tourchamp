@@ -3,6 +3,7 @@ package at.fhtw.bif.swen.presentation.controller;
 import at.fhtw.bif.swen.presentation.TourItemListCell;
 import at.fhtw.bif.swen.presentation.model.TourListModel;
 import at.fhtw.bif.swen.presentation.model.TourModel;
+import at.fhtw.bif.swen.presentation.service.TourService;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXML;
@@ -26,7 +27,6 @@ public class TourListController implements Initializable {
     //private Consumer<TourItemListCell> initTourFormListener;
     private Runnable initTourFormListener;
     private Consumer<TourModel> selectedTourListItem;
-
 
     public TourListController(TourListModel tourListModel) {
         this.tourListModel = tourListModel;

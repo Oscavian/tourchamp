@@ -1,10 +1,9 @@
 package at.fhtw.bif.swen.presentation.controller;
 
-import at.fhtw.bif.swen.persistence.repositories.TourRepository;
-import at.fhtw.bif.swen.presentation.model.SearchbarModel;
-import at.fhtw.bif.swen.presentation.model.TourDetailsGeneralModel;
-import at.fhtw.bif.swen.presentation.model.TourListModel;
-import at.fhtw.bif.swen.presentation.model.TourModel;
+import at.fhtw.bif.swen.presentation.model.*;
+import at.fhtw.bif.swen.presentation.service.IService;
+import at.fhtw.bif.swen.presentation.service.TourLogService;
+import at.fhtw.bif.swen.presentation.service.TourService;
 
 public class ControllerFactory {
 
@@ -14,11 +13,19 @@ public class ControllerFactory {
     private final TourDetailsGeneralModel tourDetailsGeneralModel;
     private final TourModel tourModel;
 
+    //services
+    private final TourService tourService;
+    private final TourLogService tourLogService;
 
-    public ControllerFactory() {
+
+    public ControllerFactory(TourService tourService, TourLogService tourLogService) {
+        //instantiate business layer
+        this.tourService = tourService;
+        this.tourLogService = tourLogService;
+
         // instantiate models
         this.searchbarModel = new SearchbarModel();
-        this.tourListModel = new TourListModel();
+        this.tourListModel = new TourListModel(tourService);
         this.tourDetailsGeneralModel = new TourDetailsGeneralModel();
         this.tourModel = new TourModel();
     }

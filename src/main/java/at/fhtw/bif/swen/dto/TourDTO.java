@@ -1,9 +1,13 @@
 package at.fhtw.bif.swen.dto;
 
-import lombok.Getter;
-import lombok.Setter;
+public record TourDTO(
+        Integer id,
+        String name,
+        String description,
+        String start,
+        String destination,
+        String transportType,
+        String childFriendliness,
+        String popularity
 
-@Getter
-@Setter
-public record TourDTO(Integer id, String name) {
-}
+) {}

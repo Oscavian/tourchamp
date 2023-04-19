@@ -1,9 +1,16 @@
 package at.fhtw.bif.swen.presentation.model;
 
+import at.fhtw.bif.swen.presentation.service.TourService;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
 public class TourListModel {
+
+    private final TourService tourService;
+
+    public TourListModel(TourService tourService) {
+        this.tourService = tourService;
+    }
 
     private ObservableList<TourModel> tours = FXCollections.observableArrayList();
 

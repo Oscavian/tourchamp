@@ -33,3 +33,8 @@ The user creates (bike-, hike-, running- or vacation-) tours in advance and mana
 
 **Additional Feature:** An additional feature specific to the project requirements, such as the ability to generate a recommended list of tours based on user preferences or location.
 
+# Business Logic
+
+- MaqQuest API
+- calculate rating, popularity, child friendliness
+

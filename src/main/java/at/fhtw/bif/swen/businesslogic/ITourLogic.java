@@ -1,4 +1,4 @@
-package at.fhtw.bif.swen.businessinterfaces;
+package at.fhtw.bif.swen.businesslogic;
 
 import at.fhtw.bif.swen.dto.TourDTO;
 

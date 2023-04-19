@@ -1,7 +1,28 @@
 package at.fhtw.bif.swen.persistence.repositories;
 
 import at.fhtw.bif.swen.persistence.entities.TourLogEntity;
-import org.springframework.data.jpa.repository.JpaRepository;
+import at.fhtw.bif.swen.persistence.ITourLogDataSource;
 
-public interface TourLogRepository extends JpaRepository<TourLogEntity, Integer> {
+import java.util.List;
+
+public class TourLogRepository implements ITourLogDataSource {
+    @Override
+    public List<TourLogEntity> getAll() {
+        return null;
+    }
+
+    @Override
+    public void save(TourLogEntity tourLogEntity) {
+
+    }
+
+    @Override
+    public void merge(TourLogEntity tourLogEntity) {
+
+    }
+
+    @Override
+    public void delete(TourLogEntity tourLogEntity) {
+
+    }
 }
