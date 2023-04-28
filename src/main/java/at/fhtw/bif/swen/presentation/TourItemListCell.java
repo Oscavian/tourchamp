@@ -27,7 +27,7 @@ public class TourItemListCell extends javafx.scene.control.ListCell<TourModel> {
 
 
 
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("tourlistitem-view.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/at/fhtw/bif/swen/tourlistitem-view.fxml"));
         try {
             fxmlLoader.load();
         } catch (IOException e) {
