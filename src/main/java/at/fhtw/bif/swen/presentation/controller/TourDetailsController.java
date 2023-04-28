@@ -22,7 +22,7 @@ public class TourDetailsController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        this.tourDetailsGeneral.setDisable(true);
+        this.tourDetailsGeneralController.tourForm.setDisable(true);
     }
 
 

@@ -18,7 +18,20 @@ public class TourListModel {
         return tours;
     }
 
-    public void addTour(TourModel tour) {this.tours.add(tour);}
+    public void addTour(TourModel tour) {
 
-    public void removeTour(TourModel tour) {this.tours.remove(tour);}
+        //editing is done by identifying via name, TODO improve edit save behaviour
+        //editing & saving with different name creates a new tour
+        tours.stream()
+                .filter((t) -> t.getName().equals(tour.getName()))
+                .findAny().ifPresent(duplicate -> this.tours.remove(duplicate));
+
+        this.tours.add(tour);
+    }
+
+    public void removeTour(TourModel tour) {
+        if (this.tours.remove(tour)) {
+            System.out.println("Tour " + tour.getName() + " removed");
+        }
+    }
 }

@@ -5,8 +5,8 @@ import javafx.beans.property.*;
 public class TourModel {
     private final StringProperty name = new SimpleStringProperty();
     private final StringProperty description = new SimpleStringProperty();
-    private final StringProperty from = new SimpleStringProperty();
-    private final StringProperty to = new SimpleStringProperty();
+    private final StringProperty start = new SimpleStringProperty();
+    private final StringProperty destination = new SimpleStringProperty();
     private final StringProperty transportType = new SimpleStringProperty();
     private final StringProperty tourDistance = new SimpleStringProperty();
     private final StringProperty duration = new SimpleStringProperty();
@@ -16,13 +16,12 @@ public class TourModel {
 
     // private ListProperty logs = new SimpleListProperty();
 
-
     public static TourModel From(TourDetailsGeneralModel source) {
         var newInstance = new TourModel();
         newInstance.name.set(source.getName());
         newInstance.description.set(source.getDescription());
-        newInstance.from.set(source.getFrom());
-        newInstance.to.set(source.getTo());
+        newInstance.start.set(source.getStart());
+        newInstance.destination.set(source.getDestination());
         newInstance.tourDistance.set(source.getTourDistance());
         newInstance.duration.set(source.getDuration());
         newInstance.routeInfo.set(source.getRouteInfo());
@@ -58,28 +57,28 @@ public class TourModel {
         this.description.set(description);
     }
 
-    public String getFrom() {
-        return from.get();
+    public String getStart() {
+        return start.get();
     }
 
-    public StringProperty fromProperty() {
-        return from;
+    public StringProperty startProperty() {
+        return start;
     }
 
-    public void setFrom(String from) {
-        this.from.set(from);
+    public void setStart(String start) {
+        this.start.set(start);
     }
 
-    public String getTo() {
-        return to.get();
+    public String getDestination() {
+        return destination.get();
     }
 
-    public StringProperty toProperty() {
-        return to;
+    public StringProperty destinationProperty() {
+        return destination;
     }
 
-    public void setTo(String to) {
-        this.to.set(to);
+    public void setDestination(String destination) {
+        this.destination.set(destination);
     }
 
     public String getTransportType() {

@@ -3,7 +3,6 @@ package at.fhtw.bif.swen.presentation.controller;
 import at.fhtw.bif.swen.presentation.TourItemListCell;
 import at.fhtw.bif.swen.presentation.model.TourListModel;
 import at.fhtw.bif.swen.presentation.model.TourModel;
-import at.fhtw.bif.swen.presentation.service.TourService;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXML;
@@ -17,10 +16,6 @@ import java.util.ResourceBundle;
 import java.util.function.Consumer;
 
 public class TourListController implements Initializable {
-    @FXML
-    private Label delete;
-    @FXML
-    private Label edit;
     @FXML
     public ListView<TourModel> tourList = new ListView<>();
     private final TourListModel tourListModel;
@@ -37,7 +32,7 @@ public class TourListController implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         this.tourList.setItems(this.tourListModel.getTours());
         this.tourList.setCellFactory(
-                tourModelListView -> new TourItemListCell(p -> this.deleteTour(p))
+                tourModelListView -> new TourItemListCell(this::deleteTour)
         );
 
         tourList.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<TourModel>() {
@@ -48,11 +43,11 @@ public class TourListController implements Initializable {
 
                     selectedTourListItem.accept(observableValue.getValue());
 
-                    delete.disableProperty().set(false);
-                    edit.disableProperty().set(false);
+                    //delete.disableProperty().set(false);
+                    //edit.disableProperty().set(false);
                 } else {
-                    delete.disableProperty().set(true);
-                    edit.disableProperty().set(true);
+                    //delete.disableProperty().set(true);
+                    //edit.disableProperty().set(true);
                 }
 
                 System.out.println("Item selected");

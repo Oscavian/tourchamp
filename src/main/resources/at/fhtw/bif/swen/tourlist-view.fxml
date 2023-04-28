@@ -22,16 +22,6 @@
                         <Label fx:id="add" text="Add" onMouseClicked="#initFormForNewTour"/>
                     </graphic>
                 </Menu>
-                <Menu>
-                    <graphic>
-                        <Label fx:id="edit" text="Edit" disable="true"/>
-                    </graphic>
-                </Menu>
-                <Menu>
-                    <graphic>
-                        <Label fx:id="delete" text="Delete"  disable="true"/>
-                    </graphic>
-                </Menu>
             </menus>
         </MenuBar>
         <ListView fx:id="tourList" GridPane.halignment="CENTER"
