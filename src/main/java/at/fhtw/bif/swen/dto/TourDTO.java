@@ -1,13 +1,15 @@
 package at.fhtw.bif.swen.dto;
 
+import at.fhtw.bif.swen.util.TransportType;
+
 public record TourDTO(
         Integer id,
         String name,
         String description,
         String start,
         String destination,
-        String transportType,
-        String childFriendliness,
-        String popularity
+        TransportType transportType,
+        Integer childFriendliness,
+        Integer popularity
 
 ) {}

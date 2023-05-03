@@ -1,9 +1,11 @@
 package at.fhtw.bif.swen.dto;
 
+import java.util.Date;
+
 public record TourLogDTO(
         Integer id,
         Integer tour_id,
-        String datetime,
+        Date timestamp,
         String comment,
         String difficulty,
         String totalTime,
