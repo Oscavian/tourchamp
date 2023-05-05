@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<?import javafx.geometry.Insets?>
+<BorderPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="at.fhtw.bif.swen.presentation.controller.TourDetailsLogsController"
+            prefHeight="400.0" prefWidth="600.0">
+
+    <center>
+        <TableView fx:id="logTable" tableMenuButtonVisible="true" prefHeight="-Infinity" prefWidth="-Infinity"
+                   BorderPane.alignment="CENTER">
+            <columns>
+                <TableColumn text="Date" prefWidth="150"/>
+                <TableColumn text="Total Time" prefWidth="150"/>
+                <TableColumn text="Difficulty" prefWidth="150"/>
+                <TableColumn text="Rating" prefWidth="150"/>
+                <TableColumn text="Comment" prefWidth="300"/>
+            </columns>
+        </TableView>
+    </center>
+    <bottom>
+        <VBox>
+            <HBox>
+                <VBox>
+                    <Label text="Date"/>
+                    <TextField/>
+                    <padding>
+                        <Insets right="8.0"/>
+                    </padding>
+                </VBox>
+                <VBox>
+                    <Label text="Total Time"/>
+                    <TextField/>
+                    <padding>
+                        <Insets left="8.0" right="8.0"/>
+                    </padding>
+                </VBox>
+                <VBox>
+                    <Label text="Comment"/>
+                    <TextField/>
+                    <padding>
+                        <Insets left="8.0" right="8.0"/>
+                    </padding>
+                </VBox>
+                <VBox>
+                    <Label text="Difficulty"/>
+                    <TextField/>
+                    <padding>
+                        <Insets left="8.0" right="8.0"/>
+                    </padding>
+                </VBox>
+                <VBox>
+                    <Label text="Rating"/>
+                    <TextField/>
+                    <padding>
+                        <Insets left="8.0" right="8.0"/>
+                    </padding>
+                </VBox>
+                <padding>
+                    <Insets bottom="8.0" left="8.0" right="8.0" top="8.0" />
+                </padding>
+            </HBox>
+            <HBox spacing="8.0" BorderPane.alignment="center">
+                <Button fx:id="addLogButton" onAction="#addLogEntry" text="Add log"/>
+                <Button fx:id="deleteLogButton" onAction="#deleteEntry" text="Delete log"/>
+                <Button fx:id="clearAllLogsButton" onAction="#clearAllLogs" text="Clear All logs"/>
+                <padding>
+                    <Insets bottom="8.0" left="8.0" right="8.0" top="8.0" />
+                </padding>
+            </HBox>
+        </VBox>
+    </bottom>
+</BorderPane>

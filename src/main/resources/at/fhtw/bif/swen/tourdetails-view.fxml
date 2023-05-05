@@ -16,6 +16,6 @@
                 <fx:include source="tourdetails-route-view.fxml"/>
         </Tab>
         <Tab text="Logs" closable="false">
-
+                <fx:include source="tourdetails-logs-view.fxml"/>
         </Tab>
 </TabPane>

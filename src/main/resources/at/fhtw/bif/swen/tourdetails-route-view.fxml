@@ -7,46 +7,10 @@
 <?import javafx.scene.layout.*?>
 
 <?import javafx.scene.image.ImageView?>
-<GridPane xmlns="http://javafx.com/javafx"
+<AnchorPane xmlns="http://javafx.com/javafx"
       xmlns:fx="http://javafx.com/fxml"
-      fx:controller="at.fhtw.bif.swen.presentation.controller.TourDetailsRouteController"
-      alignment="center">
+      fx:controller="at.fhtw.bif.swen.presentation.controller.TourDetailsRouteController">
 
     <!-- Map -->
-    <ImageView/>
-    <GridPane VBox.vgrow="ALWAYS" GridPane.rowIndex="1" GridPane.columnIndex="0">
-
-        <VBox>
-            <HBox VBox.vgrow="ALWAYS" maxHeight="20">
-                <Button text="+"/>
-                <Button text="-"/>
-                <Button text="..."/>
-            </HBox>
-
-
-            <TableView tableMenuButtonVisible="true"
-                       GridPane.halignment="CENTER"
-                       GridPane.valignment="CENTER"
-                       GridPane.columnIndex="0" GridPane.columnSpan="3" GridPane.rowIndex="2">
-                <columns>
-                    <TableColumn text="Date/Time"/>
-                    <TableColumn text="Comment"/>
-                    <TableColumn text="Difficulty"/>
-                    <TableColumn text="Total time"/>
-                    <TableColumn text="Rating"/>
-                </columns>
-            </TableView>
-        </VBox>
-        <columnConstraints>
-            <ColumnConstraints halignment="RIGHT" hgrow="NEVER" maxWidth="100.0" minWidth="100.0" prefWidth="100.0"/>
-            <ColumnConstraints hgrow="ALWAYS" minWidth="200.0" prefWidth="200.0"/>
-            <ColumnConstraints halignment="LEFT" hgrow="NEVER"/>
-        </columnConstraints>
-        <rowConstraints>
-            <RowConstraints vgrow="NEVER"/>
-            <RowConstraints vgrow="NEVER"/>
-            <RowConstraints vgrow="ALWAYS"/>
-        </rowConstraints>
-    </GridPane>
-
-</GridPane>
+    <ImageView fx:id="routeMap"/>
+</AnchorPane>
