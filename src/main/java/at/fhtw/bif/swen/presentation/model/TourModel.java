@@ -8,13 +8,10 @@ public class TourModel {
     private final StringProperty start = new SimpleStringProperty();
     private final StringProperty destination = new SimpleStringProperty();
     private final StringProperty transportType = new SimpleStringProperty();
-    private final StringProperty tourDistance = new SimpleStringProperty();
+    private final StringProperty distance = new SimpleStringProperty();
     private final StringProperty duration = new SimpleStringProperty();
-    private final StringProperty routeInfo = new SimpleStringProperty();
     private final StringProperty childFriendliness = new SimpleStringProperty();
     private final StringProperty popularity = new SimpleStringProperty();
-
-    // private ListProperty logs = new SimpleListProperty();
 
     public static TourModel From(TourDetailsGeneralModel source) {
         var newInstance = new TourModel();
@@ -22,9 +19,8 @@ public class TourModel {
         newInstance.description.set(source.getDescription());
         newInstance.start.set(source.getStart());
         newInstance.destination.set(source.getDestination());
-        newInstance.tourDistance.set(source.getTourDistance());
+        newInstance.distance.set(source.getTourDistance());
         newInstance.duration.set(source.getDuration());
-        newInstance.routeInfo.set(source.getRouteInfo());
         newInstance.childFriendliness.set(source.getChildFriendliness());
         newInstance.popularity.set(source.getPopularity());
         newInstance.transportType.set(source.getTransportType());
@@ -93,28 +89,16 @@ public class TourModel {
         this.transportType.set(transportType);
     }
 
-    public String getTourDistance() {
-        return tourDistance.get();
+    public String getDistance() {
+        return distance.get();
     }
 
-    public StringProperty tourDistanceProperty() {
-        return tourDistance;
+    public StringProperty distanceProperty() {
+        return distance;
     }
 
-    public void setTourDistance(String tourDistance) {
-        this.tourDistance.set(tourDistance);
-    }
-
-    public String getRouteInfo() {
-        return routeInfo.get();
-    }
-
-    public StringProperty routeInfoProperty() {
-        return routeInfo;
-    }
-
-    public void setRouteInfo(String routeInfo) {
-        this.routeInfo.set(routeInfo);
+    public void setDistance(String distance) {
+        this.distance.set(distance);
     }
 
     public String getChildFriendliness() {
