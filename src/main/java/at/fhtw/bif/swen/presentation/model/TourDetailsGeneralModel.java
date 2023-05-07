@@ -1,9 +1,13 @@
 package at.fhtw.bif.swen.presentation.model;
 
+import javafx.beans.property.IntegerProperty;
+import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 
 public class TourDetailsGeneralModel {
+
+    private final StringProperty id = new SimpleStringProperty();
     private final StringProperty name = new SimpleStringProperty();
     private final StringProperty description = new SimpleStringProperty();
     private final StringProperty start = new SimpleStringProperty();
@@ -16,6 +20,7 @@ public class TourDetailsGeneralModel {
 
     public static TourDetailsGeneralModel From(TourModel source) {
         var newInstance = new TourDetailsGeneralModel();
+        newInstance.setId(String.valueOf(source.getId()));
         newInstance.name.set(source.getName());
         newInstance.description.set(source.getDescription());
         newInstance.start.set(source.getStart());
@@ -32,6 +37,7 @@ public class TourDetailsGeneralModel {
      * empty all properties of this model
      */
     public void reset() {
+        setId("");
         setName("");
         setDestination("");
         setStart("");
@@ -41,6 +47,18 @@ public class TourDetailsGeneralModel {
         setTourDistance("");
         setChildFriendliness("");
         setTransportType("");
+    }
+
+    public String getId() {
+        return id.get();
+    }
+
+    public StringProperty idProperty() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id.set(id);
     }
 
     public String getName() {

@@ -3,6 +3,8 @@ package at.fhtw.bif.swen.presentation.model;
 import javafx.beans.property.*;
 
 public class TourModel {
+
+    private final IntegerProperty id = new SimpleIntegerProperty();
     private final StringProperty name = new SimpleStringProperty();
     private final StringProperty description = new SimpleStringProperty();
     private final StringProperty start = new SimpleStringProperty();
@@ -28,6 +30,17 @@ public class TourModel {
     }
 
 
+    public int getId() {
+        return id.get();
+    }
+
+    public IntegerProperty idProperty() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id.set(id);
+    }
     public String getName() {
         return name.get();
     }

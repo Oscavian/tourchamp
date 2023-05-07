@@ -35,7 +35,7 @@ public class TourDetailsGeneralController implements Initializable {
     public VBox tourForm;
     public Label tourDetailEstimatedTime;
     public Label tourTitle;
-
+    public Label tourId;
 
     //Event listener
     private Consumer<TourDetailsGeneralModel> saveTourListener;
@@ -47,6 +47,7 @@ public class TourDetailsGeneralController implements Initializable {
     public TourDetailsGeneralModel tourDetailsGeneralModel;
 
     public void setTourDetailsGeneralModel(TourDetailsGeneralModel tourDetailsGeneralModel) {
+        this.tourDetailsGeneralModel.setId(tourDetailsGeneralModel.getId());
         this.tourDetailsGeneralModel.setName(tourDetailsGeneralModel.getName());
         this.tourDetailsGeneralModel.setTourDistance(tourDetailsGeneralModel.getTourDistance());
         this.tourDetailsGeneralModel.setDestination(tourDetailsGeneralModel.getDestination());
@@ -65,6 +66,7 @@ public class TourDetailsGeneralController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        tourId.textProperty().bindBidirectional(tourDetailsGeneralModel.idProperty());
         tourDetailName.textProperty().bindBidirectional(tourDetailsGeneralModel.nameProperty());
         tourDetailDescription.textProperty().bindBidirectional(tourDetailsGeneralModel.descriptionProperty());
         tourDetailStart.textProperty().bindBidirectional(tourDetailsGeneralModel.startProperty());
@@ -74,7 +76,7 @@ public class TourDetailsGeneralController implements Initializable {
         tourDetailEstimatedTime.textProperty().bindBidirectional(tourDetailsGeneralModel.durationProperty());
         tourDetailChildFriendliness.textProperty().bindBidirectional(tourDetailsGeneralModel.childFriendlinessProperty());
         tourDetailPopularity.textProperty().bindBidirectional(tourDetailsGeneralModel.popularityProperty());
-
+        tourTitle.textProperty().bindBidirectional(tourDetailsGeneralModel.nameProperty());
         this.newTourButtons.setVisible(false);
         this.editTourButtons.setVisible(false);
 
