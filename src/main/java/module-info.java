@@ -4,6 +4,9 @@ module at.fhtw.bif.swen {
     requires lombok;
     requires spring.data.jpa;
     requires java.persistence;
+    requires java.net.http;
+    requires com.fasterxml.jackson.core;
+    requires com.fasterxml.jackson.databind;
 
 
     opens at.fhtw.bif.swen to javafx.fxml;
