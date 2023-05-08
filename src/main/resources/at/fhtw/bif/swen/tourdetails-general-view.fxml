@@ -7,24 +7,32 @@
 <?import javafx.scene.layout.*?>
 
 <?import javafx.scene.canvas.Canvas?>
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="at.fhtw.bif.swen.presentation.controller.TourDetailsGeneralController"
-            prefHeight="400.0" prefWidth="600.0">
-    <VBox>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.text.Text?>
+<GridPane xmlns="http://javafx.com/javafx"
+          xmlns:fx="http://javafx.com/fxml"
+          fx:controller="at.fhtw.bif.swen.presentation.controller.TourDetailsGeneralController"
+          prefHeight="400.0" prefWidth="600.0">
+    <HBox GridPane.columnIndex="0" GridPane.rowIndex="0" GridPane.columnSpan="3">
+        <Label fx:id="tourTitle" text=" no Tour selected" style="-fx-font-size: 20"/>
+        <Label fx:id="tourId" text="## " style="-fx-font-size: 20"/>
+        <padding>
+            <Insets bottom="16"/>
+        </padding>
+    </HBox>
+    <VBox GridPane.columnIndex="0" GridPane.rowIndex="1" GridPane.columnSpan="3">
         <VBox fx:id="tourForm" style="-fx-alignment: center">
-
             <Label text="Name"/>
             <TextField fx:id="tourDetailName"/>
 
             <Label text="Description"/>
             <TextField fx:id="tourDetailDescription"/>
 
-            <Label text="From"/>
-            <TextField fx:id="tourDetailFrom"/>
+            <Label text="Start"/>
+            <TextField fx:id="tourDetailStart"/>
 
-            <Label text="To"/>
-            <TextField fx:id="tourDetailTo"/>
+            <Label text="Destination"/>
+            <TextField fx:id="tourDetailDestination"/>
 
             <Label text="transport type"/>
             <TextField fx:id="tourDetailTransportType"/>
@@ -32,14 +40,12 @@
             <Label text="tour distance"/>
             <TextField fx:id="tourDetailTourDistance"/>
 
-            <Label text="duration"/>
-            <TextField fx:id="tourDetailDuration"/>
-
-            <Label text="route information"/>
-            <TextField fx:id="tourDetailRouteInfo"/>
-
-            <Label fx:id="tourDetailChildFriendliness" text="child friendliness"/>
-            <Label fx:id="tourDetailPopularity" text="popularity"/>
+            <Label>Estimated Time:</Label>
+            <Label fx:id="tourDetailEstimatedTime"/>
+            <Label>Child friendliness:</Label>
+            <Label fx:id="tourDetailChildFriendliness" text="Child friendliness"/>
+            <Label>Popularity:</Label>
+            <Label fx:id="tourDetailPopularity" text="Popularity"/>
         </VBox>
         <VBox>
             <HBox fx:id="newTourButtons">
@@ -52,6 +58,7 @@
             </HBox>
         </VBox>
     </VBox>
-
-
-</AnchorPane>
+    <padding>
+        <Insets bottom="16.0" left="16.0" right="16.0" top="16.0" />
+    </padding>
+</GridPane>
