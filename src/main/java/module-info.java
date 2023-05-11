@@ -2,8 +2,9 @@ module at.fhtw.bif.swen {
     requires javafx.controls;
     requires javafx.fxml;
     requires lombok;
-    requires spring.data.jpa;
     requires java.persistence;
+    requires org.hibernate.orm.core;
+    requires java.sql;
 
 
     opens at.fhtw.bif.swen to javafx.fxml;
@@ -35,4 +36,9 @@ module at.fhtw.bif.swen {
     exports at.fhtw.bif.swen.presentation;
     opens at.fhtw.bif.swen.presentation to javafx.fxml;
 
+    exports at.fhtw.bif.swen.persistence.repositories;
+    opens at.fhtw.bif.swen.persistence.repositories to javafx.fxml;
+
+    exports at.fhtw.bif.swen.persistence.entities;
+    opens at.fhtw.bif.swen.persistence.entities to org.hibernate.orm.core;
 }

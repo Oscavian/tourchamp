@@ -1,11 +1,16 @@
 package at.fhtw.bif.swen.dto;
 
+import at.fhtw.bif.swen.util.Difficulty;
+
+import java.time.Duration;
+import java.util.Date;
+
 public record TourLogDTO(
         Integer id,
         Integer tour_id,
-        String datetime,
+        Date timestamp,
         String comment,
-        String difficulty,
-        String totalTime,
+        Difficulty difficulty,
+        Duration totalTime,
         Integer rating
 ) {}
