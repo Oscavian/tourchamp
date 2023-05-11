@@ -17,6 +17,7 @@ public class TourLogEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     Integer id;
 
+    @Column(name = "tour_id")
     Integer tour_id;
 
     @Temporal(TemporalType.TIMESTAMP)
@@ -26,8 +27,10 @@ public class TourLogEntity {
 
     Difficulty difficulty;
 
-    @Temporal(TemporalType.TIME)
     Duration totalTime;
 
     Integer rating;
+
+    public TourLogEntity(){
+    }
 }

@@ -5,6 +5,7 @@ import at.fhtw.bif.swen.businesslogic.ITourLogic;
 import at.fhtw.bif.swen.businesslogic.impl.TourLogLogicImpl;
 import at.fhtw.bif.swen.businesslogic.impl.TourLogicImpl;
 import at.fhtw.bif.swen.persistence.ITourLogDataSource;
+import at.fhtw.bif.swen.persistence.entities.TourEntity;
 import at.fhtw.bif.swen.persistence.repositories.TourLogRepository;
 import at.fhtw.bif.swen.persistence.repositories.TourRepository;
 import at.fhtw.bif.swen.persistence.ITourDataSource;
@@ -17,15 +18,22 @@ import javafx.fxml.JavaFXBuilderFactory;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.Persistence;
 import java.io.IOException;
 
 public class Main extends Application {
     @Override
     public void start(Stage stage) throws IOException {
 
+        //create hiberate entity manager
+        EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("tourPU");
+        EntityManager entityManager = entityManagerFactory.createEntityManager();
+
         //create concrete data source layer
-        ITourDataSource tourDataSource = new TourRepository();
-        ITourLogDataSource tourLogDataSource = new TourLogRepository();
+        ITourDataSource tourDataSource = new TourRepository(entityManager);
+        ITourLogDataSource tourLogDataSource = new TourLogRepository(entityManager);
 
         //create concrete business layer
         ITourLogic tourLogic = new TourLogicImpl(tourDataSource);

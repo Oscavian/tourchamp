@@ -14,7 +14,6 @@ import java.util.List;
 
 @Entity
 @AllArgsConstructor
-@NoArgsConstructor
 @Getter
 @Setter
 @Table(name = "tours")
@@ -54,7 +53,26 @@ public class TourEntity {
             orphanRemoval = true,
             fetch = FetchType.EAGER
     )
-    @JoinColumn(referencedColumnName = "tour_id")
+    @JoinColumn(name = "tour_id")
     List<TourLogEntity> tourLogs = new ArrayList<>();
 
+    public TourEntity() {
+    }
+
+    public TourEntity(String name, String description, String start, String destination, TransportType transportType, Integer distance, Date estimatedTime, Integer childFriendliness, Integer popularity, String routeInfo) {
+        this.name = name;
+        this.description = description;
+        this.start = start;
+        this.destination = destination;
+        this.transportType = transportType;
+        this.distance = distance;
+        this.estimatedTime = estimatedTime;
+        this.childFriendliness = childFriendliness;
+        this.popularity = popularity;
+        this.routeInfo = routeInfo;
+    }
+
+    public TourEntity(String name) {
+        this.name = name;
+    }
 }
