@@ -26,6 +26,9 @@ public class TourListModel {
                 .filter((t) -> t.getName().equals(tour.getName()))
                 .findAny().ifPresent(duplicate -> this.tours.remove(duplicate));
 
+        tour.setChildFriendliness("90/100 - change me");
+        tour.setPopularity("50/100 - change me");
+        tour.setDuration("3h - change me");
         this.tours.add(tour);
     }
 

@@ -1,9 +1,13 @@
 package at.fhtw.bif.swen.presentation.model;
 
+import javafx.beans.property.IntegerProperty;
+import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 
 public class TourDetailsGeneralModel {
+
+    private final StringProperty id = new SimpleStringProperty();
     private final StringProperty name = new SimpleStringProperty();
     private final StringProperty description = new SimpleStringProperty();
     private final StringProperty start = new SimpleStringProperty();
@@ -11,19 +15,18 @@ public class TourDetailsGeneralModel {
     private final StringProperty transportType = new SimpleStringProperty();
     private final StringProperty tourDistance = new SimpleStringProperty();
     private final StringProperty duration = new SimpleStringProperty();
-    private final StringProperty routeInfo = new SimpleStringProperty();
     private final StringProperty childFriendliness = new SimpleStringProperty();
     private final StringProperty popularity = new SimpleStringProperty();
 
     public static TourDetailsGeneralModel From(TourModel source) {
         var newInstance = new TourDetailsGeneralModel();
+        newInstance.setId(String.valueOf(source.getId()));
         newInstance.name.set(source.getName());
         newInstance.description.set(source.getDescription());
         newInstance.start.set(source.getStart());
         newInstance.destination.set(source.getDestination());
-        newInstance.tourDistance.set(source.getTourDistance());
+        newInstance.tourDistance.set(source.getDistance());
         newInstance.duration.set(source.getDuration());
-        newInstance.routeInfo.set(source.getRouteInfo());
         newInstance.childFriendliness.set(source.getChildFriendliness());
         newInstance.popularity.set(source.getPopularity());
         newInstance.transportType.set(source.getTransportType());
@@ -34,6 +37,7 @@ public class TourDetailsGeneralModel {
      * empty all properties of this model
      */
     public void reset() {
+        setId("");
         setName("");
         setDestination("");
         setStart("");
@@ -42,8 +46,19 @@ public class TourDetailsGeneralModel {
         setPopularity("");
         setTourDistance("");
         setChildFriendliness("");
-        setRouteInfo("");
         setTransportType("");
+    }
+
+    public String getId() {
+        return id.get();
+    }
+
+    public StringProperty idProperty() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id.set(id);
     }
 
     public String getName() {
@@ -102,14 +117,6 @@ public class TourDetailsGeneralModel {
         return duration;
     }
 
-    public String getRouteInfo() {
-        return routeInfo.get();
-    }
-
-    public StringProperty routeInfoProperty() {
-        return routeInfo;
-    }
-
     public String getChildFriendliness() {
         return childFriendliness.get();
     }
@@ -148,10 +155,6 @@ public class TourDetailsGeneralModel {
 
     public void setDuration(String duration) {
         this.duration.set(duration);
-    }
-
-    public void setRouteInfo(String routeInfo) {
-        this.routeInfo.set(routeInfo);
     }
 
     public void setChildFriendliness(String childFriendliness) {

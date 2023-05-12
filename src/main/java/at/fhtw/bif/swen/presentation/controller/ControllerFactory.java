@@ -45,6 +45,8 @@ public class ControllerFactory {
             return new MainController(this.tourListModel);
         } else if (controllerClass == TourDetailsRouteController.class) {
             return new TourDetailsRouteController();
+        } else if (controllerClass == TourDetailsLogsController.class) {
+            return new TourDetailsLogsController();
         } else {
             throw new Exception("Controller not supported " + controllerClass.getName());
         }
