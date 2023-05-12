@@ -23,7 +23,7 @@ public class TourLogService implements IService<TourLogModel, Integer> {
     }
 
     @Override
-    public Integer save(TourLogModel tourLogModel) {
+    public void save(TourLogModel tourLogModel) {
         throw new UnsupportedOperationException("TODO");
     }
 

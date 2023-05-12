@@ -12,29 +12,30 @@ public class TourListModel {
         this.tourService = tourService;
     }
 
-    private ObservableList<TourModel> tours = FXCollections.observableArrayList();
+    private final ObservableList<TourListItemModel> tours = FXCollections.observableArrayList();
 
-    public ObservableList<TourModel> getTours() {
+    public ObservableList<TourListItemModel> getTours() {
         return tours;
     }
 
-    public void addTour(TourModel tour) {
+    public void addTour(TourDetailsModel tour) {
+        tourService.save(tour);
 
-        //editing is done by identifying via name, TODO improve edit save behaviour
-        //editing & saving with different name creates a new tour
-        tours.stream()
-                .filter((t) -> t.getName().equals(tour.getName()))
-                .findAny().ifPresent(duplicate -> this.tours.remove(duplicate));
-
-        tour.setChildFriendliness("90/100 - change me");
-        tour.setPopularity("50/100 - change me");
-        tour.setDuration("3h - change me");
-        this.tours.add(tour);
+        this.tours.add(TourListItemModel.From(tour));
     }
 
-    public void removeTour(TourModel tour) {
+    public void removeTour(TourListItemModel tour) {
         if (this.tours.remove(tour)) {
             System.out.println("Tour " + tour.getName() + " removed");
         }
+    }
+
+    public TourDetailsModel loadDetailModel(TourListItemModel tourListItemModel) {
+        return this.tourService.getById(Integer.valueOf(tourListItemModel.getId()));
+    }
+
+    public void reloadTourList() {
+        tours.clear();
+        tours.addAll(this.tourService.getTourList());
     }
 }

@@ -1,22 +1,22 @@
 package at.fhtw.bif.swen.presentation;
 
 import at.fhtw.bif.swen.presentation.controller.TourListItemController;
-import at.fhtw.bif.swen.presentation.model.TourModel;
+import at.fhtw.bif.swen.presentation.model.TourListItemModel;
 import javafx.fxml.FXMLLoader;
 
 import java.io.IOException;
 import java.util.function.Consumer;
 
-public class TourItemListCell extends javafx.scene.control.ListCell<TourModel> {
+public class TourItemListCell extends javafx.scene.control.ListCell<TourListItemModel> {
 
-    private Consumer<TourModel> onDeleteTourCallBack;
+    private Consumer<TourListItemModel> onDeleteTourCallBack;
 
-    public TourItemListCell(Consumer<TourModel> callback) {
+    public TourItemListCell(Consumer<TourListItemModel> callback) {
         this.onDeleteTourCallBack = callback;
     }
 
     @Override
-    public void updateItem(TourModel tour, boolean empty) {
+    public void updateItem(TourListItemModel tour, boolean empty) {
         if (empty || tour == null) {
             setText(null);
             setGraphic(null);
@@ -24,8 +24,6 @@ public class TourItemListCell extends javafx.scene.control.ListCell<TourModel> {
         }
 
         super.updateItem(tour, empty);
-
-
 
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/at/fhtw/bif/swen/tourlistitem-view.fxml"));
         try {
@@ -35,8 +33,7 @@ public class TourItemListCell extends javafx.scene.control.ListCell<TourModel> {
         }
 
         var controller = (TourListItemController)fxmlLoader.getController();
-        controller.setTour(tour); //todo change to tourdetaildata
-        System.out.println(tour.getName());
+        controller.setTour(tour);
         controller.addListenerForDeleteTour(this.onDeleteTourCallBack);
         setGraphic(controller.getTourItemBox());
     }

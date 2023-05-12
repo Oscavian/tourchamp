@@ -24,7 +24,7 @@
                 </Menu>
             </menus>
         </MenuBar>
-        <ListView fx:id="tourList" GridPane.halignment="CENTER"
+        <ListView fx:id="tourListView" GridPane.halignment="CENTER"
                   GridPane.valignment="CENTER"
                   GridPane.columnIndex="0" GridPane.columnSpan="3" GridPane.rowIndex="2">
             <HBox style="-fx-alignment: Center">

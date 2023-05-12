@@ -1,6 +1,6 @@
 package at.fhtw.bif.swen.presentation.controller;
 
-import at.fhtw.bif.swen.presentation.model.TourModel;
+import at.fhtw.bif.swen.presentation.model.TourListItemModel;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
@@ -10,12 +10,14 @@ import javafx.scene.layout.HBox;
 import java.util.function.Consumer;
 
 public class TourListItemController {
-    private TourModel tour;
+    private TourListItemModel tour;
 
-    private Consumer<TourModel> onDeleteTourConsumer;
+    private Consumer<TourListItemModel> onDeleteTourConsumer;
 
     @FXML
     public Label name;
+
+    public Label id = new Label();
 
     @FXML
     public Node box = new HBox();
@@ -26,16 +28,17 @@ public class TourListItemController {
         return box;
     }
 
-    public void setTour(TourModel tour) {
+    public void setTour(TourListItemModel tour) {
         this.tour = tour;
         this.name.textProperty().bindBidirectional(this.tour.nameProperty());
+        this.id.textProperty().bindBidirectional(this.tour.idProperty());
     }
 
     public void onDeleteTour(ActionEvent actionEvent) {
         this.onDeleteTourConsumer.accept(this.tour);
     }
 
-    public void addListenerForDeleteTour(Consumer<TourModel> listener) {
+    public void addListenerForDeleteTour(Consumer<TourListItemModel> listener) {
         this.onDeleteTourConsumer = listener;
     }
 }

@@ -2,7 +2,6 @@ package at.fhtw.bif.swen.businesslogic.mapper;
 
 import at.fhtw.bif.swen.dto.TourDTO;
 import at.fhtw.bif.swen.persistence.entities.TourEntity;
-import at.fhtw.bif.swen.presentation.model.TourModel;
 
 public class TourMapperImpl implements IMapper<TourDTO, TourEntity> {
 

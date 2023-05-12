@@ -4,8 +4,10 @@ import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
+import lombok.NoArgsConstructor;
 
-public class TourDetailsGeneralModel {
+@NoArgsConstructor
+public class TourDetailsModel {
 
     private final StringProperty id = new SimpleStringProperty();
     private final StringProperty name = new SimpleStringProperty();
@@ -18,17 +20,19 @@ public class TourDetailsGeneralModel {
     private final StringProperty childFriendliness = new SimpleStringProperty();
     private final StringProperty popularity = new SimpleStringProperty();
 
-    public static TourDetailsGeneralModel From(TourModel source) {
-        var newInstance = new TourDetailsGeneralModel();
-        newInstance.setId(String.valueOf(source.getId()));
+    public TourDetailsModel(String id, String name) {
+        setName(name);
+        setId(id);
+    }
+
+    public static TourDetailsModel From(EnterTourDetailsModel source) {
+        var newInstance = new TourDetailsModel();
         newInstance.name.set(source.getName());
         newInstance.description.set(source.getDescription());
         newInstance.start.set(source.getStart());
         newInstance.destination.set(source.getDestination());
-        newInstance.tourDistance.set(source.getDistance());
+        newInstance.tourDistance.set(source.getTourDistance());
         newInstance.duration.set(source.getDuration());
-        newInstance.childFriendliness.set(source.getChildFriendliness());
-        newInstance.popularity.set(source.getPopularity());
         newInstance.transportType.set(source.getTransportType());
         return newInstance;
     }

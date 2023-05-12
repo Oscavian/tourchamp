@@ -2,12 +2,11 @@ package at.fhtw.bif.swen.presentation.controller;
 
 import at.fhtw.bif.swen.presentation.TourItemListCell;
 import at.fhtw.bif.swen.presentation.model.TourListModel;
-import at.fhtw.bif.swen.presentation.model.TourModel;
+import at.fhtw.bif.swen.presentation.model.TourListItemModel;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.input.MouseEvent;
 
@@ -17,11 +16,11 @@ import java.util.function.Consumer;
 
 public class TourListController implements Initializable {
     @FXML
-    public ListView<TourModel> tourList = new ListView<>();
+    public ListView<TourListItemModel> tourListView = new ListView<>();
     private final TourListModel tourListModel;
     //private Consumer<TourItemListCell> initTourFormListener;
     private Runnable initTourFormListener;
-    private Consumer<TourModel> selectedTourListItem;
+    private Consumer<TourListItemModel> selectedTourListItem;
 
     public TourListController(TourListModel tourListModel) {
         this.tourListModel = tourListModel;
@@ -30,27 +29,15 @@ public class TourListController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        this.tourList.setItems(this.tourListModel.getTours());
-        this.tourList.setCellFactory(
+        this.tourListView.setItems(this.tourListModel.getTours());
+        this.tourListView.setCellFactory(
                 tourModelListView -> new TourItemListCell(this::deleteTour)
         );
 
-        tourList.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<TourModel>() {
-            @Override
-            public void changed(ObservableValue<? extends TourModel> observableValue, TourModel tourModel, TourModel t1) {
-                if(observableValue != null) {
-                    System.out.println(observableValue.getValue());
-
-                    selectedTourListItem.accept(observableValue.getValue());
-
-                    //delete.disableProperty().set(false);
-                    //edit.disableProperty().set(false);
-                } else {
-                    //delete.disableProperty().set(true);
-                    //edit.disableProperty().set(true);
-                }
-
-                System.out.println("Item selected");
+        //define behaviour when an item is clicked --> fire event
+        tourListView.getSelectionModel().selectedItemProperty().addListener((observableValue, tourListItemModel, t1) -> {
+            if(observableValue != null) {
+                selectedTourListItem.accept(observableValue.getValue());
             }
         });
     }
@@ -66,10 +53,10 @@ public class TourListController implements Initializable {
         this.initTourFormListener.run();
     }
 
-    public void setSelectedListener(Consumer<TourModel> selectedTourListItem) {
+    public void setSelectedListener(Consumer<TourListItemModel> selectedTourListItem) {
         this.selectedTourListItem = selectedTourListItem;
     }
-    public void deleteTour(TourModel model) {
+    public void deleteTour(TourListItemModel model) {
         this.tourListModel.removeTour(model);
     }
 }
