@@ -2,6 +2,7 @@ package at.fhtw.bif.swen.dto;
 
 import at.fhtw.bif.swen.util.TransportType;
 import java.util.Date;
+import java.util.List;
 
 public record TourDTO(
         Integer id,
@@ -14,6 +15,8 @@ public record TourDTO(
         Date estimatedTime,
         Integer childFriendliness,
         Integer popularity,
-        String routeInfo
+
+        String mapURL, //dunno how to tra
+        List<TourLogDTO> logs
 
 ) {}
