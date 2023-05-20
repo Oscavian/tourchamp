@@ -1,6 +1,5 @@
 package at.fhtw.bif.swen.persistence.entities;
 
-import at.fhtw.bif.swen.util.Difficulty;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -25,7 +24,7 @@ public class TourLogEntity {
 
     String comment;
 
-    Difficulty difficulty;
+    Integer difficulty;
 
     Duration totalTime;
 

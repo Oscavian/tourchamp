@@ -1,16 +1,19 @@
 package at.fhtw.bif.swen.dto;
 
-import at.fhtw.bif.swen.util.Difficulty;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
 
 import java.time.Duration;
 import java.util.Date;
 
-public record TourLogDTO(
-        Integer id,
-        Integer tour_id,
-        Date timestamp,
-        String comment,
-        Difficulty difficulty,
-        Duration totalTime,
-        Integer rating
-) {}
+@Getter
+@AllArgsConstructor
+public class TourLogDTO {
+    private Integer id;
+    private Integer tour_id;
+    private Date timestamp;
+    private String comment;
+    private Integer difficulty;
+    private Duration totalTime;
+    private Integer rating;
+}

@@ -5,6 +5,12 @@ module at.fhtw.bif.swen {
     requires java.persistence;
     requires org.hibernate.orm.core;
     requires java.sql;
+    requires java.net.http;
+    requires com.fasterxml.jackson.core;
+    requires com.fasterxml.jackson.databind;
+    requires kernel;
+    requires layout;
+    requires io;
 
 
     opens at.fhtw.bif.swen to javafx.fxml;
