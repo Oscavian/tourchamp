@@ -38,9 +38,6 @@ public class TourEntity {
 
     Integer popularity; // 0-100
 
-    @Column(name = "route_info")
-    String routeInfo; //Path to map image
-
     @OneToMany(
             cascade = CascadeType.ALL,
             orphanRemoval = true,
@@ -52,7 +49,7 @@ public class TourEntity {
     public TourEntity() {
     }
 
-    public TourEntity(String name, String description, String start, String destination, TransportType transportType, Integer distance, Integer childFriendliness, Integer popularity, String routeInfo) {
+    public TourEntity(String name, String description, String start, String destination, TransportType transportType, Integer distance, Integer childFriendliness, Integer popularity) {
         this.name = name;
         this.description = description;
         this.start = start;
@@ -61,7 +58,6 @@ public class TourEntity {
         this.distance = distance;
         this.childFriendliness = childFriendliness;
         this.popularity = popularity;
-        this.routeInfo = routeInfo;
     }
 
     public TourEntity(String name) {

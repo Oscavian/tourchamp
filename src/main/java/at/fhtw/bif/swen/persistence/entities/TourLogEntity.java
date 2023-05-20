@@ -18,7 +18,7 @@ public class TourLogEntity {
     Integer id;
 
     @Column(name = "tour_id")
-    Integer tour_id;
+    Integer tourId;
 
     @Temporal(TemporalType.TIMESTAMP)
     Date timestamp;

@@ -6,6 +6,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.time.Duration;
 import java.util.Date;
 import java.util.List;
 
@@ -21,7 +22,7 @@ public class TourDTO {
     String destination;
     TransportType transportType;
     Integer distance;
-    Date estimatedTime;
+    Duration estimatedTime;
     Integer childFriendliness;
     Integer popularity;
     String mapURL;

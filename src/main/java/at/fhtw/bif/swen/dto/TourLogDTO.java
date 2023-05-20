@@ -15,7 +15,7 @@ import java.util.Date;
 @NoArgsConstructor
 public class TourLogDTO {
     Integer id;
-    Integer tour_id;
+    Integer tourId;
     Date timestamp;
     String comment;
     Difficulty difficulty;

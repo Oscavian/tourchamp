@@ -19,6 +19,7 @@ public class TourDetailsModel {
     private final StringProperty duration = new SimpleStringProperty();
     private final StringProperty childFriendliness = new SimpleStringProperty();
     private final StringProperty popularity = new SimpleStringProperty();
+    private String mapURL;
 
     public TourDetailsModel(String id, String name) {
         setName(name);
