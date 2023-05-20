@@ -1,6 +1,6 @@
 package at.fhtw.bif.swen.businesslogic.services.ImportExport;
 
-import at.fhtw.bif.swen.businesslogic.mapper.TourMapper;
+import at.fhtw.bif.swen.mapper.TourMapper;
 import at.fhtw.bif.swen.dto.TourDTO;
 import at.fhtw.bif.swen.persistence.ITourDataSource;
 import com.fasterxml.jackson.core.type.TypeReference;
@@ -29,8 +29,7 @@ public class ImportService {
         });
 
         for (TourDTO tour : tours) {
-            TourMapper mapper = new TourMapper();
-            repository.save(mapper.toEntity(tour));
+            repository.save(TourMapper.toEntity(tour));
         }
     }
 }

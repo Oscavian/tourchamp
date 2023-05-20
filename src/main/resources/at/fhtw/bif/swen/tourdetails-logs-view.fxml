@@ -3,6 +3,7 @@
 <?import javafx.scene.layout.*?>
 
 <?import javafx.geometry.Insets?>
+<?import javafx.scene.control.cell.PropertyValueFactory?>
 <BorderPane xmlns="http://javafx.com/javafx"
             xmlns:fx="http://javafx.com/fxml"
             fx:controller="at.fhtw.bif.swen.presentation.controller.TourDetailsLogsController"
@@ -12,11 +13,15 @@
         <TableView fx:id="logTable" tableMenuButtonVisible="true" prefHeight="-Infinity" prefWidth="-Infinity"
                    BorderPane.alignment="CENTER">
             <columns>
-                <TableColumn text="Date" prefWidth="150"/>
-                <TableColumn text="Total Time" prefWidth="150"/>
-                <TableColumn text="Difficulty" prefWidth="150"/>
-                <TableColumn text="Rating" prefWidth="150"/>
-                <TableColumn text="Comment" prefWidth="300"/>
+                <TableColumn fx:id="dateColumn" text="Date" prefWidth="150"/>
+                <TableColumn fx:id="totalTimeColumn" text="Total Time" prefWidth="150"/>
+                <TableColumn fx:id="difficultyColumn" text="Difficulty" prefWidth="150"/>
+                <TableColumn fx:id="ratingColumn" text="Rating" prefWidth="150"/>
+                <TableColumn fx:id="commentColumn" text="Comment" prefWidth="300">
+                    <cellValueFactory>
+                        <PropertyValueFactory property="comment"/>
+                    </cellValueFactory>
+                </TableColumn>
             </columns>
         </TableView>
     </center>
@@ -25,35 +30,35 @@
             <HBox>
                 <VBox>
                     <Label text="Date"/>
-                    <TextField/>
+                    <DatePicker fx:id="logDate"/>
                     <padding>
                         <Insets right="8.0"/>
                     </padding>
                 </VBox>
                 <VBox>
                     <Label text="Total Time"/>
-                    <TextField/>
+                    <TextField fx:id="logTotalTime"/>
                     <padding>
                         <Insets left="8.0" right="8.0"/>
                     </padding>
                 </VBox>
                 <VBox>
                     <Label text="Comment"/>
-                    <TextField/>
+                    <TextField fx:id="logComment"/>
                     <padding>
                         <Insets left="8.0" right="8.0"/>
                     </padding>
                 </VBox>
                 <VBox>
                     <Label text="Difficulty"/>
-                    <TextField/>
+                    <TextField fx:id="logDifficulty"/>
                     <padding>
                         <Insets left="8.0" right="8.0"/>
                     </padding>
                 </VBox>
                 <VBox>
                     <Label text="Rating"/>
-                    <TextField/>
+                    <TextField fx:id="logRating"/>
                     <padding>
                         <Insets left="8.0" right="8.0"/>
                     </padding>

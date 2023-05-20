@@ -11,11 +11,13 @@ public class ControllerFactory {
     private final TourListModel tourListModel;
     private final TourDetailsModel tourDetailsModel;
     private final TourListItemModel tourListItemModel;
+    private EnterTourDetailsModel enterTourDetailsModel;
+    private final TourLogModel tourLogModel;
+    private final TourLogListModel tourLogListModel;
 
     //services
     private final TourService tourService;
     private final TourLogService tourLogService;
-    private EnterTourDetailsModel enterTourDetailsModel     ;
 
 
     public ControllerFactory(TourService tourService, TourLogService tourLogService) {
@@ -29,6 +31,8 @@ public class ControllerFactory {
         this.tourDetailsModel = new TourDetailsModel();
         this.tourListItemModel = new TourListItemModel();
         this.enterTourDetailsModel = new EnterTourDetailsModel();
+        this.tourLogModel = new TourLogModel();
+        this.tourLogListModel = new TourLogListModel(tourLogService);
     }
 
     public Object create(Class controllerClass) throws Exception {
@@ -47,7 +51,7 @@ public class ControllerFactory {
         } else if (controllerClass == TourDetailsRouteController.class) {
             return new TourDetailsRouteController();
         } else if (controllerClass == TourDetailsLogsController.class) {
-            return new TourDetailsLogsController();
+            return new TourDetailsLogsController(tourLogListModel, tourLogModel);
         } else {
             throw new Exception("Controller not supported " + controllerClass.getName());
         }

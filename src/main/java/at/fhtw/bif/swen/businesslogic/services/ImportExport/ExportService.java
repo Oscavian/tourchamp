@@ -1,6 +1,6 @@
 package at.fhtw.bif.swen.businesslogic.services.ImportExport;
 
-import at.fhtw.bif.swen.businesslogic.mapper.TourMapper;
+import at.fhtw.bif.swen.mapper.TourMapper;
 import at.fhtw.bif.swen.dto.TourDTO;
 import at.fhtw.bif.swen.persistence.ITourDataSource;
 import at.fhtw.bif.swen.persistence.entities.TourEntity;
