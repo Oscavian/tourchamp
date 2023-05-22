@@ -5,24 +5,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="cbdfb15b-a979-4793-87ac-8d649901cf59" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/at/fhtw/bif/swen/mapper/TourLogMapper.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/at/fhtw/bif/swen/mapper/TourMapper.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/at/fhtw/bif/swen/presentation/model/TourLogListModel.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/at/fhtw/bif/swen/businesslogic/mapper/IMapper.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/at/fhtw/bif/swen/businesslogic/mapper/TourLogMapper.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/at/fhtw/bif/swen/businesslogic/mapper/TourMapper.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/at/fhtw/bif/swen/businesslogic/services/ImportExport/ExportService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/at/fhtw/bif/swen/businesslogic/services/ImportExport/ExportService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/at/fhtw/bif/swen/businesslogic/services/ImportExport/ImportService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/at/fhtw/bif/swen/businesslogic/services/ImportExport/ImportService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/at/fhtw/bif/swen/dto/TourDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/at/fhtw/bif/swen/dto/TourDTO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/at/fhtw/bif/swen/dto/TourLogDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/at/fhtw/bif/swen/dto/TourLogDTO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/at/fhtw/bif/swen/persistence/entities/TourEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/at/fhtw/bif/swen/persistence/entities/TourEntity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/at/fhtw/bif/swen/persistence/entities/TourLogEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/at/fhtw/bif/swen/persistence/entities/TourLogEntity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/at/fhtw/bif/swen/presentation/controller/ControllerFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/at/fhtw/bif/swen/presentation/controller/ControllerFactory.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/at/fhtw/bif/swen/presentation/controller/TourDetailsLogsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/at/fhtw/bif/swen/presentation/controller/TourDetailsLogsController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/at/fhtw/bif/swen/presentation/model/TourDetailsModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/at/fhtw/bif/swen/presentation/model/TourDetailsModel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/at/fhtw/bif/swen/presentation/model/TourLogModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/at/fhtw/bif/swen/presentation/model/TourLogModel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/at/fhtw/bif/swen/tourdetails-logs-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/at/fhtw/bif/swen/tourdetails-logs-view.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/at/fhtw/bif/swen/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/at/fhtw/bif/swen/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/at/fhtw/bif/swen/businesslogic/impl/TourLogLogicImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/at/fhtw/bif/swen/businesslogic/TourLogLogic.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/at/fhtw/bif/swen/businesslogic/impl/TourLogicImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/at/fhtw/bif/swen/businesslogic/TourLogic.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/at/fhtw/bif/swen/businesslogic/services/ReportGenerator/SummarizeReportGenerator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/at/fhtw/bif/swen/businesslogic/services/ReportGenerator/SummarizeReportGenerator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/at/fhtw/bif/swen/persistence/ITourDataSource.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/at/fhtw/bif/swen/persistence/ITourDataSource.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/at/fhtw/bif/swen/persistence/ITourLogDataSource.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/at/fhtw/bif/swen/persistence/ITourLogDataSource.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/at/fhtw/bif/swen/persistence/repositories/IRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/at/fhtw/bif/swen/persistence/repositories/IRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/at/fhtw/bif/swen/persistence/repositories/TourLogRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/at/fhtw/bif/swen/persistence/repositories/TourLogRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/at/fhtw/bif/swen/persistence/repositories/TourRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/at/fhtw/bif/swen/persistence/repositories/TourRepository.java" afterDir="false" />
     </list>
     <list id="12786b16-4310-4068-8245-b91c0b1e110a" name="Changes by alex" comment="" />
     <option name="SHOW_DIALOG" value="false" />
@@ -130,6 +122,7 @@
       <workItem from="1681224554795" duration="4062000" />
       <workItem from="1681302334488" duration="4691000" />
       <workItem from="1684589390448" duration="14280000" />
+      <workItem from="1684765087052" duration="4454000" />
     </task>
     <servers />
   </component>

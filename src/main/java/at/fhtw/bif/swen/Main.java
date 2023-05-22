@@ -2,10 +2,9 @@ package at.fhtw.bif.swen;
 
 import at.fhtw.bif.swen.businesslogic.ITourLogLogic;
 import at.fhtw.bif.swen.businesslogic.ITourLogic;
-import at.fhtw.bif.swen.businesslogic.impl.TourLogLogicImpl;
-import at.fhtw.bif.swen.businesslogic.impl.TourLogicImpl;
+import at.fhtw.bif.swen.businesslogic.TourLogLogic;
+import at.fhtw.bif.swen.businesslogic.TourLogic;
 import at.fhtw.bif.swen.persistence.ITourLogDataSource;
-import at.fhtw.bif.swen.persistence.entities.TourEntity;
 import at.fhtw.bif.swen.persistence.repositories.TourLogRepository;
 import at.fhtw.bif.swen.persistence.repositories.TourRepository;
 import at.fhtw.bif.swen.persistence.ITourDataSource;
@@ -36,8 +35,8 @@ public class Main extends Application {
         ITourLogDataSource tourLogDataSource = new TourLogRepository(entityManager);
 
         //create concrete business layer
-        ITourLogic tourLogic = new TourLogicImpl(tourDataSource);
-        ITourLogLogic tourLogLogic = new TourLogLogicImpl(tourLogDataSource);
+        ITourLogic tourLogic = new TourLogic(tourDataSource);
+        ITourLogLogic tourLogLogic = new TourLogLogic(tourLogDataSource);
 
         //inject services into controller factory
         ControllerFactory factory = new ControllerFactory(

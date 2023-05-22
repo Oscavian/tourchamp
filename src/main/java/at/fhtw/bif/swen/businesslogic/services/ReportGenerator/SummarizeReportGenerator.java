@@ -7,19 +7,20 @@ import com.itextpdf.kernel.font.PdfFontFactory;
 import com.itextpdf.kernel.pdf.PdfDocument;
 import com.itextpdf.kernel.pdf.PdfWriter;
 import com.itextpdf.layout.Document;
+import com.itextpdf.layout.element.ListItem;
 import com.itextpdf.layout.element.Paragraph;
+import com.itextpdf.layout.element.List;
 import lombok.extern.java.Log;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.time.Duration;
 import java.time.temporal.ChronoUnit;
-import java.time.temporal.TemporalUnit;
-import java.util.List;
+import java.util.ArrayList;
 
 public class SummarizeReportGenerator extends ReportGenerator{
-    private List<TourDTO> tours;
-    public SummarizeReportGenerator(List<TourDTO> tours) throws FileNotFoundException {
+    private ArrayList<TourDTO> tours;
+    public SummarizeReportGenerator(ArrayList<TourDTO> tours) throws FileNotFoundException {
         this.tours = tours;
         this.writer = new PdfWriter( "summarize.pdf");
         this.pdf = new PdfDocument(this.writer);
@@ -27,6 +28,7 @@ public class SummarizeReportGenerator extends ReportGenerator{
     }
     @Override
     void generate() throws IOException {
+        setHeader();
 
     }
 
@@ -41,18 +43,40 @@ public class SummarizeReportGenerator extends ReportGenerator{
 
     @Override
     void setBody() throws IOException {
+        List logs = new List()
+                .setSymbolIndent(12)
+                .setListSymbol("\u2022")
+                .setFont(PdfFontFactory.createFont(StandardFonts.TIMES_BOLD));
 
+        for (TourDTO tour : this.tours) {
+            Paragraph tourStats = new Paragraph("Tour: " + tour.getName())
+                    .setFont(PdfFontFactory.createFont(StandardFonts.HELVETICA))
+                    .setFontSize(10)
+                    .setBold();
+            document.add(tourStats);
+            LogStats logstats = getLogStats(tour);
+
+            logs.add(new ListItem("Avg difficulty: " + logstats.getDifficulty() + "\n" +
+                    "Avg time: " + logstats.getTotalTime() + "\n" +
+                    "Avg rating: " + logstats.getRating() + "\n"));
+
+            document.add(logs);
+        }
     }
 
     private LogStats getLogStats(TourDTO tour) {
         LogStats logStats = new LogStats();
         TourLogDTO tmp;
-        for (int i = 0; i < tour.getLogs().size(); i++) {
+        int i = 0;
+        for (; i < tour.getLogs().size(); i++) {
             tmp = tour.getLogs().get(i);
             logStats.setDifficulty(logStats.getDifficulty() + tmp.getDifficulty());
             logStats.setRating(logStats.getRating() + tmp.getRating());
             logStats.setTotalTime(Duration.of(logStats.getTotalTime().getSeconds() + tmp.getTotalTime().getSeconds(), ChronoUnit.SECONDS));
         }
+        logStats.setDifficulty(logStats.getDifficulty() / i);
+        logStats.setRating(logStats.getRating() / i);
+        logStats.setTotalTime(Duration.of(logStats.getTotalTime().getSeconds() / i, ChronoUnit.SECONDS));
         return logStats;
     }
 

@@ -1,13 +1,13 @@
-package at.fhtw.bif.swen.businesslogic.impl;
+package at.fhtw.bif.swen.businesslogic;
 
 import at.fhtw.bif.swen.businesslogic.ITourLogLogic;
 import at.fhtw.bif.swen.persistence.ITourLogDataSource;
 
-public class TourLogLogicImpl implements ITourLogLogic {
+public class TourLogLogic implements ITourLogLogic {
 
     ITourLogDataSource dataSource;
 
-    public TourLogLogicImpl(ITourLogDataSource dataSource) {
+    public TourLogLogic(ITourLogDataSource dataSource) {
         this.dataSource = dataSource;
     }
 }

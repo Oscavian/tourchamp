@@ -37,6 +37,16 @@ public class TourLogRepository implements ITourLogDataSource {
     }
 
     @Override
+    public TourLogEntity getById(Integer id) {
+        return null;
+    }
+
+    @Override
+    public List<TourLogEntity> search(String searchString) {
+        return null;
+    }
+
+    @Override
     public List<TourLogEntity> getAll() {
         return new ArrayList<>(entityManager.createQuery("SELECT t FROM TourLogEntity t", TourLogEntity.class).getResultList());
     }
