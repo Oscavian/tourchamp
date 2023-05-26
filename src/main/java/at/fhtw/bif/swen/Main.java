@@ -5,12 +5,10 @@ import at.fhtw.bif.swen.businesslogic.ITourLogic;
 import at.fhtw.bif.swen.businesslogic.impl.TourLogLogicImpl;
 import at.fhtw.bif.swen.businesslogic.impl.TourLogicImpl;
 import at.fhtw.bif.swen.persistence.ITourLogDataSource;
-import at.fhtw.bif.swen.persistence.entities.TourEntity;
 import at.fhtw.bif.swen.persistence.repositories.TourLogRepository;
 import at.fhtw.bif.swen.persistence.repositories.TourRepository;
 import at.fhtw.bif.swen.persistence.ITourDataSource;
 import at.fhtw.bif.swen.presentation.controller.ControllerFactory;
-import at.fhtw.bif.swen.presentation.service.TourLogService;
 import at.fhtw.bif.swen.presentation.service.TourService;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -42,8 +40,7 @@ public class Main extends Application {
 
         //inject services into controller factory
         ControllerFactory factory = new ControllerFactory(
-                new TourService(tourLogic),
-                new TourLogService(tourLogLogic)
+                new TourService(tourLogic)
         );
 
         //load gui

@@ -2,6 +2,7 @@ package at.fhtw.bif.swen.presentation.model;
 
 import at.fhtw.bif.swen.presentation.service.TourService;
 import javafx.collections.FXCollections;
+import javafx.collections.ListChangeListener;
 import javafx.collections.ObservableList;
 
 import java.util.Objects;
@@ -10,18 +11,18 @@ public class TourListModel {
 
     private final TourService tourService;
 
+    private final ObservableList<TourListItemModel> tours = FXCollections.observableArrayList();
+
     public TourListModel(TourService tourService) {
         this.tourService = tourService;
     }
-
-    private final ObservableList<TourListItemModel> tours = FXCollections.observableArrayList();
 
     public ObservableList<TourListItemModel> getTours() {
         return tours;
     }
 
     public void addTour(TourDetailsModel tour) {
-        tourService.save(tour);
+        tourService.saveTour(tour);
         this.tours.add(TourListItemModel.From(tour));
     }
 
@@ -41,7 +42,7 @@ public class TourListModel {
     }
 
     public void updateTour(TourDetailsModel tourDetailsModel) {
-        tourService.update(tourDetailsModel);
+        tourService.updateTour(tourDetailsModel);
         for (var t : tours) {
             if (Objects.equals(tourDetailsModel.getId(), t.getId())) {
                 t.setName(tourDetailsModel.getName());

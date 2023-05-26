@@ -30,7 +30,7 @@
             <HBox>
                 <VBox>
                     <Label text="Date"/>
-                    <DatePicker fx:id="logDate"/>
+                    <TextField fx:id="logDate"/>
                     <padding>
                         <Insets right="8.0"/>
                     </padding>

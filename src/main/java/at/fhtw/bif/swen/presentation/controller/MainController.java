@@ -49,8 +49,12 @@ public class MainController implements Initializable {
 
         //what should happen when clicking on "add"
         this.tourListController.initFormForNewTourListener(
-            // details
-            this.tourDetailsController.tourDetailsGeneralController::initNewTour
+                // details
+                () -> {
+                    this.tourDetailsController.tourDetailsGeneralController.initNewTour();
+                    this.tourDetailsController.detailsTabPane.getSelectionModel().select(0);
+                    this.tourDetailsController.tourDetailsLogsController.tourLogListModel.getTourLogs().clear();
+                }
         );
 
         //what should happen when clicking on "cancel"
@@ -65,7 +69,10 @@ public class MainController implements Initializable {
                 // selected list it
                 p -> {
                     if (p != null) {
+                        //set Tourdetails
                         this.tourDetailsController.tourDetailsGeneralController.setTourDetailsModel(this.tourListModel.loadDetailModel(p));
+                        //set Logs
+                        this.tourDetailsController.tourDetailsLogsController.tourLogListModel.setSelectedTour(p);
                         System.out.println("Selected: " + p.getName());
                     }
                     //display edit/delete buttons

@@ -7,10 +7,12 @@ import javafx.event.ActionEvent;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.control.cell.TextFieldTableCell;
 import javafx.scene.layout.VBox;
 
 import java.net.URL;
 import java.time.Duration;
+import java.time.LocalDate;
 import java.util.Date;
 import java.util.ResourceBundle;
 
@@ -18,7 +20,7 @@ public class TourDetailsLogsController implements Initializable {
 
     //Table elements
     public TableView<TourLogModel> logTable;
-    public TableColumn<TourLogModel, Date> dateColumn;
+    public TableColumn<TourLogModel, String> dateColumn;
     public TableColumn<TourLogModel, String> totalTimeColumn;
     public TableColumn<TourLogModel, String> difficultyColumn;
     public TableColumn<TourLogModel, String> ratingColumn;
@@ -31,14 +33,14 @@ public class TourDetailsLogsController implements Initializable {
     public VBox addLogForm;
 
     //fields for new data
-    public DatePicker logDate;
+    public TextField logDate;
     public TextField logTotalTime;
     public TextField logComment;
     public TextField logDifficulty;
     public TextField logRating;
 
     //models
-    private final TourLogListModel tourLogListModel;
+    public final TourLogListModel tourLogListModel;
     private final TourLogModel enterTourLogModel;
 
     public TourDetailsLogsController(TourLogListModel tourLogListModel, TourLogModel tourLogModel) {
@@ -78,10 +80,11 @@ public class TourDetailsLogsController implements Initializable {
         logTable.setItems(tourLogListModel.getTourLogs());
 
         //data bindings for enter form
-        logDate.promptTextProperty().bindBidirectional(enterTourLogModel.dateProperty());
+        logDate.textProperty().bindBidirectional(enterTourLogModel.dateProperty());
         logTotalTime.textProperty().bindBidirectional(enterTourLogModel.timeProperty());
         logComment.textProperty().bindBidirectional(enterTourLogModel.commentProperty());
         logDifficulty.textProperty().bindBidirectional(enterTourLogModel.difficultyProperty());
         logRating.textProperty().bindBidirectional(enterTourLogModel.ratingProperty());
     }
+
 }
