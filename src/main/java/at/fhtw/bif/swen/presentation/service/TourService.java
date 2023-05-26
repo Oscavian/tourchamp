@@ -44,7 +44,7 @@ public class TourService implements IService<TourDetailsModel, Integer> {
 
     @Override
     public void update(TourDetailsModel tourDetailsModel) {
-        return;
+        tours.put(Integer.valueOf(tourDetailsModel.getId()), tourDetailsModel);
     }
 
     @Override

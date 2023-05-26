@@ -26,8 +26,6 @@ public class TourLogModel {
         setRating(rating);
     }
 
-
-
     public static TourLogModel newInstance(TourLogModel tourLogModel) {
         var model = new TourLogModel();
         model.setName(tourLogModel.getName());
@@ -37,6 +35,15 @@ public class TourLogModel {
         model.setDifficulty(tourLogModel.getDifficulty());
         model.setRating(tourLogModel.getRating());
         return model;
+    }
+
+    public void clear() {
+        setName("");
+        setDate("");
+        setComment("");
+        setDifficulty("");
+        setRating("");
+        setTime("");
     }
 
     public String getName() {

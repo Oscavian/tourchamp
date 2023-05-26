@@ -20,10 +20,13 @@ public class TourLogListModel {
     }
 
     public void addNewLog(TourLogModel tourLogModel){
-        this.tourLogs.add(TourLogModel.newInstance(tourLogModel));
+        var model = TourLogModel.newInstance(tourLogModel);
+        this.tourLogs.add(model);
+        tourLogService.save(model);
     }
 
     public void deleteLog() {
+
     }
 
     public void updateLog() {

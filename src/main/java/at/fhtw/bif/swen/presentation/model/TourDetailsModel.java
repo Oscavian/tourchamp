@@ -28,12 +28,13 @@ public class TourDetailsModel {
 
     public static TourDetailsModel From(EnterTourDetailsModel source) {
         var newInstance = new TourDetailsModel();
+        if (source.getId() != null) {
+            newInstance.id.set(source.getId());
+        }
         newInstance.name.set(source.getName());
         newInstance.description.set(source.getDescription());
         newInstance.start.set(source.getStart());
         newInstance.destination.set(source.getDestination());
-        newInstance.tourDistance.set(source.getTourDistance());
-        newInstance.duration.set(source.getDuration());
         newInstance.transportType.set(source.getTransportType());
         return newInstance;
     }

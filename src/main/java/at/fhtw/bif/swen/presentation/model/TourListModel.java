@@ -4,6 +4,8 @@ import at.fhtw.bif.swen.presentation.service.TourService;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
+import java.util.Objects;
+
 public class TourListModel {
 
     private final TourService tourService;
@@ -20,7 +22,6 @@ public class TourListModel {
 
     public void addTour(TourDetailsModel tour) {
         tourService.save(tour);
-
         this.tours.add(TourListItemModel.From(tour));
     }
 
@@ -37,5 +38,14 @@ public class TourListModel {
     public void reloadTourList() {
         tours.clear();
         tours.addAll(this.tourService.getTourList());
+    }
+
+    public void updateTour(TourDetailsModel tourDetailsModel) {
+        tourService.update(tourDetailsModel);
+        for (var t : tours) {
+            if (Objects.equals(tourDetailsModel.getId(), t.getId())) {
+                t.setName(tourDetailsModel.getName());
+            }
+        }
     }
 }

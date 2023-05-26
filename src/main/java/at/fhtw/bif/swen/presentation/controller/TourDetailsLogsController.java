@@ -18,7 +18,7 @@ public class TourDetailsLogsController implements Initializable {
 
     //Table elements
     public TableView<TourLogModel> logTable;
-    public TableColumn<TourLogModel, String> dateColumn;
+    public TableColumn<TourLogModel, Date> dateColumn;
     public TableColumn<TourLogModel, String> totalTimeColumn;
     public TableColumn<TourLogModel, String> difficultyColumn;
     public TableColumn<TourLogModel, String> ratingColumn;
@@ -47,16 +47,27 @@ public class TourDetailsLogsController implements Initializable {
     }
 
     public void addLogEntry(ActionEvent actionEvent) {
+        tourLogListModel.addNewLog(enterTourLogModel);
+        enterTourLogModel.clear();
     }
 
     public void deleteEntry(ActionEvent actionEvent) {
+
     }
 
     public void clearAllLogs(ActionEvent actionEvent) {
+
     }
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+
+        logTable.getSelectionModel().selectedItemProperty().addListener((observableValue, tourLogModel, t1) -> {
+            if(observableValue != null) {
+
+            }
+        });
+
 
         dateColumn.setCellValueFactory(new PropertyValueFactory<>("date"));
         totalTimeColumn.setCellValueFactory(new PropertyValueFactory<>("time"));

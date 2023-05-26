@@ -22,6 +22,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 import java.io.IOException;
+import java.util.Objects;
 
 public class Main extends Application {
     @Override
@@ -48,6 +49,9 @@ public class Main extends Application {
         //load gui
         FXMLLoader fxmlLoader = getFxmlLoader(factory);
         Scene scene = new Scene(fxmlLoader.load(), 1600, 900);
+
+        scene.getStylesheets().add(Objects.requireNonNull(getClass().getResource("/css/Styles.css")).toExternalForm());
+
         stage.setTitle("TourChamp");
         stage.setScene(scene);
         stage.show();

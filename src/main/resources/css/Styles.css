@@ -1,0 +1,16 @@
+* {
+ -fx-font-size: 13;
+}
+
+Button {
+
+}
+
+ .tourlabel {
+  -fx-font-weight: bold;
+  -fx-font-size: 15;
+ }
+
+ .text-field {
+
+ }

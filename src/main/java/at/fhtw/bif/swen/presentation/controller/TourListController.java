@@ -5,6 +5,7 @@ import at.fhtw.bif.swen.presentation.model.TourListModel;
 import at.fhtw.bif.swen.presentation.model.TourListItemModel;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
+import javafx.collections.ListChangeListener;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.ListView;
@@ -34,12 +35,15 @@ public class TourListController implements Initializable {
                 tourModelListView -> new TourItemListCell(this::deleteTour)
         );
 
+
         //define behaviour when an item is clicked --> fire event
-        tourListView.getSelectionModel().selectedItemProperty().addListener((observableValue, tourListItemModel, t1) -> {
-            if(observableValue != null) {
-                selectedTourListItem.accept(observableValue.getValue());
-            }
+        tourListView.getSelectionModel().selectedItemProperty().addListener((observableValue, oldValue, newValue) -> {
+                selectedTourListItem.accept(newValue);
         });
+
+        if (!tourListView.getItems().isEmpty()) {
+            tourListView.getSelectionModel().select(0);
+        }
     }
 
     // todo: change method name
@@ -50,6 +54,7 @@ public class TourListController implements Initializable {
     }
 
     public void initFormForNewTour(MouseEvent actionEvent){
+        tourListView.getSelectionModel().clearSelection();
         this.initTourFormListener.run();
     }
 
