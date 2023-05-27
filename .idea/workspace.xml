@@ -6,15 +6,6 @@
   <component name="ChangeListManager">
     <list default="true" id="cbdfb15b-a979-4793-87ac-8d649901cf59" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/at/fhtw/bif/swen/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/at/fhtw/bif/swen/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/at/fhtw/bif/swen/businesslogic/impl/TourLogLogicImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/at/fhtw/bif/swen/businesslogic/TourLogLogic.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/at/fhtw/bif/swen/businesslogic/impl/TourLogicImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/at/fhtw/bif/swen/businesslogic/TourLogic.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/at/fhtw/bif/swen/businesslogic/services/ReportGenerator/SummarizeReportGenerator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/at/fhtw/bif/swen/businesslogic/services/ReportGenerator/SummarizeReportGenerator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/at/fhtw/bif/swen/persistence/ITourDataSource.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/at/fhtw/bif/swen/persistence/ITourDataSource.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/at/fhtw/bif/swen/persistence/ITourLogDataSource.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/at/fhtw/bif/swen/persistence/ITourLogDataSource.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/at/fhtw/bif/swen/persistence/repositories/IRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/at/fhtw/bif/swen/persistence/repositories/IRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/at/fhtw/bif/swen/persistence/repositories/TourLogRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/at/fhtw/bif/swen/persistence/repositories/TourLogRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/at/fhtw/bif/swen/persistence/repositories/TourRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/at/fhtw/bif/swen/persistence/repositories/TourRepository.java" afterDir="false" />
     </list>
     <list id="12786b16-4310-4068-8245-b91c0b1e110a" name="Changes by alex" comment="" />
     <option name="SHOW_DIALOG" value="false" />
@@ -122,7 +113,8 @@
       <workItem from="1681224554795" duration="4062000" />
       <workItem from="1681302334488" duration="4691000" />
       <workItem from="1684589390448" duration="14280000" />
-      <workItem from="1684765087052" duration="4454000" />
+      <workItem from="1684765087052" duration="5079000" />
+      <workItem from="1684849132238" duration="18000" />
     </task>
     <servers />
   </component>
