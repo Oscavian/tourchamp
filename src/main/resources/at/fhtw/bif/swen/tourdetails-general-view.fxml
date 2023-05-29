@@ -9,56 +9,137 @@
 <?import javafx.scene.canvas.Canvas?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.text.Text?>
-<GridPane xmlns="http://javafx.com/javafx"
-          xmlns:fx="http://javafx.com/fxml"
-          fx:controller="at.fhtw.bif.swen.presentation.controller.TourDetailsGeneralController"
-          prefHeight="400.0" prefWidth="600.0">
-    <HBox GridPane.columnIndex="0" GridPane.rowIndex="0" GridPane.columnSpan="3">
-        <Label fx:id="tourTitle" text=" no Tour selected" style="-fx-font-size: 20"/>
-        <Label fx:id="tourId" text="## " style="-fx-font-size: 20"/>
-        <padding>
-            <Insets bottom="16"/>
-        </padding>
-    </HBox>
-    <VBox GridPane.columnIndex="0" GridPane.rowIndex="1" GridPane.columnSpan="3">
-        <VBox fx:id="tourForm" style="-fx-alignment: center">
-            <Label text="Name"/>
-            <TextField fx:id="tourDetailName"/>
+<BorderPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="at.fhtw.bif.swen.presentation.controller.TourDetailsGeneralController"
+            prefHeight="400.0" prefWidth="600.0">
+    <top>
+        <HBox>
+            <HBox>
+                <Label style="-fx-font-size: 20" text="#"/>
+                <Label fx:id="tourId" style="-fx-font-size: 20"/>
+                <Label text=" - " style="-fx-font-size: 20"/>
 
-            <Label text="Description"/>
-            <TextField fx:id="tourDetailDescription"/>
-
-            <Label text="Start"/>
-            <TextField fx:id="tourDetailStart"/>
-
-            <Label text="Destination"/>
-            <TextField fx:id="tourDetailDestination"/>
-
-            <Label text="transport type"/>
-            <TextField fx:id="tourDetailTransportType"/>
-
-            <Label text="tour distance"/>
-            <TextField fx:id="tourDetailTourDistance"/>
-
-            <Label>Estimated Time:</Label>
-            <Label fx:id="tourDetailEstimatedTime"/>
-            <Label>Child friendliness:</Label>
-            <Label fx:id="tourDetailChildFriendliness" text="Child friendliness"/>
-            <Label>Popularity:</Label>
-            <Label fx:id="tourDetailPopularity" text="Popularity"/>
-        </VBox>
+                <Label fx:id="tourDetailName" style="-fx-font-size: 20"/>
+            </HBox>
+            <padding>
+                <Insets bottom="16"/>
+            </padding>
+        </HBox>
+    </top>
+    <center>
         <VBox>
-            <HBox fx:id="newTourButtons">
-                <Button text="Save" onAction="#saveTour"/>
-                <Button text="Cancel" onAction="#cancel"/>
+
+            <VBox>
+                <Label text="Description: " styleClass="tourlabel"/>
+                <Label fx:id="tourDetailDescription"/>
+            </VBox>
+
+            <HBox>
+                <Label text="Start: " styleClass="tourlabel"/>
+                <Label fx:id="tourDetailStart"/>
             </HBox>
-            <HBox fx:id="editTourButtons">
-                <Button text="Edit" onAction="#editTour"/>
-                <Button text="Delete" onAction="#removeTour"/>
+
+            <HBox>
+                <Label text="Destination: " styleClass="tourlabel"/>
+                <Label fx:id="tourDetailDestination"/>
+            </HBox>
+
+            <HBox>
+                <Label text="Transport by: " styleClass="tourlabel"/>
+                <Label fx:id="tourDetailTransportType"/>
+            </HBox>
+
+            <HBox>
+                <Label text="Distance: " styleClass="tourlabel"/>
+                <Label fx:id="tourDetailTourDistance"/>
+            </HBox>
+
+            <HBox>
+                <Label text="Estimated Time: " styleClass="tourlabel"/>
+                <Label fx:id="tourDetailEstimatedTime"/>
+            </HBox>
+
+            <HBox>
+                <Label text="Child friendliness: " styleClass="tourlabel"/>
+                <Label fx:id="tourDetailChildFriendliness" text="Child friendliness"/>
+            </HBox>
+            <HBox>
+                <Label text="Popularity: " styleClass="tourlabel"/>
+                <Label fx:id="tourDetailPopularity" text="Popularity"/>
             </HBox>
         </VBox>
-    </VBox>
+    </center>
+    <bottom>
+
+        <VBox>
+            <HBox fx:id="tourForm">
+                <VBox>
+                    <Label text="Name"/>
+                    <TextField fx:id="enterTourDetailName"/>
+                    <padding>
+                        <Insets left="8.0" right="8.0"/>
+                    </padding>
+                </VBox>
+
+                <VBox>
+                    <Label text="Description"/>
+                    <TextField fx:id="enterTourDetailDescription"/>
+                    <padding>
+                        <Insets left="8.0" right="8.0"/>
+                    </padding>
+                </VBox>
+
+                <VBox>
+                    <Label text="Start"/>
+                    <TextField fx:id="enterTourDetailStart"/>
+                    <padding>
+                        <Insets left="8.0" right="8.0"/>
+                    </padding>
+                </VBox>
+
+                <VBox>
+                    <Label text="Destination"/>
+                    <TextField fx:id="enterTourDetailDestination"/>
+                    <padding>
+                        <Insets left="8.0" right="8.0"/>
+                    </padding>
+                </VBox>
+
+                <VBox>
+                    <Label text="transport type"/>
+                    <TextField fx:id="enterTourDetailTransportType"/>
+                    <padding>
+                        <Insets left="8.0" right="8.0"/>
+                    </padding>
+                </VBox>
+            </HBox>
+            <VBox>
+                <HBox fx:id="newTourButtons">
+                    <Button text="Save" onAction="#saveTour"/>
+                    <Button text="Cancel" onAction="#cancel"/>
+                    <padding>
+                        <Insets left="8.0" right="8.0"/>
+                    </padding>
+                </HBox>
+                <HBox fx:id="editTourButtons">
+                    <Button text="Edit" onAction="#editTour"/>
+                    <Button text="Delete" onAction="#removeTour"/>
+                    <padding>
+                        <Insets left="8.0" right="8.0"/>
+                    </padding>
+                </HBox>
+                <HBox fx:id="saveEditButtons">
+                    <Button text="Save" onAction="#saveEditedTour"/>
+                    <Button text="Cancel" onAction="#cancelEdit"/>
+                    <padding>
+                        <Insets left="8.0" right="8.0"/>
+                    </padding>
+                </HBox>
+            </VBox>
+        </VBox>
+    </bottom>
     <padding>
-        <Insets bottom="16.0" left="16.0" right="16.0" top="16.0" />
+        <Insets bottom="16.0" left="16.0" right="16.0" top="16.0"/>
     </padding>
-</GridPane>
+</BorderPane>

@@ -1,7 +1,6 @@
 package at.fhtw.bif.swen.presentation.controller;
 
 import at.fhtw.bif.swen.presentation.model.*;
-import at.fhtw.bif.swen.presentation.service.TourLogService;
 import at.fhtw.bif.swen.presentation.service.TourService;
 
 public class ControllerFactory {
@@ -17,13 +16,10 @@ public class ControllerFactory {
 
     //services
     private final TourService tourService;
-    private final TourLogService tourLogService;
 
-
-    public ControllerFactory(TourService tourService, TourLogService tourLogService) {
+    public ControllerFactory(TourService tourService) {
         //instantiate business layer
         this.tourService = tourService;
-        this.tourLogService = tourLogService;
 
         // instantiate models
         this.searchbarModel = new SearchbarModel();
@@ -32,7 +28,7 @@ public class ControllerFactory {
         this.tourListItemModel = new TourListItemModel();
         this.enterTourDetailsModel = new EnterTourDetailsModel();
         this.tourLogModel = new TourLogModel();
-        this.tourLogListModel = new TourLogListModel(tourLogService);
+        this.tourLogListModel = new TourLogListModel(tourService);
     }
 
     public Object create(Class controllerClass) throws Exception {

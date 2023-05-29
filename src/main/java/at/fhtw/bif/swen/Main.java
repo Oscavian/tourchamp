@@ -9,7 +9,6 @@ import at.fhtw.bif.swen.persistence.repositories.TourLogRepository;
 import at.fhtw.bif.swen.persistence.repositories.TourRepository;
 import at.fhtw.bif.swen.persistence.ITourDataSource;
 import at.fhtw.bif.swen.presentation.controller.ControllerFactory;
-import at.fhtw.bif.swen.presentation.service.TourLogService;
 import at.fhtw.bif.swen.presentation.service.TourService;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -21,6 +20,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 import java.io.IOException;
+import java.util.Objects;
 
 public class Main extends Application {
     @Override
@@ -40,13 +40,15 @@ public class Main extends Application {
 
         //inject services into controller factory
         ControllerFactory factory = new ControllerFactory(
-                new TourService(tourLogic),
-                new TourLogService(tourLogLogic)
+                new TourService(tourLogic)
         );
 
         //load gui
         FXMLLoader fxmlLoader = getFxmlLoader(factory);
         Scene scene = new Scene(fxmlLoader.load(), 1600, 900);
+
+        scene.getStylesheets().add(Objects.requireNonNull(getClass().getResource("/css/Styles.css")).toExternalForm());
+
         stage.setTitle("TourChamp");
         stage.setScene(scene);
         stage.show();

@@ -1,6 +1,5 @@
 package at.fhtw.bif.swen.presentation.model;
 
-import at.fhtw.bif.swen.presentation.service.TourLogService;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 import lombok.AllArgsConstructor;
@@ -10,7 +9,6 @@ import javax.persistence.NamedEntityGraph;
 
 @AllArgsConstructor
 public class TourLogModel {
-    private final StringProperty name = new SimpleStringProperty();
     private final StringProperty date = new SimpleStringProperty();
     private final StringProperty time = new SimpleStringProperty();
     private final StringProperty comment = new SimpleStringProperty();
@@ -18,7 +16,6 @@ public class TourLogModel {
     private final StringProperty rating = new SimpleStringProperty();
 
     public TourLogModel(String name, String date, String time, String comment, String difficulty, String rating) {
-        setName(name);
         setDate(date);
         setTime(time);
         setComment(comment);
@@ -26,11 +23,12 @@ public class TourLogModel {
         setRating(rating);
     }
 
-
+    public TourLogModel(String comment) {
+        setComment(comment);
+    }
 
     public static TourLogModel newInstance(TourLogModel tourLogModel) {
         var model = new TourLogModel();
-        model.setName(tourLogModel.getName());
         model.setDate(tourLogModel.getDate());
         model.setTime(tourLogModel.getTime());
         model.setComment(tourLogModel.getComment());
@@ -39,16 +37,12 @@ public class TourLogModel {
         return model;
     }
 
-    public String getName() {
-        return name.get();
-    }
-
-    public StringProperty nameProperty() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name.set(name);
+    public void clear() {
+        setDate("");
+        setComment("");
+        setDifficulty("");
+        setRating("");
+        setTime("");
     }
 
     public String getDate() {

@@ -2,18 +2,31 @@ package at.fhtw.bif.swen.presentation.model;
 
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 @NoArgsConstructor
 public class EnterTourDetailsModel {
 
+    @Setter
+    @Getter
+    private String id; //only used for edit
     private final StringProperty name = new SimpleStringProperty();
     private final StringProperty description = new SimpleStringProperty();
     private final StringProperty start = new SimpleStringProperty();
     private final StringProperty destination = new SimpleStringProperty();
     private final StringProperty transportType = new SimpleStringProperty();
-    private final StringProperty tourDistance = new SimpleStringProperty();
-    private final StringProperty duration = new SimpleStringProperty();
+
+    public void clear() {
+        setName("");
+        setDescription("");
+        setStart("");
+        setStart("");
+        setDestination("");
+        setTransportType("");
+        setId("");
+    }
 
     public String getName() {
         return name.get();
@@ -55,21 +68,7 @@ public class EnterTourDetailsModel {
         return transportType;
     }
 
-    public String getTourDistance() {
-        return tourDistance.get();
-    }
 
-    public StringProperty tourDistanceProperty() {
-        return tourDistance;
-    }
-
-    public String getDuration() {
-        return duration.get();
-    }
-
-    public StringProperty durationProperty() {
-        return duration;
-    }
 
     public void setName(String name) {
         this.name.set(name);
@@ -87,13 +86,6 @@ public class EnterTourDetailsModel {
         this.destination.set(destination);
     }
 
-    public void setTourDistance(String tourDistance) {
-        this.tourDistance.set(tourDistance);
-    }
-
-    public void setDuration(String duration) {
-        this.duration.set(duration);
-    }
 
     public void setTransportType(String transportType) {
         this.transportType.set(transportType);

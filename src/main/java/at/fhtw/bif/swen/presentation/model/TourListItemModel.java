@@ -1,7 +1,9 @@
 package at.fhtw.bif.swen.presentation.model;
 
 import javafx.beans.property.*;
+import lombok.AllArgsConstructor;
 
+@AllArgsConstructor
 public class TourListItemModel {
 
     private final StringProperty id = new SimpleStringProperty();
