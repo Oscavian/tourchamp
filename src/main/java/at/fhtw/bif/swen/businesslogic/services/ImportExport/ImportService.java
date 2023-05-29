@@ -13,18 +13,18 @@ import java.util.List;
 public class ImportService {
 
     private final ObjectMapper objectMapper;
-    private final String filePath;
+    private final File file;
     private ITourDataSource repository;
 
 
-    public ImportService(String filePath, ITourDataSource repository) {
+    public ImportService(File file, ITourDataSource repository) {
         this.objectMapper = new ObjectMapper();
-        this.filePath = filePath;
+        this.file = file;
         this.repository = repository;
     }
 
     public void _import() throws IOException {
-        List<TourDTO> tours = this.objectMapper.readValue(new File(this.filePath),
+        List<TourDTO> tours = this.objectMapper.readValue(this.file,
                 new TypeReference<List<TourDTO>>() {
         });
 

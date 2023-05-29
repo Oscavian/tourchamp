@@ -29,7 +29,7 @@ public class SummarizeReportGenerator extends ReportGenerator{
     @Override
     void generate() throws IOException {
         setHeader();
-
+        setBody();
     }
 
     @Override
@@ -53,15 +53,14 @@ public class SummarizeReportGenerator extends ReportGenerator{
                     .setFont(PdfFontFactory.createFont(StandardFonts.HELVETICA))
                     .setFontSize(10)
                     .setBold();
-            document.add(tourStats);
             LogStats logstats = getLogStats(tour);
 
-            logs.add(new ListItem("Avg difficulty: " + logstats.getDifficulty() + "\n" +
+            logs.add(new ListItem(tourStats + "\n" + logstats.getDifficulty() + "\n" +
                     "Avg time: " + logstats.getTotalTime() + "\n" +
                     "Avg rating: " + logstats.getRating() + "\n"));
 
-            document.add(logs);
         }
+        document.add(logs);
     }
 
     private LogStats getLogStats(TourDTO tour) {

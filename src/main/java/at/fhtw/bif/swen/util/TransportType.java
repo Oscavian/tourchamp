@@ -1,7 +1,7 @@
 package at.fhtw.bif.swen.util;
 
-public enum TransportType {
-
+public enum
+TransportType {
     AFOOT,
     CAR,
     TRAIN,
