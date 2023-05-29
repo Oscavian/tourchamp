@@ -53,7 +53,7 @@ public class MainController implements Initializable {
                 () -> {
                     this.tourDetailsController.tourDetailsGeneralController.initNewTour();
                     this.tourDetailsController.detailsTabPane.getSelectionModel().select(0);
-                    this.tourDetailsController.tourDetailsLogsController.tourLogListModel.getTourLogs().clear();
+                    this.tourDetailsController.tourDetailsLogsController.tourDetailsModel.getTourLogs().clear();
                 }
         );
 
@@ -70,10 +70,10 @@ public class MainController implements Initializable {
                 p -> {
                     if (p != null) {
                         //set Tourdetails
-                        this.tourDetailsController.tourDetailsGeneralController.setTourDetailsModel(this.tourListModel.loadDetailModel(p));
-                        //set Logs
-                        this.tourDetailsController.tourDetailsLogsController.tourLogListModel.setSelectedTour(p);
-                        System.out.println("Selected: " + p.getName());
+                        var m = this.tourListModel.loadDetailModel(p);
+                        this.tourDetailsController.tourDetailsGeneralController.setTourDetailsModel(m);
+                        this.tourDetailsController.tourDetailsLogsController.setTourDetailsModel(m);
+                        System.out.println("Selected: " + p.getName() + p.getId());
                     }
                     //display edit/delete buttons
                     this.tourDetailsController.tourDetailsGeneralController.tourForm.setDisable(true);

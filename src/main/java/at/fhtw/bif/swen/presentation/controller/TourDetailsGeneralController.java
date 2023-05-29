@@ -9,7 +9,6 @@ import javafx.scene.Cursor;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.HBox;
-import javafx.scene.layout.VBox;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -52,16 +51,13 @@ public class TourDetailsGeneralController implements Initializable {
 
     private Consumer<TourDetailsModel> removeTourListener;
     private Runnable cancelListener;
-    public TourDetailsModel tourDetailsModel;
-
     public EnterTourDetailsModel enterTourDetailsModel;
 
-
-    private TourService tourService;
+    private TourDetailsModel tourDetailsModel;
 
     public TourDetailsGeneralController(TourDetailsModel tourDetailsModel, EnterTourDetailsModel enterTourDetailsModel) {
-        this.tourDetailsModel = tourDetailsModel;
         this.enterTourDetailsModel = enterTourDetailsModel;
+        this.tourDetailsModel = tourDetailsModel;
     }
 
     public void setTourDetailsModel(TourDetailsModel tourDetailsModel) {
@@ -75,22 +71,24 @@ public class TourDetailsGeneralController implements Initializable {
         this.tourDetailsModel.setPopularity(tourDetailsModel.getPopularity());
         this.tourDetailsModel.setChildFriendliness(tourDetailsModel.getChildFriendliness());
         this.tourDetailsModel.setTransportType(tourDetailsModel.getTransportType());
+        this.tourDetailsModel.setMapURL(tourDetailsModel.getMapURL());
+        this.tourDetailsModel.addAllLogs(tourDetailsModel.getTourLogs());
     }
 
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         //bindings for detail model
-        tourId.textProperty().bindBidirectional(tourDetailsModel.idProperty());
-        tourDetailName.textProperty().bindBidirectional(tourDetailsModel.nameProperty());
-        tourDetailDescription.textProperty().bindBidirectional(tourDetailsModel.descriptionProperty());
-        tourDetailStart.textProperty().bindBidirectional(tourDetailsModel.startProperty());
-        tourDetailDestination.textProperty().bindBidirectional(tourDetailsModel.destinationProperty());
-        tourDetailTransportType.textProperty().bindBidirectional(tourDetailsModel.transportTypeProperty());
-        tourDetailTourDistance.textProperty().bindBidirectional(tourDetailsModel.tourDistanceProperty());
-        tourDetailEstimatedTime.textProperty().bindBidirectional(tourDetailsModel.durationProperty());
-        tourDetailChildFriendliness.textProperty().bindBidirectional(tourDetailsModel.childFriendlinessProperty());
-        tourDetailPopularity.textProperty().bindBidirectional(tourDetailsModel.popularityProperty());
+        tourId.textProperty().bindBidirectional(this.tourDetailsModel.idProperty());
+        tourDetailName.textProperty().bindBidirectional(this.tourDetailsModel.nameProperty());
+        tourDetailDescription.textProperty().bindBidirectional(this.tourDetailsModel.descriptionProperty());
+        tourDetailStart.textProperty().bindBidirectional(this.tourDetailsModel.startProperty());
+        tourDetailDestination.textProperty().bindBidirectional(this.tourDetailsModel.destinationProperty());
+        tourDetailTransportType.textProperty().bindBidirectional(this.tourDetailsModel.transportTypeProperty());
+        tourDetailTourDistance.textProperty().bindBidirectional(this.tourDetailsModel.tourDistanceProperty());
+        tourDetailEstimatedTime.textProperty().bindBidirectional(this.tourDetailsModel.durationProperty());
+        tourDetailChildFriendliness.textProperty().bindBidirectional(this.tourDetailsModel.childFriendlinessProperty());
+        tourDetailPopularity.textProperty().bindBidirectional(this.tourDetailsModel.popularityProperty());
 
 
         //bindings for enter model
@@ -126,7 +124,7 @@ public class TourDetailsGeneralController implements Initializable {
 
     //Action events
     public void saveTour(ActionEvent actionEvent) {
-        this.tourDetailsModel.reset();
+        this.tourDetailsModel.resetGeneralValues();
         //fire event to other tourlist view
         this.saveTourListener.accept(this.enterTourDetailsModel);
 
@@ -141,13 +139,13 @@ public class TourDetailsGeneralController implements Initializable {
         this.editTourButtons.setVisible(false);
 
         //TODO: add reset to previous values when editing
-        this.tourDetailsModel.reset();
+        this.tourDetailsModel.resetGeneralValues();
 
         this.cancelListener.run();
     }
 
     public void initNewTour(){
-        this.tourDetailsModel.reset();
+        this.tourDetailsModel.resetGeneralValues();
         this.enterTourDetailsModel.clear();
         this.tourDetailName.setCursor(Cursor.DEFAULT);
         this.newTourButtons.setVisible(true);
@@ -160,21 +158,21 @@ public class TourDetailsGeneralController implements Initializable {
         this.editTourButtons.setVisible(false);
         this.saveEditButtons.setVisible(true);
 
-        this.enterTourDetailsModel.setName(tourDetailsModel.getName());
-        this.enterTourDetailsModel.setDestination(tourDetailsModel.getDestination());
-        this.enterTourDetailsModel.setStart(tourDetailsModel.getStart());
-        this.enterTourDetailsModel.setDescription(tourDetailsModel.getDescription());
-        this.enterTourDetailsModel.setTransportType(tourDetailsModel.getTransportType());
+        this.enterTourDetailsModel.setName(this.tourDetailsModel.getName());
+        this.enterTourDetailsModel.setDestination(this.tourDetailsModel.getDestination());
+        this.enterTourDetailsModel.setStart(this.tourDetailsModel.getStart());
+        this.enterTourDetailsModel.setDescription(this.tourDetailsModel.getDescription());
+        this.enterTourDetailsModel.setTransportType(this.tourDetailsModel.getTransportType());
     }
 
     public void removeTour(ActionEvent actionEvent) {
         this.removeTourListener.accept(this.tourDetailsModel);
-        this.tourDetailsModel.reset();
+        this.tourDetailsModel.resetGeneralValues();
         this.tourForm.setDisable(true);
     }
 
     public void saveEditedTour(ActionEvent actionEvent) {
-        enterTourDetailsModel.setId(tourDetailsModel.getId());
+        enterTourDetailsModel.setId(this.tourDetailsModel.getId());
         System.out.println("saving tour" + enterTourDetailsModel.getId());
         this.editTourListener.accept(enterTourDetailsModel);
         this.saveEditButtons.setVisible(false);

@@ -74,6 +74,9 @@ public class TourMapper {
         tourDetailsModel.setDuration(tourDTO.getEstimatedTime().toString());
         tourDetailsModel.setChildFriendliness(tourDTO.getChildFriendliness().toString());
         tourDetailsModel.setPopularity(tourDTO.getPopularity().toString());
+
+        tourDetailsModel.addAllLogs(TourLogMapper.fromDTO(tourDTO.getLogs()));
+        tourDetailsModel.setMapURL(tourDTO.getMapURL());
         return tourDetailsModel;
     }
 

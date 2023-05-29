@@ -15,13 +15,9 @@ public class TourService implements IService {
     private ITourLogic tourLogic;
 
     private final HashMap<Integer, TourDetailsModel> tours = new HashMap<>();
-    private final List<TourLogModel> tourLogList = new ArrayList<>();
 
     public TourService(ITourLogic tourLogic) {
         this.tourLogic = tourLogic;
-
-        //todo: remove
-        tours.put(1, new TourDetailsModel("1", "huhu"));
     }
 
     @Override
@@ -31,6 +27,9 @@ public class TourService implements IService {
 
 
     public TourDetailsModel getById(Integer integer) {
+        tours.forEach((k,v) -> {
+            System.out.println(k + " " + v.getName());
+        });
         return tours.get(integer);
     }
 
@@ -52,18 +51,6 @@ public class TourService implements IService {
     @Override
     public void deleteTour(TourDetailsModel tourDetailsModel) {
 
-    }
-
-    @Override
-    public List<TourLogModel> getTourLogsForTour(TourListItemModel t) {
-        return tourLogList;
-    }
-
-    @Override
-    public void updateTourLogs(List<TourLogModel> tourLogModels, TourListItemModel tour) {
-        System.out.println("updated" + tour + "logs with" + tourLogModels);
-        this.tourLogList.clear();
-        this.tourLogList.addAll(tourLogModels);
     }
 
     public List<TourListItemModel> getTourList() {

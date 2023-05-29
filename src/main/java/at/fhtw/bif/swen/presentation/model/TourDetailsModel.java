@@ -1,12 +1,15 @@
 package at.fhtw.bif.swen.presentation.model;
 
-import javafx.beans.property.IntegerProperty;
-import javafx.beans.property.SimpleIntegerProperty;
+import at.fhtw.bif.swen.presentation.service.TourService;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
-import lombok.NoArgsConstructor;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import lombok.Getter;
+import lombok.Setter;
 
-@NoArgsConstructor
+import java.util.List;
+
 public class TourDetailsModel {
 
     private final StringProperty id = new SimpleStringProperty();
@@ -19,12 +22,18 @@ public class TourDetailsModel {
     private final StringProperty duration = new SimpleStringProperty();
     private final StringProperty childFriendliness = new SimpleStringProperty();
     private final StringProperty popularity = new SimpleStringProperty();
+    @Getter
+    @Setter
     private String mapURL;
+    private final ObservableList<TourLogModel> tourLogs = FXCollections.observableArrayList();
 
-    public TourDetailsModel(String id, String name) {
-        setName(name);
-        setId(id);
+    private TourService tourService;
+
+    public TourDetailsModel(TourService tourService){
+        this.tourService = tourService;
     }
+
+    public TourDetailsModel(){}
 
     public static TourDetailsModel From(EnterTourDetailsModel source) {
         var newInstance = new TourDetailsModel();
@@ -39,10 +48,41 @@ public class TourDetailsModel {
         return newInstance;
     }
 
+    //log methods
+    public void addNewLog(TourLogModel tourLogModel){
+        if (getId().isEmpty()) {
+            System.out.println("Id empty!");
+            return;
+        }
+        var model = TourLogModel.newInstance(tourLogModel);
+        this.tourLogs.add(model);
+        tourService.updateTour(this);
+    }
+
+    public void addAllLogs(List<TourLogModel> logs) {
+        if (getId().isEmpty()) {
+            System.out.println("Id empty!");
+            return;
+        }
+        tourLogs.clear();
+        tourLogs.addAll(logs);
+        tourService.updateTour(this);
+
+    }
+
+    public void deleteLog(TourLogModel tourLogModel) {
+        this.tourLogs.remove(tourLogModel);
+    }
+
+    public void updateLog() {
+
+    }
+
+
     /**
      * empty all properties of this model
      */
-    public void reset() {
+    public void resetGeneralValues() {
         setId("");
         setName("");
         setDestination("");
@@ -173,5 +213,9 @@ public class TourDetailsModel {
 
     public void setTransportType(String transportType) {
         this.transportType.set(transportType);
+    }
+
+    public ObservableList<TourLogModel> getTourLogs() {
+        return tourLogs;
     }
 }

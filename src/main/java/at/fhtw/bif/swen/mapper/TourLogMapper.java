@@ -2,6 +2,10 @@ package at.fhtw.bif.swen.mapper;
 
 import at.fhtw.bif.swen.dto.TourLogDTO;
 import at.fhtw.bif.swen.persistence.entities.TourLogEntity;
+import at.fhtw.bif.swen.presentation.model.TourLogModel;
+import org.hibernate.cfg.NotYetImplementedException;
+
+import java.util.List;
 
 public class TourLogMapper {
 
@@ -32,4 +36,8 @@ public class TourLogMapper {
 
     //Frontend Model <-> DTO
     // todo: log mapping model <-> dto
+
+    public static List<TourLogModel> fromDTO(List<TourLogDTO> dtos) {
+        throw new UnsupportedOperationException();
+    }
 }
