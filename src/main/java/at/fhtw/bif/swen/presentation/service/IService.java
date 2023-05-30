@@ -7,7 +7,6 @@ import at.fhtw.bif.swen.presentation.model.TourLogModel;
 import java.util.List;
 
 public interface IService {
-    List<TourDetailsModel> getAll();
     TourDetailsModel getById(Integer id);
     void saveTour(TourDetailsModel t);
     void updateTour(TourDetailsModel t);

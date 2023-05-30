@@ -33,6 +33,7 @@ public class MainController implements Initializable {
                 p -> {
                     this.tourListModel.addTour(TourDetailsModel.From(p));
                     this.tourListController.tourListView.getSelectionModel().clearSelection();
+                    this.tourListModel.reloadTourList();
                 }
         );
 

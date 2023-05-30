@@ -4,7 +4,6 @@ import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
-import java.time.Duration;
 import java.util.Date;
 
 @Entity
@@ -26,7 +25,7 @@ public class TourLogEntity {
 
     Integer difficulty;
 
-    Duration totalTime;
+    Integer totalTime;
 
     Integer rating;
 

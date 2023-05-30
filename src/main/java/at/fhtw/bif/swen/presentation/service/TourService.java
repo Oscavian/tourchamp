@@ -1,6 +1,8 @@
 package at.fhtw.bif.swen.presentation.service;
 
 import at.fhtw.bif.swen.businesslogic.ITourLogic;
+import at.fhtw.bif.swen.businesslogic.TourLogic;
+import at.fhtw.bif.swen.mapper.TourMapper;
 import at.fhtw.bif.swen.presentation.model.TourDetailsModel;
 import at.fhtw.bif.swen.presentation.model.TourListItemModel;
 import at.fhtw.bif.swen.presentation.model.TourLogModel;
@@ -14,38 +16,23 @@ public class TourService implements IService {
 
     private ITourLogic tourLogic;
 
-    private final HashMap<Integer, TourDetailsModel> tours = new HashMap<>();
-
     public TourService(ITourLogic tourLogic) {
         this.tourLogic = tourLogic;
     }
 
-    @Override
-    public List<TourDetailsModel> getAll() {
-        return (List<TourDetailsModel>) tours.values();
-    }
-
 
     public TourDetailsModel getById(Integer integer) {
-        tours.forEach((k,v) -> {
-            System.out.println(k + " " + v.getName());
-        });
-        return tours.get(integer);
+        return TourMapper.fromDTO(tourLogic.getTourById(integer));
     }
 
     @Override
     public void saveTour(TourDetailsModel tourDetailsModel) {
-        //only for testing
-        Integer id = new Random().nextInt(1000);
-        tourDetailsModel.setId(String.valueOf(id));
-        tours.put(id, tourDetailsModel);
-
-        System.out.println("Tour saved! " + tourDetailsModel.getId());
+        tourLogic.saveTour(TourMapper.fromNewDetailsModel(tourDetailsModel));
     }
 
     @Override
     public void updateTour(TourDetailsModel tourDetailsModel) {
-        tours.put(Integer.valueOf(tourDetailsModel.getId()), tourDetailsModel);
+      //  tourLogic.updateTour(TourMapper.fromDetailsModel(tourDetailsModel));
     }
 
     @Override
@@ -54,12 +41,13 @@ public class TourService implements IService {
     }
 
     public List<TourListItemModel> getTourList() {
-        var list = new ArrayList<TourListItemModel>();
+        var list = tourLogic.getAll();
+        var newList = new ArrayList<TourListItemModel>();
 
-        for (var t : tours.values()) {
-            list.add(TourListItemModel.From(t));
+        for (var t : list) {
+            newList.add(TourListItemModel.From(TourMapper.fromDTO(t)));
         }
 
-        return list;
+        return newList;
     }
 }

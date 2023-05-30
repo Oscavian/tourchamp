@@ -15,7 +15,7 @@ public class TourLogModel {
     private final StringProperty difficulty = new SimpleStringProperty();
     private final StringProperty rating = new SimpleStringProperty();
 
-    public TourLogModel(String name, String date, String time, String comment, String difficulty, String rating) {
+    public TourLogModel(String date, String time, String comment, String difficulty, String rating) {
         setDate(date);
         setTime(time);
         setComment(comment);
@@ -48,59 +48,45 @@ public class TourLogModel {
     public String getDate() {
         return date.get();
     }
-
     public StringProperty dateProperty() {
         return date;
     }
-
     public void setDate(String date) {
         this.date.set(date);
     }
-
     public String getTime() {
         return time.get();
     }
-
     public StringProperty timeProperty() {
         return time;
     }
-
     public void setTime(String time) {
         this.time.set(time);
     }
-
     public String getComment() {
         return comment.get();
     }
-
     public StringProperty commentProperty() {
         return comment;
     }
-
     public void setComment(String comment) {
         this.comment.set(comment);
     }
-
     public String getDifficulty() {
         return difficulty.get();
     }
-
     public StringProperty difficultyProperty() {
         return difficulty;
     }
-
     public void setDifficulty(String difficulty) {
         this.difficulty.set(difficulty);
     }
-
     public String getRating() {
         return rating.get();
     }
-
     public StringProperty ratingProperty() {
         return rating;
     }
-
     public void setRating(String rating) {
         this.rating.set(rating);
     }

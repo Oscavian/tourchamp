@@ -10,6 +10,7 @@ import at.fhtw.bif.swen.persistence.entities.TourEntity;
 
 import java.io.File;
 import java.io.IOException;
+import java.time.Duration;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -22,6 +23,8 @@ public class TourLogic implements ITourLogic {
 
     @Override
     public void saveTour(TourDTO tourDTO) {
+        tourDTO.setPopularity(1);
+        tourDTO.setChildFriendliness(1);
         dataSource.save(TourMapper.toEntity(tourDTO));
     }
 
@@ -39,14 +42,22 @@ public class TourLogic implements ITourLogic {
     public List<TourDTO> getAll() {
         var tourDTOS = new ArrayList<TourDTO>();
         for (var entity : dataSource.getAll()) {
-            tourDTOS.add(TourMapper.fromEntity(entity));
+            var tourDTO = TourMapper.fromEntity(entity);
+            tourDTO.setEstimatedTime(2);
+            tourDTO.setChildFriendliness(1);
+            tourDTO.setDistance(1);
+            tourDTOS.add(tourDTO);
         }
         return tourDTOS;
     }
 
     @Override
     public TourDTO getTourById(Integer id) {
-        return TourMapper.fromEntity(dataSource.getById(id));
+        TourDTO tour = TourMapper.fromEntity(dataSource.getById(id));
+        tour.setEstimatedTime(2);
+        tour.setChildFriendliness(1);
+        tour.setDistance(1);
+        return tour;
     }
 
     @Override

@@ -66,8 +66,6 @@ public class TourDetailsModel {
         }
         tourLogs.clear();
         tourLogs.addAll(logs);
-        tourService.updateTour(this);
-
     }
 
     public void deleteLog(TourLogModel tourLogModel) {

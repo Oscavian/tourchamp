@@ -21,7 +21,6 @@ public class TourMapper {
         entity.setStart(dto.getStart());
         entity.setDestination(dto.getDestination());
         entity.setTransportType(dto.getTransportType());
-        entity.setDistance(dto.getDistance());
         entity.setChildFriendliness(dto.getChildFriendliness());
         entity.setPopularity(dto.getPopularity());
         return entity;
@@ -35,7 +34,6 @@ public class TourMapper {
         dto.setStart(entity.getStart());
         dto.setDestination(entity.getDestination());
         dto.setTransportType(entity.getTransportType());
-        dto.setDistance(entity.getDistance());
         dto.setChildFriendliness(entity.getChildFriendliness());
         dto.setPopularity(entity.getPopularity());
         return dto;
@@ -47,22 +45,33 @@ public class TourMapper {
 
     public static TourDTO fromDetailsModel(TourDetailsModel tourDetailsModel) {
         TourDTO tourDTO = new TourDTO();
-        tourDTO.setId(Integer.parseInt(tourDetailsModel.getId()));
+        tourDTO.setId(tourDetailsModel.getId().isEmpty() ? null : Integer.parseInt(tourDetailsModel.getId()));
         tourDTO.setName(tourDetailsModel.getName());
         tourDTO.setDescription(tourDetailsModel.getDescription());
         tourDTO.setStart(tourDetailsModel.getStart());
         tourDTO.setDestination(tourDetailsModel.getDestination());
         tourDTO.setTransportType(parseTransportType(tourDetailsModel.getTransportType()));
-        tourDTO.setDistance(Integer.parseInt(tourDetailsModel.getTourDistance()));
-        tourDTO.setEstimatedTime(parseDuration(tourDetailsModel.getDuration()));
-        tourDTO.setChildFriendliness(Integer.parseInt(tourDetailsModel.getChildFriendliness()));
-        tourDTO.setPopularity(Integer.parseInt(tourDetailsModel.getPopularity()));
+        tourDTO.setDistance(tourDetailsModel.getTourDistance().isEmpty() ? null : Integer.parseInt(tourDetailsModel.getTourDistance()));
+        tourDTO.setEstimatedTime(Integer.parseInt(tourDetailsModel.getDuration()));
+        tourDTO.setChildFriendliness(tourDetailsModel.getChildFriendliness().isEmpty() ? null : Integer.parseInt(tourDetailsModel.getChildFriendliness()));
+        tourDTO.setPopularity(tourDetailsModel.getPopularity().isEmpty() ? null : Integer.parseInt(tourDetailsModel.getPopularity()));
         tourDTO.setMapURL(null);  // Assuming it is not available in the TourDetailsModel
         tourDTO.setLogs(new ArrayList<>());  // Assuming it is empty initially
         return tourDTO;
     }
 
-    public static TourDetailsModel fromDTO(TourDTO tourDTO) {
+    public static TourDTO fromNewDetailsModel(TourDetailsModel tourDetailsModel) {
+        TourDTO tourDTO = new TourDTO();
+        tourDTO.setName(tourDetailsModel.getName());
+        tourDTO.setDescription(tourDetailsModel.getDescription());
+        tourDTO.setStart(tourDetailsModel.getStart());
+        tourDTO.setDestination(tourDetailsModel.getDestination());
+        tourDTO.setTransportType(parseTransportType(tourDetailsModel.getTransportType()));
+        return tourDTO;
+    }
+
+
+        public static TourDetailsModel fromDTO(TourDTO tourDTO) {
         TourDetailsModel tourDetailsModel = new TourDetailsModel();
         tourDetailsModel.setId(tourDTO.getId().toString());
         tourDetailsModel.setName(tourDTO.getName());

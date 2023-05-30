@@ -38,7 +38,7 @@ public class TourListController implements Initializable {
 
         //define behaviour when an item is clicked --> fire event
         tourListView.getSelectionModel().selectedItemProperty().addListener((observableValue, oldValue, newValue) -> {
-                selectedTourListItem.accept(newValue);
+                selectedTourListItem.accept(observableValue.getValue());
         });
 
         if (!tourListView.getItems().isEmpty()) {

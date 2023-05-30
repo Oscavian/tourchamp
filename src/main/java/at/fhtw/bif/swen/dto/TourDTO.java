@@ -4,7 +4,6 @@ import at.fhtw.bif.swen.util.TransportType;
 import lombok.Getter;
 import lombok.Setter;
 
-import java.time.Duration;
 import java.util.List;
 
 @Getter
@@ -17,7 +16,7 @@ public class TourDTO {
         private String destination;
         private TransportType transportType;
         private Integer distance;
-        private Duration estimatedTime;
+        private Integer estimatedTime;
         private Integer childFriendliness;
         private Integer popularity;
         private String mapURL;

@@ -31,8 +31,6 @@ public class TourEntity {
     @Column(name = "transport_type")
     TransportType transportType;
 
-    Integer distance; //km
-
     @Column(name = "child_friendliness")
     Integer childFriendliness;  // 0-100
 
@@ -49,13 +47,12 @@ public class TourEntity {
     public TourEntity() {
     }
 
-    public TourEntity(String name, String description, String start, String destination, TransportType transportType, Integer distance, Integer childFriendliness, Integer popularity) {
+    public TourEntity(String name, String description, String start, String destination, TransportType transportType, Integer childFriendliness, Integer popularity) {
         this.name = name;
         this.description = description;
         this.start = start;
         this.destination = destination;
         this.transportType = transportType;
-        this.distance = distance;
         this.childFriendliness = childFriendliness;
         this.popularity = popularity;
     }

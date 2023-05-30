@@ -20,11 +20,9 @@ public class TourListItemModel {
     public String getId() {
         return id.get();
     }
-
     public StringProperty idProperty() {
         return id;
     }
-
     public void setId(String id) {
         this.id.set(id);
     }
@@ -35,7 +33,6 @@ public class TourListItemModel {
     public void setName(String name) {
         this.name.set(name);
     }
-
     public StringProperty nameProperty() {
         return name;
     }

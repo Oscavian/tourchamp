@@ -71,11 +71,11 @@ public class SummarizeReportGenerator extends ReportGenerator{
             tmp = tour.getLogs().get(i);
             logStats.setDifficulty(logStats.getDifficulty() + tmp.getDifficulty());
             logStats.setRating(logStats.getRating() + tmp.getRating());
-            logStats.setTotalTime(Duration.of(logStats.getTotalTime().getSeconds() + tmp.getTotalTime().getSeconds(), ChronoUnit.SECONDS));
+            logStats.setTotalTime(logStats.getTotalTime() + tmp.getTotalTime());
         }
         logStats.setDifficulty(logStats.getDifficulty() / i);
         logStats.setRating(logStats.getRating() / i);
-        logStats.setTotalTime(Duration.of(logStats.getTotalTime().getSeconds() / i, ChronoUnit.SECONDS));
+        logStats.setTotalTime(logStats.getTotalTime() / i);
         return logStats;
     }
 

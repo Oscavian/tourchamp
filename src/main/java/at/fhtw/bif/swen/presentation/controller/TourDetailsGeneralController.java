@@ -71,8 +71,6 @@ public class TourDetailsGeneralController implements Initializable {
         this.tourDetailsModel.setPopularity(tourDetailsModel.getPopularity());
         this.tourDetailsModel.setChildFriendliness(tourDetailsModel.getChildFriendliness());
         this.tourDetailsModel.setTransportType(tourDetailsModel.getTransportType());
-        this.tourDetailsModel.setMapURL(tourDetailsModel.getMapURL());
-        this.tourDetailsModel.addAllLogs(tourDetailsModel.getTourLogs());
     }
 
 

@@ -5,6 +5,7 @@ import at.fhtw.bif.swen.persistence.entities.TourLogEntity;
 import at.fhtw.bif.swen.presentation.model.TourLogModel;
 import org.hibernate.cfg.NotYetImplementedException;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class TourLogMapper {
@@ -38,6 +39,19 @@ public class TourLogMapper {
     // todo: log mapping model <-> dto
 
     public static List<TourLogModel> fromDTO(List<TourLogDTO> dtos) {
-        throw new UnsupportedOperationException();
+        var list = new ArrayList<TourLogModel>();
+        if (dtos == null) {
+            return list;
+        }
+        for (var dto : dtos){
+            var model = new TourLogModel();
+            model.setDate(dto.getTimestamp().toString());
+            model.setTime(dto.getTotalTime().toString());
+            model.setComment(dto.getComment());
+            model.setRating(dto.getRating().toString());
+            model.setDifficulty(dto.getDifficulty().toString());
+            list.add(model);
+        }
+        return list;
     }
 }

@@ -14,7 +14,7 @@ public class TourLogDTO {
     private Date timestamp;
     private String comment;
     private Integer difficulty;
-    private Duration totalTime;
+    private Integer totalTime;
     private Integer rating;
 
     public TourLogDTO() {}
