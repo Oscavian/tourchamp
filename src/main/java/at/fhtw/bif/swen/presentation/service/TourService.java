@@ -32,7 +32,7 @@ public class TourService implements IService {
 
     @Override
     public void updateTour(TourDetailsModel tourDetailsModel) {
-      //  tourLogic.updateTour(TourMapper.fromDetailsModel(tourDetailsModel));
+        tourLogic.updateTour(TourMapper.fromDetailsModel(tourDetailsModel));
     }
 
     @Override

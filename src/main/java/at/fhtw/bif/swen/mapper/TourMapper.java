@@ -1,14 +1,19 @@
 package at.fhtw.bif.swen.mapper;
 
 import at.fhtw.bif.swen.dto.TourDTO;
+import at.fhtw.bif.swen.dto.TourLogDTO;
 import at.fhtw.bif.swen.persistence.entities.TourEntity;
 import at.fhtw.bif.swen.presentation.model.TourDetailsModel;
+import at.fhtw.bif.swen.presentation.model.TourLogModel;
 import at.fhtw.bif.swen.util.TransportType;
 import javafx.beans.property.StringProperty;
 
 import java.time.Duration;
 import java.time.format.DateTimeParseException;
 import java.util.ArrayList;
+import java.util.List;
+import java.util.stream.Collector;
+import java.util.stream.Collectors;
 
 public class TourMapper {
 
@@ -23,6 +28,7 @@ public class TourMapper {
         entity.setTransportType(dto.getTransportType());
         entity.setChildFriendliness(dto.getChildFriendliness());
         entity.setPopularity(dto.getPopularity());
+        entity.setTourLogs(TourLogMapper.toEntity(dto.getLogs()));
         return entity;
     }
 
@@ -36,6 +42,7 @@ public class TourMapper {
         dto.setTransportType(entity.getTransportType());
         dto.setChildFriendliness(entity.getChildFriendliness());
         dto.setPopularity(entity.getPopularity());
+        dto.setLogs(TourLogMapper.fromEntity(entity.getTourLogs()));
         return dto;
     }
 
@@ -56,7 +63,7 @@ public class TourMapper {
         tourDTO.setChildFriendliness(tourDetailsModel.getChildFriendliness().isEmpty() ? null : Integer.parseInt(tourDetailsModel.getChildFriendliness()));
         tourDTO.setPopularity(tourDetailsModel.getPopularity().isEmpty() ? null : Integer.parseInt(tourDetailsModel.getPopularity()));
         tourDTO.setMapURL(null);  // Assuming it is not available in the TourDetailsModel
-        tourDTO.setLogs(new ArrayList<>());  // Assuming it is empty initially
+        tourDTO.setLogs(TourLogMapper.toDTO(tourDetailsModel.getTourLogs()));
         return tourDTO;
     }
 
