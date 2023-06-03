@@ -27,9 +27,7 @@ public class TourListModel {
     }
 
     public void removeTour(TourListItemModel tour) {
-        if (this.tours.remove(tour)) {
-            System.out.println("Tour " + tour.getName() + " removed");
-        }
+        this.tours.remove(tour);
     }
 
     public TourDetailsModel loadDetailModel(TourListItemModel tourListItemModel) {

@@ -46,7 +46,7 @@ public class ControllerFactory {
         } else if (controllerClass == TourDetailsLogsController.class) {
             return new TourDetailsLogsController(this.tourDetailsModel, tourLogModel);
         } else {
-            throw new Exception("Controller not supported " + controllerClass.getName());
+            throw new IllegalArgumentException("Controller not supported " + controllerClass.getName());
         }
     }
 

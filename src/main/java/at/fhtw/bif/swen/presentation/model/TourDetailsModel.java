@@ -9,6 +9,8 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import lombok.Getter;
 import lombok.Setter;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import java.net.URISyntaxException;
 import java.util.List;
@@ -38,6 +40,7 @@ public class TourDetailsModel {
 
     private TourService tourService;
 
+    private final Logger logger = LogManager.getLogger(getClass().getName());
     public TourDetailsModel(TourService tourService){
         this.tourService = tourService;
     }
@@ -60,7 +63,7 @@ public class TourDetailsModel {
     //log methods
     public void addNewLog(TourLogModel tourLogModel){
         if (getId().isEmpty()) {
-            System.out.println("Id empty!");
+            logger.warn("Id of TourDetailsModel " + getName() + " is empty!");
             return;
         }
         var model = TourLogModel.newInstance(tourLogModel);
@@ -70,7 +73,7 @@ public class TourDetailsModel {
 
     public void addAllLogs(List<TourLogModel> logs) {
         if (getId().isEmpty()) {
-            System.out.println("Id empty!");
+            logger.warn("Id of TourDetailsModel " + getName() + " is empty!");
             return;
         }
         tourLogs.clear();
