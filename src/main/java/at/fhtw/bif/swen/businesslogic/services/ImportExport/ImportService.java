@@ -29,6 +29,7 @@ public class ImportService {
         });
 
         for (TourDTO tour : tours) {
+            tour.setId(null);
             repository.save(TourMapper.toEntity(tour));
         }
     }

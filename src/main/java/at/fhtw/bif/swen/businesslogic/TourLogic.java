@@ -1,16 +1,13 @@
 package at.fhtw.bif.swen.businesslogic;
 
-import at.fhtw.bif.swen.businesslogic.ITourLogic;
 import at.fhtw.bif.swen.businesslogic.services.ImportExport.ExportService;
 import at.fhtw.bif.swen.businesslogic.services.ImportExport.ImportService;
 import at.fhtw.bif.swen.dto.TourDTO;
 import at.fhtw.bif.swen.mapper.TourMapper;
 import at.fhtw.bif.swen.persistence.ITourDataSource;
-import at.fhtw.bif.swen.persistence.entities.TourEntity;
 
 import java.io.File;
 import java.io.IOException;
-import java.time.Duration;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -45,7 +42,6 @@ public class TourLogic implements ITourLogic {
             var tourDTO = TourMapper.fromEntity(entity);
             tourDTO.setEstimatedTime(2);
             tourDTO.setChildFriendliness(1);
-            tourDTO.setDistance(1);
             tourDTOS.add(tourDTO);
         }
         return tourDTOS;
@@ -56,7 +52,6 @@ public class TourLogic implements ITourLogic {
         TourDTO tour = TourMapper.fromEntity(dataSource.getById(id));
         tour.setEstimatedTime(2);
         tour.setChildFriendliness(1);
-        tour.setDistance(1);
         return tour;
     }
 
@@ -80,12 +75,13 @@ public class TourLogic implements ITourLogic {
     }
 
     @Override
-    public void exportTours() {
+    public String exportTours() {
         ExportService es = new ExportService(dataSource);
         try {
-            es._export();
+            return es._export();
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
     }
+
 }

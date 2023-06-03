@@ -1,4 +1,4 @@
-package at.fhtw.bif.swen.businesslogic.services.MapQuestAPIService;
+package at.fhtw.bif.swen.presentation.service.MapQuestAPIService;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

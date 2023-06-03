@@ -25,7 +25,7 @@ public interface ITourLogic {
     void importTours(File tourFile);
 
     //export into application folder exports/
-    void exportTours();
+    String exportTours();
 
 
 

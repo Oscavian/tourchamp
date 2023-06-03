@@ -1,4 +1,4 @@
-package at.fhtw.bif.swen.businesslogic.services.ReportGenerator;
+package at.fhtw.bif.swen.presentation.service.ReportGenerator;
 
 import lombok.Getter;
 import lombok.Setter;

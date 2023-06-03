@@ -1,24 +1,23 @@
-package at.fhtw.bif.swen.businesslogic.services.ReportGenerator;
+package at.fhtw.bif.swen.presentation.service.ReportGenerator;
 
 import at.fhtw.bif.swen.dto.TourDTO;
 import at.fhtw.bif.swen.dto.TourLogDTO;
+import com.itextpdf.io.font.constants.StandardFonts;
+import com.itextpdf.io.image.ImageData;
+import com.itextpdf.io.image.ImageDataFactory;
 import com.itextpdf.kernel.font.PdfFontFactory;
 import com.itextpdf.kernel.pdf.PdfDocument;
 import com.itextpdf.kernel.pdf.PdfWriter;
 import com.itextpdf.layout.Document;
+import com.itextpdf.layout.element.Image;
+import com.itextpdf.layout.element.List;
+import com.itextpdf.layout.element.ListItem;
 import com.itextpdf.layout.element.Paragraph;
-import com.itextpdf.io.font.constants.StandardFonts;
-import com.itextpdf.io.image.ImageData;
-import com.itextpdf.io.image.ImageDataFactory;
-import com.itextpdf.kernel.colors.ColorConstants;
-import com.itextpdf.kernel.font.PdfFontFactory;
-import com.itextpdf.kernel.pdf.*;
-import com.itextpdf.layout.Document;
-import com.itextpdf.layout.element.*;
+
 import java.io.FileNotFoundException;
 import java.io.IOException;
 
-public class TourReportGenerator extends ReportGenerator{
+public class TourReportGenerator extends ReportGenerator {
 
     private TourDTO tour;
 
@@ -52,8 +51,8 @@ public class TourReportGenerator extends ReportGenerator{
     }
 
     private void setImage() {
-        ImageData imageData = ImageDataFactory.createJpeg(this.tour.getImage());
-        document.add(new Image(imageData));
+        //ImageData imageData = ImageDataFactory.createJpeg(this.tour.getImage());
+        //document.add(new Image(imageData));
     }
 
     private void setTourDetails() throws IOException {

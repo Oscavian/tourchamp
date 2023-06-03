@@ -15,7 +15,10 @@ public class TourDetailsController implements Initializable {
     @FXML // we need that to here, so we can access it from the main controller
     public TourDetailsGeneralController tourDetailsGeneralController;
     @FXML
+    public TourDetailsRouteController tourDetailsRouteController;
+    @FXML
     public TourDetailsLogsController tourDetailsLogsController;
+
 
     public TourDetailsController() {}
 

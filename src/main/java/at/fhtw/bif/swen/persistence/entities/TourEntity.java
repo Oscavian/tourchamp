@@ -47,12 +47,12 @@ public class TourEntity {
     public TourEntity() {
     }
 
-    public TourEntity(String name, String description, String start, String destination, TransportType transportType, Integer childFriendliness, Integer popularity) {
+    public TourEntity(String name, String description, String start, String destination, Integer transportType, Integer childFriendliness, Integer popularity) {
         this.name = name;
         this.description = description;
         this.start = start;
         this.destination = destination;
-        this.transportType = transportType;
+        this.transportType = TransportType.parseValue(transportType);
         this.childFriendliness = childFriendliness;
         this.popularity = popularity;
     }

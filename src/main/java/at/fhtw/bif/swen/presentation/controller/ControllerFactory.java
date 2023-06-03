@@ -32,7 +32,7 @@ public class ControllerFactory {
         if (controllerClass == TourDetailsGeneralController.class) {
             return new TourDetailsGeneralController(this.tourDetailsModel, this.enterTourDetailsModel);
         } else if (controllerClass == MenubarController.class) {
-            return new MenubarController();
+            return new MenubarController(this.tourService);
         } else if (controllerClass == SearchbarController.class) {
             return new SearchbarController(this.searchbarModel);
         } else if (controllerClass == TourListController.class) {

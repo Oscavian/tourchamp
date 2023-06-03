@@ -38,6 +38,7 @@ public class TourListModel {
 
     public void reloadTourList() {
         tours.clear();
+        //todo: add search filter
         tours.addAll(this.tourService.getTourList());
     }
 

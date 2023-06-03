@@ -1,4 +1,4 @@
-package at.fhtw.bif.swen.businesslogic.services.ReportGenerator;
+package at.fhtw.bif.swen.presentation.service.ReportGenerator;
 
 import at.fhtw.bif.swen.dto.TourDTO;
 import at.fhtw.bif.swen.dto.TourLogDTO;
@@ -7,18 +7,15 @@ import com.itextpdf.kernel.font.PdfFontFactory;
 import com.itextpdf.kernel.pdf.PdfDocument;
 import com.itextpdf.kernel.pdf.PdfWriter;
 import com.itextpdf.layout.Document;
+import com.itextpdf.layout.element.List;
 import com.itextpdf.layout.element.ListItem;
 import com.itextpdf.layout.element.Paragraph;
-import com.itextpdf.layout.element.List;
-import lombok.extern.java.Log;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.time.Duration;
-import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
 
-public class SummarizeReportGenerator extends ReportGenerator{
+public class SummarizeReportGenerator extends ReportGenerator {
     private ArrayList<TourDTO> tours;
     public SummarizeReportGenerator(ArrayList<TourDTO> tours) throws FileNotFoundException {
         this.tours = tours;

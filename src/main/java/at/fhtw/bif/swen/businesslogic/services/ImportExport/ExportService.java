@@ -12,31 +12,23 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ExportService {
-    private ObjectMapper objectMapper;
-    private final String filePath;
+    private final ObjectMapper objectMapper;
 
     private final ITourDataSource repository;
 
     public ExportService(ITourDataSource repository) {
+        this.objectMapper = new ObjectMapper();
         this.repository = repository;
-        this.filePath = "./exports/export.json";
     }
 
-    public ExportService(String filePath, ITourDataSource repository) {
-        this.repository = repository;
-        this.filePath = filePath;
-    }
-
-    public void _export() throws IOException {
+    public String _export() throws IOException {
         List<TourEntity> tourEs = repository.getAll();
         List<TourDTO> tourDTOs = new ArrayList<>();
-        TourMapper mapper = new TourMapper();
 
         for (TourEntity tourEntity : tourEs) {
-            TourDTO tourDTO = mapper.fromEntity(tourEntity);
+            TourDTO tourDTO = TourMapper.fromEntity(tourEntity);
             tourDTOs.add(tourDTO);
         }
-
-        this.objectMapper.writeValue(new File(this.filePath), tourDTOs);
+        return this.objectMapper.writeValueAsString(tourDTOs);
     }
 }

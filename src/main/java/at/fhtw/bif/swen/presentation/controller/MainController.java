@@ -15,9 +15,9 @@ public class MainController implements Initializable {
 
     @FXML
     public TourListController tourListController;
-
     @FXML
     public TourDetailsController tourDetailsController;
+    @FXML MenubarController menubarController;
 
     public MainController(TourListModel tourListModel) {
         this.tourListModel = tourListModel;
@@ -72,8 +72,11 @@ public class MainController implements Initializable {
                     if (p != null) {
                         //set Tourdetails
                         var m = this.tourListModel.loadDetailModel(p);
+                        m.requestAPIData();
+                        this.tourDetailsController.tourDetailsRouteController.getAPIData(m.getApiData());
                         this.tourDetailsController.tourDetailsGeneralController.setTourDetailsModel(m);
                         this.tourDetailsController.tourDetailsLogsController.setTourDetailsModel(m);
+                        //this.tourDetailsController.tourDetailsRouteController.setImage();
                         System.out.println("Selected: " + p.getName() + p.getId());
                     }
                     //display edit/delete buttons
@@ -81,9 +84,9 @@ public class MainController implements Initializable {
                     this.tourDetailsController.tourDetailsGeneralController.editTourButtons.setVisible(true);
                     this.tourDetailsController.tourDetailsGeneralController.newTourButtons.setVisible(false);
                     this.tourDetailsController.tourDetailsGeneralController.saveEditButtons.setVisible(false);
-
                 }
-
         );
+
+        this.menubarController.setReloadListener(this.tourListModel::reloadTourList);
     }
 }

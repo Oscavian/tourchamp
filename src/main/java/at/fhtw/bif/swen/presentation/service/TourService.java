@@ -7,6 +7,7 @@ import at.fhtw.bif.swen.presentation.model.TourDetailsModel;
 import at.fhtw.bif.swen.presentation.model.TourListItemModel;
 import at.fhtw.bif.swen.presentation.model.TourLogModel;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -40,6 +41,16 @@ public class TourService implements IService {
 
     }
 
+    @Override
+    public void importTours(File tourFile) {
+        this.tourLogic.importTours(tourFile);
+    }
+
+    @Override
+    public String exportTours() {
+        return this.tourLogic.exportTours();
+    }
+
     public List<TourListItemModel> getTourList() {
         var list = tourLogic.getAll();
         var newList = new ArrayList<TourListItemModel>();
@@ -50,4 +61,5 @@ public class TourService implements IService {
 
         return newList;
     }
+
 }

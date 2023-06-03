@@ -44,4 +44,7 @@ module at.fhtw.bif.swen {
 
     exports at.fhtw.bif.swen.persistence.entities;
     opens at.fhtw.bif.swen.persistence.entities to org.hibernate.orm.core;
+
+    exports at.fhtw.bif.swen.util;
+    opens at.fhtw.bif.swen.util to com.fasterxml.jackson.databind;
 }

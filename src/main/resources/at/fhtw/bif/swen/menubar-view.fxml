@@ -12,8 +12,8 @@
     <MenuBar>
         <menus>
             <Menu text="File">
-                <MenuItem text="Import"/>
-                <MenuItem text="Export"/>
+                <MenuItem text="Import" onAction="#_import"/>
+                <MenuItem text="Export" onAction="#_export"/>
             </Menu>
             <Menu text="Options"/>
             <Menu text="About"/>

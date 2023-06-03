@@ -1,13 +1,16 @@
 package at.fhtw.bif.swen.dto;
 
 import at.fhtw.bif.swen.util.TransportType;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.util.List;
 
 @Getter
 @Setter
+@AllArgsConstructor
 public class TourDTO {
         private Integer id;
         private String name;
@@ -19,8 +22,6 @@ public class TourDTO {
         private Integer estimatedTime;
         private Integer childFriendliness;
         private Integer popularity;
-        private String mapURL;
-        private byte[] image;
         private List<TourLogDTO> logs;
 
         public TourDTO(){}

@@ -2,16 +2,24 @@ package at.fhtw.bif.swen.presentation.controller;
 
 import at.fhtw.bif.swen.presentation.model.EnterTourDetailsModel;
 import at.fhtw.bif.swen.presentation.model.TourDetailsModel;
+import at.fhtw.bif.swen.presentation.service.MapQuestAPIService.TourMapData;
 import at.fhtw.bif.swen.presentation.service.TourService;
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.Initializable;
 import javafx.scene.Cursor;
+import javafx.scene.Node;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
 
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.net.URL;
 import java.util.ResourceBundle;
+import java.util.concurrent.CompletableFuture;
 import java.util.function.Consumer;
 
 
@@ -53,8 +61,11 @@ public class TourDetailsGeneralController implements Initializable {
     private Runnable cancelListener;
     public EnterTourDetailsModel enterTourDetailsModel;
 
-    private TourDetailsModel tourDetailsModel;
+    private final TourDetailsModel tourDetailsModel;
 
+    private CompletableFuture<TourMapData> apiData;
+
+    private Node spinner;
     public TourDetailsGeneralController(TourDetailsModel tourDetailsModel, EnterTourDetailsModel enterTourDetailsModel) {
         this.enterTourDetailsModel = enterTourDetailsModel;
         this.tourDetailsModel = tourDetailsModel;
@@ -71,6 +82,19 @@ public class TourDetailsGeneralController implements Initializable {
         this.tourDetailsModel.setPopularity(tourDetailsModel.getPopularity());
         this.tourDetailsModel.setChildFriendliness(tourDetailsModel.getChildFriendliness());
         this.tourDetailsModel.setTransportType(tourDetailsModel.getTransportType());
+        this.apiData = tourDetailsModel.getApiData();
+        this.updateApiData();
+    }
+
+    private void updateApiData() {
+        this.tourDetailTourDistance.setGraphic(spinner);
+        this.apiData.thenAccept(
+                x -> {
+                    Platform.runLater( () -> {
+                        this.tourDetailsModel.setTourDistance(String.valueOf(x.getDistance()));
+                        this.tourDetailTourDistance.setGraphic(null);
+                    });
+                });
     }
 
 
@@ -100,6 +124,15 @@ public class TourDetailsGeneralController implements Initializable {
         this.newTourButtons.setVisible(false);
         this.editTourButtons.setVisible(false);
         this.saveEditButtons.setVisible(false);
+
+        //init spinner
+        try {
+            this.spinner = new ImageView(new Image(
+                    new FileInputStream("./src/main/resources/img/spinner.gif"),
+                    10, 10,false,false));
+        } catch (FileNotFoundException e) {
+            throw new RuntimeException(e);
+        }
 
     }
 

@@ -1,5 +1,7 @@
 package at.fhtw.bif.swen.presentation.model;
 
+import at.fhtw.bif.swen.presentation.service.MapQuestAPIService.MapQuestAPIService;
+import at.fhtw.bif.swen.presentation.service.MapQuestAPIService.TourMapData;
 import at.fhtw.bif.swen.presentation.service.TourService;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
@@ -8,7 +10,11 @@ import javafx.collections.ObservableList;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.net.URISyntaxException;
 import java.util.List;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.ExecutionException;
+import java.util.concurrent.Future;
 
 public class TourDetailsModel {
 
@@ -25,6 +31,9 @@ public class TourDetailsModel {
     @Getter
     @Setter
     private String mapURL;
+    @Getter
+    @Setter
+    private CompletableFuture<TourMapData> apiData;
     private final ObservableList<TourLogModel> tourLogs = FXCollections.observableArrayList();
 
     private TourService tourService;
@@ -66,6 +75,16 @@ public class TourDetailsModel {
         }
         tourLogs.clear();
         tourLogs.addAll(logs);
+    }
+
+    public void requestAPIData() {
+        try {
+            CompletableFuture<TourMapData> apiData = MapQuestAPIService.getTourData(
+                    this.getStart(), this.getDestination());
+            this.setApiData(apiData);
+        } catch (URISyntaxException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     public void deleteLog(TourLogModel tourLogModel) {
