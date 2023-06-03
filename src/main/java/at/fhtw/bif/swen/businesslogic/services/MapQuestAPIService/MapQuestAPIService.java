@@ -13,7 +13,7 @@ import com.fasterxml.jackson.databind.*;
 public class MapQuestAPIService {
     private static final String ROUTE_API = "https://www.mapquestapi.com/directions/v2/route";
     private static final String STATIC_MAP_API = "https://www.mapquestapi.com/staticmap/v5/map";
-    private static final String API_KEY = "4g6z4y2ylLgCHzlKX4xnHzdGrsQ03IGG";
+    private static final String API_KEY = System.getProperty("MAP_API_KEY");
 
     public static CompletableFuture<TourMapData> getTourData(String from, String to) throws URISyntaxException, JsonProcessingException {
         String requestUrl = ROUTE_API + "?key=" + API_KEY + "&from=" + from + "&to=" + to;

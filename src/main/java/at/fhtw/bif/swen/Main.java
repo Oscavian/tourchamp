@@ -20,11 +20,28 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 import java.io.IOException;
+import java.io.InputStream;
 import java.util.Objects;
+import java.util.Properties;
 
 public class Main extends Application {
     @Override
     public void start(Stage stage) throws IOException {
+
+        //load configuration
+        InputStream inputStream = getClass().getClassLoader().getResourceAsStream("tourchamp.properties");
+
+        final Properties properties = new Properties();
+        try {
+            properties.load(inputStream);
+
+            for (var entry : properties.entrySet()) {
+                System.getProperties().putIfAbsent(entry.getKey(), entry.getValue());
+            }
+
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
 
         //create hiberate entity manager
         EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("tourPU");
