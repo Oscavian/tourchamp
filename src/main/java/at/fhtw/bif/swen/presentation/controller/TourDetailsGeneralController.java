@@ -171,7 +171,6 @@ public class TourDetailsGeneralController implements Initializable {
 
     public void saveEditedTour(ActionEvent actionEvent) {
         enterTourDetailsModel.setId(this.tourDetailsModel.getId());
-        System.out.println("saving tour" + enterTourDetailsModel.getId());
         this.editTourListener.accept(enterTourDetailsModel);
         this.saveEditButtons.setVisible(false);
         this.tourForm.setDisable(true);

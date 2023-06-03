@@ -1,5 +1,6 @@
 package at.fhtw.bif.swen.businesslogic;
 
+import at.fhtw.bif.swen.Main;
 import at.fhtw.bif.swen.businesslogic.ITourLogic;
 import at.fhtw.bif.swen.businesslogic.services.ImportExport.ExportService;
 import at.fhtw.bif.swen.businesslogic.services.ImportExport.ImportService;
@@ -7,6 +8,8 @@ import at.fhtw.bif.swen.dto.TourDTO;
 import at.fhtw.bif.swen.mapper.TourMapper;
 import at.fhtw.bif.swen.persistence.ITourDataSource;
 import at.fhtw.bif.swen.persistence.entities.TourEntity;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import java.io.File;
 import java.io.IOException;
@@ -17,6 +20,7 @@ import java.util.List;
 public class TourLogic implements ITourLogic {
 
     ITourDataSource dataSource;
+    private final Logger logger = LogManager.getLogger(getClass().getName());
     public TourLogic(ITourDataSource dataSource) {
         this.dataSource = dataSource;
     }
@@ -26,16 +30,19 @@ public class TourLogic implements ITourLogic {
         tourDTO.setPopularity(1);
         tourDTO.setChildFriendliness(1);
         dataSource.save(TourMapper.toEntity(tourDTO));
+        logger.debug(String.format("Tour named:%s saved!", tourDTO.getName()));
     }
 
     @Override
     public void updateTour(TourDTO tourDTO) {
         dataSource.update(TourMapper.toEntity(tourDTO));
+        logger.debug(String.format("Tour ID: %d updated", tourDTO.getId()));
     }
 
     @Override
     public void deleteTour(TourDTO tourDTO) {
         dataSource.delete(TourMapper.toEntity(tourDTO));
+        logger.debug(String.format("Tour ID: %d deleted!", tourDTO.getId()));
     }
 
     @Override
@@ -75,6 +82,7 @@ public class TourLogic implements ITourLogic {
         try {
             is._import();
         } catch (IOException e) {
+            logger.error("Failed to import tour file!");
             throw new RuntimeException(e);
         }
     }
@@ -85,6 +93,7 @@ public class TourLogic implements ITourLogic {
         try {
             es._export();
         } catch (IOException e) {
+            logger.error("Failed to export tours!");
             throw new RuntimeException(e);
         }
     }

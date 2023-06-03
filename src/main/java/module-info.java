@@ -11,6 +11,8 @@ module at.fhtw.bif.swen {
     requires kernel;
     requires layout;
     requires io;
+    requires org.apache.logging.log4j.core;
+    requires org.apache.logging.log4j;
 
 
     opens at.fhtw.bif.swen to javafx.fxml;

@@ -23,8 +23,12 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.Objects;
 import java.util.Properties;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 public class Main extends Application {
+
+    private final Logger logger = LogManager.getLogger(getClass().getName());
     @Override
     public void start(Stage stage) throws IOException {
 
@@ -38,10 +42,11 @@ public class Main extends Application {
             for (var entry : properties.entrySet()) {
                 System.getProperties().putIfAbsent(entry.getKey(), entry.getValue());
             }
-
         } catch (IOException e) {
+            logger.fatal("Failed to read tourchamp.properties file.");
             throw new RuntimeException(e);
         }
+
 
         //create hiberate entity manager
         EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("tourPU");
@@ -69,6 +74,8 @@ public class Main extends Application {
         stage.setTitle("TourChamp");
         stage.setScene(scene);
         stage.show();
+        logger.info("Application successfully started!");
+
     }
 
     private FXMLLoader getFxmlLoader(ControllerFactory factory) {
