@@ -38,18 +38,17 @@ public class Main extends Application {
         final Properties properties = new Properties();
         try {
             properties.load(inputStream);
-
-            for (var entry : properties.entrySet()) {
-                System.getProperties().putIfAbsent(entry.getKey(), entry.getValue());
-            }
         } catch (IOException e) {
             logger.fatal("Failed to read tourchamp.properties file.");
             throw new RuntimeException(e);
         }
 
+        System.setProperty("MAP_API_KEY", properties.getProperty("MAP_API_KEY"));
+        properties.remove("MAP_API_KEY");
+        System.setProperty("log4j.configurationFile", "./log4j2.xml");
 
         //create hiberate entity manager
-        EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("tourPU");
+        EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("tourPU", properties);
         EntityManager entityManager = entityManagerFactory.createEntityManager();
 
         //create concrete data source layer
