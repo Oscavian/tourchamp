@@ -91,11 +91,18 @@ public class TourDetailsModel {
     }
 
     public void deleteLog(TourLogModel tourLogModel) {
+        if (tourLogModel == null) {
+            logger.warn("Selected log entry is null!");
+            return;
+        }
         this.tourLogs.remove(tourLogModel);
+        this.tourService.updateTour(this);
     }
 
-    public void updateLog() {
-
+    public void clearLogs() {
+        logger.debug("Cleared all logs for Tour {}", getId());
+        this.tourLogs.clear();
+        this.tourService.updateTour(this);
     }
 
 

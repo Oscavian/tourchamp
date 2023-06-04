@@ -28,6 +28,7 @@ public class TourDetailsLogsController implements Initializable {
 
     // Buttons
     public Button addLogButton;
+    public Button editLogButton;
     public Button deleteLogButton;
     public Button clearAllLogsButton;
     public VBox addLogForm;
@@ -42,6 +43,8 @@ public class TourDetailsLogsController implements Initializable {
     //models
     private final TourLogModel enterTourLogModel;
     public final TourDetailsModel tourDetailsModel;
+
+    private TourLogModel selectedTourLogModel;
 
     public TourDetailsLogsController(TourDetailsModel tourDetailsModel, TourLogModel tourLogModel) {
         this.enterTourLogModel = tourLogModel;
@@ -64,27 +67,53 @@ public class TourDetailsLogsController implements Initializable {
     }
 
     public void addLogEntry(ActionEvent actionEvent) {
+        if (isEdit) {
+            this.tourDetailsModel.deleteLog(selectedTourLogModel);
+            this.editLogButton.setDisable(false);
+            this.clearAllLogsButton.setDisable(false);
+            this.deleteLogButton.setDisable(false);
+        }
+        this.logTable.setDisable(false);
         this.tourDetailsModel.addNewLog(enterTourLogModel);
         enterTourLogModel.clear();
+        isEdit = false;
     }
 
     public void deleteEntry(ActionEvent actionEvent) {
-
+        this.tourDetailsModel.deleteLog(this.selectedTourLogModel);
     }
 
     public void clearAllLogs(ActionEvent actionEvent) {
-
+        this.tourDetailsModel.clearLogs();
     }
 
+    private boolean isEdit = false;
+
+    public void editLogEntry(ActionEvent actionEvent) {
+        //move values to enter model
+        if (selectedTourLogModel == null) {
+            return;
+        }
+        this.logTable.setDisable(true);
+        this.editLogButton.setDisable(true);
+        this.deleteLogButton.setDisable(true);
+        this.clearAllLogsButton.setDisable(true);
+        isEdit = true;
+        this.enterTourLogModel.setDate(selectedTourLogModel.getDate());
+        this.enterTourLogModel.setComment(selectedTourLogModel.getComment());
+        this.enterTourLogModel.setDifficulty(selectedTourLogModel.getDifficulty());
+        this.enterTourLogModel.setTime(selectedTourLogModel.getTime());
+        this.enterTourLogModel.setRating(selectedTourLogModel.getRating());
+    }
     @Override
+
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
         logTable.getSelectionModel().selectedItemProperty().addListener((observableValue, tourLogModel, t1) -> {
             if(observableValue != null) {
-
+                setSelectedTourLogModel(observableValue.getValue());
             }
         });
-
 
         dateColumn.setCellValueFactory(new PropertyValueFactory<>("date"));
         totalTimeColumn.setCellValueFactory(new PropertyValueFactory<>("time"));
@@ -102,4 +131,7 @@ public class TourDetailsLogsController implements Initializable {
         logRating.textProperty().bindBidirectional(enterTourLogModel.ratingProperty());
     }
 
+    public void setSelectedTourLogModel(TourLogModel selectedTourLogModel) {
+        this.selectedTourLogModel = selectedTourLogModel;
+    }
 }

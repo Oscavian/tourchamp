@@ -68,8 +68,9 @@
                 </padding>
             </HBox>
             <HBox spacing="8.0" BorderPane.alignment="center">
-                <Button fx:id="addLogButton" onAction="#addLogEntry" text="Add log"/>
-                <Button fx:id="deleteLogButton" onAction="#deleteEntry" text="Delete log"/>
+                <Button fx:id="addLogButton" onAction="#addLogEntry" text="Save log"/>
+                <Button fx:id="editLogButton" onAction="#editLogEntry" text="Edit selected log"/>
+                <Button fx:id="deleteLogButton" onAction="#deleteEntry" text="Delete selected log"/>
                 <Button fx:id="clearAllLogsButton" onAction="#clearAllLogs" text="Clear All logs"/>
                 <padding>
                     <Insets bottom="8.0" left="8.0" right="8.0" top="8.0" />
