@@ -3,7 +3,6 @@ package at.fhtw.bif.swen.presentation.controller;
 import at.fhtw.bif.swen.presentation.model.EnterTourDetailsModel;
 import at.fhtw.bif.swen.presentation.model.TourDetailsModel;
 import at.fhtw.bif.swen.presentation.service.MapQuestAPIService.TourMapData;
-import at.fhtw.bif.swen.presentation.service.TourService;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.Initializable;
@@ -58,7 +57,6 @@ public class TourDetailsGeneralController implements Initializable {
     private Consumer<EnterTourDetailsModel> editTourListener;
 
     private Consumer<TourDetailsModel> removeTourListener;
-    private Runnable cancelListener;
     public EnterTourDetailsModel enterTourDetailsModel;
 
     private final TourDetailsModel tourDetailsModel;
@@ -149,10 +147,6 @@ public class TourDetailsGeneralController implements Initializable {
         this.removeTourListener = removeTourListener;
     }
 
-    public void setCancelListener(Runnable cancelListener) {
-        this.cancelListener = cancelListener;
-    }
-
     //Action events
     public void saveTour(ActionEvent actionEvent) {
         this.tourDetailsModel.resetGeneralValues();
@@ -165,14 +159,12 @@ public class TourDetailsGeneralController implements Initializable {
         this.enterTourDetailsModel.clear();
     }
 
-    public void cancel(ActionEvent actionEvent) {
+    public void cancelNew(ActionEvent actionEvent) {
         this.newTourButtons.setVisible(false);
         this.editTourButtons.setVisible(false);
-
-        //TODO: add reset to previous values when editing
+        this.tourForm.setDisable(true);
         this.tourDetailsModel.resetGeneralValues();
-
-        this.cancelListener.run();
+        this.enterTourDetailsModel.clear();
     }
 
     public void initNewTour(){
@@ -215,5 +207,6 @@ public class TourDetailsGeneralController implements Initializable {
         this.saveEditButtons.setVisible(false);
         this.editTourButtons.setVisible(true);
         this.tourForm.setDisable(true);
+        this.enterTourDetailsModel.clear();
     }
 }

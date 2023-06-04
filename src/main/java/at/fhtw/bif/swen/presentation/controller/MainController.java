@@ -66,15 +66,6 @@ public class MainController implements Initializable {
                 }
         );
 
-        //what should happen when clicking on "cancel"
-        this.tourDetailsController.tourDetailsGeneralController.setCancelListener(
-                () -> {
-                    logger.debug("Cancel event fired.");
-                    this.tourDetailsController.tourDetailsGeneralController.tourForm.setDisable(true);
-                    this.tourListController.tourListView.getSelectionModel().clearSelection();
-                }
-        );
-
         this.tourListController.setSelectedListener(
                 // selected list it
                 p -> {
