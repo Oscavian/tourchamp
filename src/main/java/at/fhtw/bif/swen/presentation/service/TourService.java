@@ -38,7 +38,7 @@ public class TourService implements IService {
 
     @Override
     public void deleteTour(TourDetailsModel tourDetailsModel) {
-
+        tourLogic.deleteTour(Integer.parseInt(tourDetailsModel.getId()));
     }
 
     @Override

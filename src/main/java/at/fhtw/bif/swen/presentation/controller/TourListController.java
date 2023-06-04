@@ -32,7 +32,7 @@ public class TourListController implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         this.tourListView.setItems(this.tourListModel.getTours());
         this.tourListView.setCellFactory(
-                tourModelListView -> new TourItemListCell(this::deleteTour)
+                tourModelListView -> new TourItemListCell()
         );
 
 
@@ -60,8 +60,5 @@ public class TourListController implements Initializable {
 
     public void setSelectedListener(Consumer<TourListItemModel> selectedTourListItem) {
         this.selectedTourListItem = selectedTourListItem;
-    }
-    public void deleteTour(TourListItemModel model) {
-        this.tourListModel.removeTour(model);
     }
 }

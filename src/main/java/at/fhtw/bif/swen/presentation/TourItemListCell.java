@@ -9,10 +9,8 @@ import java.util.function.Consumer;
 
 public class TourItemListCell extends javafx.scene.control.ListCell<TourListItemModel> {
 
-    private Consumer<TourListItemModel> onDeleteTourCallBack;
 
-    public TourItemListCell(Consumer<TourListItemModel> callback) {
-        this.onDeleteTourCallBack = callback;
+    public TourItemListCell() {
     }
 
     @Override
@@ -34,7 +32,6 @@ public class TourItemListCell extends javafx.scene.control.ListCell<TourListItem
 
         var controller = (TourListItemController)fxmlLoader.getController();
         controller.setTour(tour);
-        controller.addListenerForDeleteTour(this.onDeleteTourCallBack);
         setGraphic(controller.getTourItemBox());
     }
 

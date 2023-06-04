@@ -33,12 +33,4 @@ public class TourListItemController {
         this.name.textProperty().bindBidirectional(this.tour.nameProperty());
         this.id.textProperty().bindBidirectional(this.tour.idProperty());
     }
-
-    public void onDeleteTour(ActionEvent actionEvent) {
-        this.onDeleteTourConsumer.accept(this.tour);
-    }
-
-    public void addListenerForDeleteTour(Consumer<TourListItemModel> listener) {
-        this.onDeleteTourConsumer = listener;
-    }
 }

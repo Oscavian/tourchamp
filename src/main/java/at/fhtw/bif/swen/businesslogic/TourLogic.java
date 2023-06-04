@@ -40,9 +40,9 @@ public class TourLogic implements ITourLogic {
     }
 
     @Override
-    public void deleteTour(TourDTO tourDTO) {
-        dataSource.delete(TourMapper.toEntity(tourDTO));
-        logger.debug(String.format("Tour ID: %d deleted!", tourDTO.getId()));
+    public void deleteTour(Integer id) {
+        dataSource.delete(dataSource.getById(id));
+        logger.debug(String.format("Tour ID: %d deleted!", id));
     }
 
     @Override

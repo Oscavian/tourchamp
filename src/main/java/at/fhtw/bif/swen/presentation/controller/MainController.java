@@ -52,7 +52,11 @@ public class MainController implements Initializable {
         );
 
         this.tourDetailsController.tourDetailsGeneralController.setRemoveListener(
-                p -> this.tourListModel.removeTour(TourListItemModel.From(p))
+                p -> {
+                    this.tourDetailsController.tourDetailsLogsController.tourDetailsModel.getTourLogs().clear();
+                    this.tourListController.tourListView.getSelectionModel().clearSelection();
+                    this.tourListModel.removeTour(p);
+                }
         );
 
         //what should happen when clicking on "add"

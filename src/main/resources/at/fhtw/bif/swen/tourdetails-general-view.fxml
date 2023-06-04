@@ -117,7 +117,7 @@
             <VBox>
                 <HBox fx:id="newTourButtons">
                     <Button text="Save" onAction="#saveTour"/>
-                    <Button text="Cancel" onAction="#cancel"/>
+                    <Button text="Cancel" onAction="#cancelNew"/>
                     <padding>
                         <Insets left="8.0" right="8.0"/>
                     </padding>

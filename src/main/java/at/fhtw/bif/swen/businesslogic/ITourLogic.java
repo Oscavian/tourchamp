@@ -13,7 +13,7 @@ public interface ITourLogic {
 
     void updateTour(TourDTO tourDTO);
 
-    void deleteTour(TourDTO tourDTO);
+    void deleteTour(Integer id);
 
     //fetch TourListItems
     List<TourDTO> getAll();

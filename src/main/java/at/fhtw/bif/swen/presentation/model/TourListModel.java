@@ -2,7 +2,6 @@ package at.fhtw.bif.swen.presentation.model;
 
 import at.fhtw.bif.swen.presentation.service.TourService;
 import javafx.collections.FXCollections;
-import javafx.collections.ListChangeListener;
 import javafx.collections.ObservableList;
 
 import java.util.Objects;
@@ -26,8 +25,9 @@ public class TourListModel {
         this.tours.add(TourListItemModel.From(tour));
     }
 
-    public void removeTour(TourListItemModel tour) {
-        this.tours.remove(tour);
+    public void removeTour(TourDetailsModel tour) {
+        tourService.deleteTour(tour);
+        reloadTourList();
     }
 
     public TourDetailsModel loadDetailModel(TourListItemModel tourListItemModel) {
