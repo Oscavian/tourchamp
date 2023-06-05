@@ -1,8 +1,6 @@
 package at.fhtw.bif.swen;
 
-import at.fhtw.bif.swen.businesslogic.ITourLogLogic;
 import at.fhtw.bif.swen.businesslogic.ITourLogic;
-import at.fhtw.bif.swen.businesslogic.TourLogLogic;
 import at.fhtw.bif.swen.businesslogic.TourLogic;
 import at.fhtw.bif.swen.persistence.ITourLogDataSource;
 import at.fhtw.bif.swen.persistence.repositories.TourLogRepository;
@@ -57,7 +55,6 @@ public class Main extends Application {
 
         //create concrete business layer
         ITourLogic tourLogic = new TourLogic(tourDataSource);
-        ITourLogLogic tourLogLogic = new TourLogLogic(tourLogDataSource);
 
         //inject services into controller factory
         ControllerFactory factory = new ControllerFactory(
