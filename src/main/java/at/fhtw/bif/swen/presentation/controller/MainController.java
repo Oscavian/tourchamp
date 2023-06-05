@@ -14,7 +14,6 @@ import java.util.ResourceBundle;
 public class MainController implements Initializable {
 
     private final TourListModel tourListModel;
-
     @FXML
     public TourListController tourListController;
 
@@ -47,7 +46,9 @@ public class MainController implements Initializable {
                 p -> {
                     logger.debug("Edit tour event fired");
                     this.tourListModel.updateTour(TourDetailsModel.From(p));
+                    int index = this.tourListController.tourListView.getSelectionModel().getSelectedIndex();
                     this.tourListController.tourListView.getSelectionModel().clearSelection();
+                    this.tourListController.tourListView.getSelectionModel().select(index);
                 }
         );
 

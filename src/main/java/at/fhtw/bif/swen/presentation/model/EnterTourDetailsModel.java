@@ -1,12 +1,17 @@
 package at.fhtw.bif.swen.presentation.model;
 
-import javafx.beans.property.SimpleStringProperty;
-import javafx.beans.property.StringProperty;
+import at.fhtw.bif.swen.util.TransportType;
+import javafx.beans.InvalidationListener;
+import javafx.beans.property.*;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import javafx.scene.control.SelectionModel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-@NoArgsConstructor
 public class EnterTourDetailsModel {
 
     @Setter
@@ -16,7 +21,12 @@ public class EnterTourDetailsModel {
     private final StringProperty description = new SimpleStringProperty();
     private final StringProperty start = new SimpleStringProperty();
     private final StringProperty destination = new SimpleStringProperty();
-    private final StringProperty transportType = new SimpleStringProperty();
+
+    private final ObjectProperty<TransportType> transportType = new SimpleObjectProperty<>();
+
+
+    public EnterTourDetailsModel() {
+    }
 
     public void clear() {
         setName("");
@@ -24,7 +34,7 @@ public class EnterTourDetailsModel {
         setStart("");
         setStart("");
         setDestination("");
-        setTransportType("");
+        setTransportType(TransportType.EMPTY);
         setId("");
     }
 
@@ -60,14 +70,9 @@ public class EnterTourDetailsModel {
         return destination;
     }
 
-    public String getTransportType() {
-        return transportType.get();
-    }
+    public ObjectProperty<TransportType> transportTypeProperty() { return transportType;}
 
-    public StringProperty transportTypeProperty() {
-        return transportType;
-    }
-
+    public TransportType getTransportType() {return transportType.get();}
 
 
     public void setName(String name) {
@@ -86,8 +91,5 @@ public class EnterTourDetailsModel {
         this.destination.set(destination);
     }
 
-
-    public void setTransportType(String transportType) {
-        this.transportType.set(transportType);
-    }
+    public void setTransportType(TransportType transportType) {this.transportType.set(transportType);}
 }

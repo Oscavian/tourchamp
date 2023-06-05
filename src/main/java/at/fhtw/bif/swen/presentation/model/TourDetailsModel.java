@@ -3,6 +3,7 @@ package at.fhtw.bif.swen.presentation.model;
 import at.fhtw.bif.swen.presentation.service.MapQuestAPIService.MapQuestAPIService;
 import at.fhtw.bif.swen.presentation.service.MapQuestAPIService.TourMapData;
 import at.fhtw.bif.swen.presentation.service.TourService;
+import at.fhtw.bif.swen.util.TransportType;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 import javafx.collections.FXCollections;
@@ -15,8 +16,6 @@ import org.apache.logging.log4j.Logger;
 import java.net.URISyntaxException;
 import java.util.List;
 import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.ExecutionException;
-import java.util.concurrent.Future;
 
 public class TourDetailsModel {
 
@@ -25,17 +24,21 @@ public class TourDetailsModel {
     private final StringProperty description = new SimpleStringProperty();
     private final StringProperty start = new SimpleStringProperty();
     private final StringProperty destination = new SimpleStringProperty();
-    private final StringProperty transportType = new SimpleStringProperty();
     private final StringProperty tourDistance = new SimpleStringProperty();
     private final StringProperty duration = new SimpleStringProperty();
     private final StringProperty childFriendliness = new SimpleStringProperty();
     private final StringProperty popularity = new SimpleStringProperty();
+
+    private final StringProperty transportTypeString = new SimpleStringProperty();
+
+
     @Getter
     @Setter
     private String mapURL;
     @Getter
     @Setter
     private CompletableFuture<TourMapData> apiData;
+
     private final ObservableList<TourLogModel> tourLogs = FXCollections.observableArrayList();
 
     private TourService tourService;
@@ -56,7 +59,7 @@ public class TourDetailsModel {
         newInstance.description.set(source.getDescription());
         newInstance.start.set(source.getStart());
         newInstance.destination.set(source.getDestination());
-        newInstance.transportType.set(source.getTransportType());
+        newInstance.transportTypeString.set(source.getTransportType().getName());
         return newInstance;
     }
 
@@ -119,7 +122,7 @@ public class TourDetailsModel {
         setPopularity("");
         setTourDistance("");
         setChildFriendliness("");
-        setTransportType("");
+        setTransportTypeString("");
     }
 
     public String getId() {
@@ -166,14 +169,6 @@ public class TourDetailsModel {
         return destination;
     }
 
-    public String getTransportType() {
-        return transportType.get();
-    }
-
-    public StringProperty transportTypeProperty() {
-        return transportType;
-    }
-
     public String getTourDistance() {
         return tourDistance.get();
     }
@@ -204,6 +199,12 @@ public class TourDetailsModel {
 
     public StringProperty popularityProperty() {
         return popularity;
+    }
+
+    public String getTransportTypeString() {return transportTypeString.get();}
+
+    public StringProperty transportTypeStringProperty(){
+        return transportTypeString;
     }
 
     public void setName(String name) {
@@ -238,8 +239,8 @@ public class TourDetailsModel {
         this.popularity.set(popularity);
     }
 
-    public void setTransportType(String transportType) {
-        this.transportType.set(transportType);
+    public void setTransportTypeString(String transportTypeString) {
+        this.transportTypeString.set(transportTypeString);
     }
 
     public ObservableList<TourLogModel> getTourLogs() {
