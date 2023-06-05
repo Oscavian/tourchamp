@@ -3,7 +3,6 @@ package at.fhtw.bif.swen.presentation.model;
 import at.fhtw.bif.swen.presentation.service.MapQuestAPIService.MapQuestAPIService;
 import at.fhtw.bif.swen.presentation.service.MapQuestAPIService.TourMapData;
 import at.fhtw.bif.swen.presentation.service.TourService;
-import at.fhtw.bif.swen.util.TransportType;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 import javafx.collections.FXCollections;
@@ -25,7 +24,7 @@ public class TourDetailsModel {
     private final StringProperty start = new SimpleStringProperty();
     private final StringProperty destination = new SimpleStringProperty();
     private final StringProperty tourDistance = new SimpleStringProperty();
-    private final StringProperty duration = new SimpleStringProperty();
+    private final StringProperty estimatedTime = new SimpleStringProperty();
     private final StringProperty childFriendliness = new SimpleStringProperty();
     private final StringProperty popularity = new SimpleStringProperty();
 
@@ -117,7 +116,7 @@ public class TourDetailsModel {
         setName("");
         setDestination("");
         setStart("");
-        setDuration("");
+        setEstimatedTime("");
         setDescription("");
         setPopularity("");
         setTourDistance("");
@@ -177,12 +176,12 @@ public class TourDetailsModel {
         return tourDistance;
     }
 
-    public String getDuration() {
-        return duration.get();
+    public String getEstimatedTime() {
+        return estimatedTime.get();
     }
 
-    public StringProperty durationProperty() {
-        return duration;
+    public StringProperty estimatedTimeProperty() {
+        return estimatedTime;
     }
 
     public String getChildFriendliness() {
@@ -227,8 +226,8 @@ public class TourDetailsModel {
         this.tourDistance.set(tourDistance);
     }
 
-    public void setDuration(String duration) {
-        this.duration.set(duration);
+    public void setEstimatedTime(String duration) {
+        this.estimatedTime.set(duration);
     }
 
     public void setChildFriendliness(String childFriendliness) {

@@ -81,7 +81,7 @@ public class TourDetailsGeneralController implements Initializable {
         this.tourDetailsModel.setDestination(tourDetailsModel.getDestination());
         this.tourDetailsModel.setStart(tourDetailsModel.getStart());
         this.tourDetailsModel.setDescription(tourDetailsModel.getDescription());
-        this.tourDetailsModel.setDuration(tourDetailsModel.getDuration());
+        this.tourDetailsModel.setEstimatedTime(tourDetailsModel.getEstimatedTime());
         this.tourDetailsModel.setPopularity(tourDetailsModel.getPopularity());
         this.tourDetailsModel.setChildFriendliness(tourDetailsModel.getChildFriendliness());
         this.tourDetailsModel.setTransportTypeString(tourDetailsModel.getTransportTypeString());
@@ -110,7 +110,7 @@ public class TourDetailsGeneralController implements Initializable {
         tourDetailStart.textProperty().bindBidirectional(this.tourDetailsModel.startProperty());
         tourDetailDestination.textProperty().bindBidirectional(this.tourDetailsModel.destinationProperty());
         tourDetailTourDistance.textProperty().bindBidirectional(this.tourDetailsModel.tourDistanceProperty());
-        tourDetailEstimatedTime.textProperty().bindBidirectional(this.tourDetailsModel.durationProperty());
+        tourDetailEstimatedTime.textProperty().bindBidirectional(this.tourDetailsModel.estimatedTimeProperty());
         tourDetailChildFriendliness.textProperty().bindBidirectional(this.tourDetailsModel.childFriendlinessProperty());
         tourDetailPopularity.textProperty().bindBidirectional(this.tourDetailsModel.popularityProperty());
         tourDetailTransportType.textProperty().bindBidirectional(this.tourDetailsModel.transportTypeStringProperty());

@@ -31,11 +31,6 @@ public class TourEntity {
     @Column(name = "transport_type")
     TransportType transportType;
 
-    @Column(name = "child_friendliness")
-    Integer childFriendliness;  // 0-100
-
-    Integer popularity; // 0-100
-
     @OneToMany(
             cascade = CascadeType.ALL,
             orphanRemoval = true,
@@ -53,8 +48,6 @@ public class TourEntity {
         this.start = start;
         this.destination = destination;
         this.transportType = TransportType.parseValue(transportType);
-        this.childFriendliness = childFriendliness;
-        this.popularity = popularity;
     }
 
     public TourEntity(String name) {

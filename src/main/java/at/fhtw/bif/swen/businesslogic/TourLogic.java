@@ -52,6 +52,7 @@ public class TourLogic implements ITourLogic {
             var tourDTO = TourMapper.fromEntity(entity);
             tourDTO.setEstimatedTime(2);
             tourDTO.setChildFriendliness(1);
+            tourDTO.setPopularity(1);
             tourDTOS.add(tourDTO);
         }
         return tourDTOS;
@@ -60,8 +61,11 @@ public class TourLogic implements ITourLogic {
     @Override
     public TourDTO getTourById(Integer id) {
         TourDTO tour = TourMapper.fromEntity(dataSource.getById(id));
+
+        //set estimated time, child fr., popularity
         tour.setEstimatedTime(2);
         tour.setChildFriendliness(1);
+        tour.setPopularity(1);
         return tour;
     }
 

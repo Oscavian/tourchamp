@@ -53,7 +53,7 @@ public class TourDetailsLogsController implements Initializable {
         this.tourDetailsModel.setDestination(tourDetailsModel.getDestination());
         this.tourDetailsModel.setStart(tourDetailsModel.getStart());
         this.tourDetailsModel.setDescription(tourDetailsModel.getDescription());
-        this.tourDetailsModel.setDuration(tourDetailsModel.getDuration());
+        this.tourDetailsModel.setEstimatedTime(tourDetailsModel.getEstimatedTime());
         this.tourDetailsModel.setPopularity(tourDetailsModel.getPopularity());
         this.tourDetailsModel.setChildFriendliness(tourDetailsModel.getChildFriendliness());
         this.tourDetailsModel.setTransportTypeString(tourDetailsModel.getTransportTypeString());

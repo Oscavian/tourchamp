@@ -16,8 +16,6 @@ public class TourMapper {
         entity.setStart(dto.getStart());
         entity.setDestination(dto.getDestination());
         entity.setTransportType(dto.getTransportType());
-        entity.setChildFriendliness(dto.getChildFriendliness());
-        entity.setPopularity(dto.getPopularity());
         entity.setTourLogs(TourLogMapper.toEntity(dto.getLogs()));
         return entity;
     }
@@ -30,8 +28,6 @@ public class TourMapper {
         dto.setStart(entity.getStart());
         dto.setDestination(entity.getDestination());
         dto.setTransportType(entity.getTransportType());
-        dto.setChildFriendliness(entity.getChildFriendliness());
-        dto.setPopularity(entity.getPopularity());
         dto.setLogs(TourLogMapper.fromEntity(entity.getTourLogs()));
         return dto;
     }
@@ -42,16 +38,12 @@ public class TourMapper {
 
     public static TourDTO fromDetailsModel(TourDetailsModel tourDetailsModel) {
         TourDTO tourDTO = new TourDTO();
-        tourDTO.setId(tourDetailsModel.getId().isEmpty() ? null : Integer.parseInt(tourDetailsModel.getId()));
+        tourDTO.setId(Integer.parseInt(tourDetailsModel.getId()));
         tourDTO.setName(tourDetailsModel.getName());
         tourDTO.setDescription(tourDetailsModel.getDescription());
         tourDTO.setStart(tourDetailsModel.getStart());
         tourDTO.setDestination(tourDetailsModel.getDestination());
         tourDTO.setTransportType(TransportType.parseName(tourDetailsModel.getTransportTypeString()));
-        tourDTO.setDistance(tourDetailsModel.getTourDistance() == null ? null : Integer.parseInt(tourDetailsModel.getTourDistance()));
-        //tourDTO.setEstimatedTime(tourDetailsModel.ge ? null : Integer.parseInt(tourDetailsModel.getDuration()));
-        tourDTO.setChildFriendliness(tourDetailsModel.getChildFriendliness() == null ? null : Integer.parseInt(tourDetailsModel.getChildFriendliness()));
-        tourDTO.setPopularity(tourDetailsModel.getPopularity() == null ? null : Integer.parseInt(tourDetailsModel.getPopularity()));
         tourDTO.setLogs(TourLogMapper.toDTO(tourDetailsModel.getTourLogs()));
         return tourDTO;
     }
@@ -74,10 +66,9 @@ public class TourMapper {
         tourDetailsModel.setStart(tourDTO.getStart());
         tourDetailsModel.setDestination(tourDTO.getDestination());
         tourDetailsModel.setTransportTypeString(tourDTO.getTransportType().getName());
-        tourDetailsModel.setDuration(tourDTO.getEstimatedTime().toString());
-        //  wir überschreiben uns da wie werte... XD
-        //  tourDetailsModel.setChildFriendliness(tourDTO.getChildFriendliness().toString());
-        //  tourDetailsModel.setPopularity(tourDTO.getPopularity().toString());
+        tourDetailsModel.setEstimatedTime(tourDTO.getEstimatedTime().toString());
+        tourDetailsModel.setChildFriendliness(tourDTO.getChildFriendliness().toString());
+        tourDetailsModel.setPopularity(tourDTO.getPopularity().toString());
         tourDetailsModel.addAllLogs(TourLogMapper.fromDTO(tourDTO.getLogs()));
         return tourDetailsModel;
     }
