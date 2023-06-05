@@ -68,13 +68,20 @@ public class TourDetailsLogsController implements Initializable {
 
     public void addLogEntry(ActionEvent actionEvent) {
         if (isEdit) {
-            this.tourDetailsModel.deleteLog(selectedTourLogModel);
+            this.selectedTourLogModel.setDate(enterTourLogModel.getDate());
+            this.selectedTourLogModel.setComment(enterTourLogModel.getComment());
+            this.selectedTourLogModel.setDifficulty(enterTourLogModel.getDifficulty());
+            this.selectedTourLogModel.setTime(enterTourLogModel.getTime());
+            this.selectedTourLogModel.setRating(enterTourLogModel.getRating());
+
             this.editLogButton.setDisable(false);
             this.clearAllLogsButton.setDisable(false);
             this.deleteLogButton.setDisable(false);
         }
         this.logTable.setDisable(false);
-        this.tourDetailsModel.addNewLog(enterTourLogModel);
+        if (!isEdit) {
+            this.tourDetailsModel.addNewLog(enterTourLogModel);
+        }
         enterTourLogModel.clear();
         isEdit = false;
     }
