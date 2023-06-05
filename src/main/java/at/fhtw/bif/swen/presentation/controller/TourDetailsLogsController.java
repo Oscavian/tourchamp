@@ -2,18 +2,13 @@ package at.fhtw.bif.swen.presentation.controller;
 
 import at.fhtw.bif.swen.presentation.model.TourDetailsModel;
 import at.fhtw.bif.swen.presentation.model.TourLogModel;
-import javafx.beans.property.StringProperty;
 import javafx.event.ActionEvent;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.scene.control.cell.TextFieldTableCell;
 import javafx.scene.layout.VBox;
 
 import java.net.URL;
-import java.time.Duration;
-import java.time.LocalDate;
-import java.util.Date;
 import java.util.ResourceBundle;
 
 public class TourDetailsLogsController implements Initializable {
@@ -58,7 +53,7 @@ public class TourDetailsLogsController implements Initializable {
         this.tourDetailsModel.setDuration(tourDetailsModel.getDuration());
         this.tourDetailsModel.setPopularity(tourDetailsModel.getPopularity());
         this.tourDetailsModel.setChildFriendliness(tourDetailsModel.getChildFriendliness());
-        this.tourDetailsModel.setTransportType(tourDetailsModel.getTransportType());
+        this.tourDetailsModel.setTransportTypeString(tourDetailsModel.getTransportTypeString());
         this.tourDetailsModel.setMapURL(tourDetailsModel.getMapURL());
         this.tourDetailsModel.addAllLogs(tourDetailsModel.getTourLogs());
     }

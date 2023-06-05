@@ -3,17 +3,20 @@ package at.fhtw.bif.swen.presentation.controller;
 import at.fhtw.bif.swen.presentation.model.EnterTourDetailsModel;
 import at.fhtw.bif.swen.presentation.model.TourDetailsModel;
 import at.fhtw.bif.swen.presentation.service.MapQuestAPIService.TourMapData;
-import at.fhtw.bif.swen.presentation.service.TourService;
+import at.fhtw.bif.swen.util.TransportType;
 import javafx.application.Platform;
+import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.fxml.Initializable;
 import javafx.scene.Cursor;
 import javafx.scene.Node;
+import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
+import javafx.util.StringConverter;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -36,7 +39,8 @@ public class TourDetailsGeneralController implements Initializable {
     public TextField enterTourDetailDescription;
     public TextField enterTourDetailStart;
     public TextField enterTourDetailDestination;
-    public TextField enterTourDetailTransportType;
+
+    public ChoiceBox<TransportType> enterTourDetailTransportType;
 
     //Calculated fields
     public Label tourDetailChildFriendliness;
@@ -81,7 +85,7 @@ public class TourDetailsGeneralController implements Initializable {
         this.tourDetailsModel.setDuration(tourDetailsModel.getDuration());
         this.tourDetailsModel.setPopularity(tourDetailsModel.getPopularity());
         this.tourDetailsModel.setChildFriendliness(tourDetailsModel.getChildFriendliness());
-        this.tourDetailsModel.setTransportType(tourDetailsModel.getTransportType());
+        this.tourDetailsModel.setTransportTypeString(tourDetailsModel.getTransportTypeString());
         this.apiData = tourDetailsModel.getApiData();
         this.updateApiData();
     }
@@ -106,19 +110,21 @@ public class TourDetailsGeneralController implements Initializable {
         tourDetailDescription.textProperty().bindBidirectional(this.tourDetailsModel.descriptionProperty());
         tourDetailStart.textProperty().bindBidirectional(this.tourDetailsModel.startProperty());
         tourDetailDestination.textProperty().bindBidirectional(this.tourDetailsModel.destinationProperty());
-        tourDetailTransportType.textProperty().bindBidirectional(this.tourDetailsModel.transportTypeProperty());
         tourDetailTourDistance.textProperty().bindBidirectional(this.tourDetailsModel.tourDistanceProperty());
         tourDetailEstimatedTime.textProperty().bindBidirectional(this.tourDetailsModel.durationProperty());
         tourDetailChildFriendliness.textProperty().bindBidirectional(this.tourDetailsModel.childFriendlinessProperty());
         tourDetailPopularity.textProperty().bindBidirectional(this.tourDetailsModel.popularityProperty());
-
+        tourDetailTransportType.textProperty().bindBidirectional(this.tourDetailsModel.transportTypeStringProperty());
 
         //bindings for enter model
         enterTourDetailName.textProperty().bindBidirectional(enterTourDetailsModel.nameProperty());
         enterTourDetailDescription.textProperty().bindBidirectional(enterTourDetailsModel.descriptionProperty());
         enterTourDetailStart.textProperty().bindBidirectional(enterTourDetailsModel.startProperty());
         enterTourDetailDestination.textProperty().bindBidirectional(enterTourDetailsModel.destinationProperty());
-        enterTourDetailTransportType.textProperty().bindBidirectional(enterTourDetailsModel.transportTypeProperty());
+        enterTourDetailTransportType.valueProperty().bindBidirectional(enterTourDetailsModel.transportTypeProperty());
+
+        //transport type string from enum
+
 
         //hide buttons by default
         this.newTourButtons.setVisible(false);
@@ -133,6 +139,28 @@ public class TourDetailsGeneralController implements Initializable {
         } catch (FileNotFoundException e) {
             throw new RuntimeException(e);
         }
+
+
+        this.enterTourDetailTransportType.itemsProperty().set(
+                FXCollections.observableArrayList(TransportType.values()));
+
+        StringConverter<TransportType> converter = new StringConverter<TransportType>() {
+            @Override
+            public String toString(TransportType transportType) {
+                if (transportType == null) {
+                    return null;
+                }
+                return transportType.getName();
+            }
+
+            @Override
+            public TransportType fromString(String s) {
+                return TransportType.parseName(s);
+            }
+        };
+
+        this.enterTourDetailTransportType.setConverter(converter);
+
 
     }
 
@@ -193,7 +221,7 @@ public class TourDetailsGeneralController implements Initializable {
         this.enterTourDetailsModel.setDestination(this.tourDetailsModel.getDestination());
         this.enterTourDetailsModel.setStart(this.tourDetailsModel.getStart());
         this.enterTourDetailsModel.setDescription(this.tourDetailsModel.getDescription());
-        this.enterTourDetailsModel.setTransportType(this.tourDetailsModel.getTransportType());
+        this.enterTourDetailsModel.setTransportType(TransportType.parseName(this.tourDetailsModel.getTransportTypeString()));
     }
 
     public void removeTour(ActionEvent actionEvent) {

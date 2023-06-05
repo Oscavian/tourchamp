@@ -9,6 +9,7 @@
 <?import javafx.scene.canvas.Canvas?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.text.Text?>
+<?import javafx.collections.FXCollections?>
 <BorderPane xmlns="http://javafx.com/javafx"
             xmlns:fx="http://javafx.com/fxml"
             fx:controller="at.fhtw.bif.swen.presentation.controller.TourDetailsGeneralController"
@@ -107,8 +108,9 @@
                 </VBox>
 
                 <VBox>
-                    <Label text="transport type"/>
-                    <TextField fx:id="enterTourDetailTransportType"/>
+                    <Label fx:id="tes" text="transport type"/>
+                    <ChoiceBox fx:id="enterTourDetailTransportType">
+                    </ChoiceBox>
                     <padding>
                         <Insets left="8.0" right="8.0"/>
                     </padding>
