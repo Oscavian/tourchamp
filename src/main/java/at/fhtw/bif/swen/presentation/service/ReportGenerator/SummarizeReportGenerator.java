@@ -3,6 +3,7 @@ package at.fhtw.bif.swen.presentation.service.ReportGenerator;
 import at.fhtw.bif.swen.dto.TourDTO;
 import at.fhtw.bif.swen.dto.TourLogDTO;
 import com.itextpdf.io.font.constants.StandardFonts;
+import com.itextpdf.kernel.font.PdfFont;
 import com.itextpdf.kernel.font.PdfFontFactory;
 import com.itextpdf.kernel.pdf.PdfDocument;
 import com.itextpdf.kernel.pdf.PdfWriter;
@@ -10,23 +11,27 @@ import com.itextpdf.layout.Document;
 import com.itextpdf.layout.element.List;
 import com.itextpdf.layout.element.ListItem;
 import com.itextpdf.layout.element.Paragraph;
+import com.itextpdf.layout.element.Text;
+import javafx.scene.text.Font;
 
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.io.OutputStream;
 import java.util.ArrayList;
+import java.util.concurrent.CompletableFuture;
 
 public class SummarizeReportGenerator extends ReportGenerator {
     private ArrayList<TourDTO> tours;
-    public SummarizeReportGenerator(ArrayList<TourDTO> tours) throws FileNotFoundException {
+    public SummarizeReportGenerator(File file, ArrayList<TourDTO> tours) {
         this.tours = tours;
-        this.writer = new PdfWriter( "summarize.pdf");
+        try {
+            this.writer = new PdfWriter( file);
+        } catch (FileNotFoundException e) {
+            throw new RuntimeException(e);
+        }
         this.pdf = new PdfDocument(this.writer);
         this.document = new Document(this.pdf);
-    }
-    @Override
-    void generate() throws IOException {
-        setHeader();
-        setBody();
     }
 
     @Override
@@ -40,24 +45,21 @@ public class SummarizeReportGenerator extends ReportGenerator {
 
     @Override
     void setBody() throws IOException {
-        List logs = new List()
-                .setSymbolIndent(12)
-                .setListSymbol("\u2022")
-                .setFont(PdfFontFactory.createFont(StandardFonts.TIMES_BOLD));
-
+        Paragraph tourStats = null;
+        PdfFont font = PdfFontFactory.createFont(StandardFonts.HELVETICA);
         for (TourDTO tour : this.tours) {
-            Paragraph tourStats = new Paragraph("Tour: " + tour.getName())
-                    .setFont(PdfFontFactory.createFont(StandardFonts.HELVETICA))
-                    .setFontSize(10)
-                    .setBold();
+            tourStats = new Paragraph();
+            Text heading = new Text("Tour: " + tour.getName() + "\n");
+            heading.setFont(font).setBold();
+            tourStats.add(heading);
             LogStats logstats = getLogStats(tour);
-
-            logs.add(new ListItem(tourStats + "\n" + logstats.getDifficulty() + "\n" +
+            Text text = new Text("Avg difficulty: " + logstats.getDifficulty() + "\n" +
                     "Avg time: " + logstats.getTotalTime() + "\n" +
-                    "Avg rating: " + logstats.getRating() + "\n"));
-
+                    "Avg rating: " + logstats.getRating() + "\n\n");
+            text.setFont(font);
+            tourStats.add(text);
+            document.add(tourStats);
         }
-        document.add(logs);
     }
 
     private LogStats getLogStats(TourDTO tour) {
@@ -69,6 +71,9 @@ public class SummarizeReportGenerator extends ReportGenerator {
             logStats.setDifficulty(logStats.getDifficulty() + tmp.getDifficulty());
             logStats.setRating(logStats.getRating() + tmp.getRating());
             logStats.setTotalTime(logStats.getTotalTime() + tmp.getTotalTime());
+        }
+        if (i == 0) {
+            return logStats;
         }
         logStats.setDifficulty(logStats.getDifficulty() / i);
         logStats.setRating(logStats.getRating() / i);

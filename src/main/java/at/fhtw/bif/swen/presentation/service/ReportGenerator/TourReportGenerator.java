@@ -2,6 +2,7 @@ package at.fhtw.bif.swen.presentation.service.ReportGenerator;
 
 import at.fhtw.bif.swen.dto.TourDTO;
 import at.fhtw.bif.swen.dto.TourLogDTO;
+import at.fhtw.bif.swen.presentation.service.MapQuestAPIService.TourMapData;
 import com.itextpdf.io.font.constants.StandardFonts;
 import com.itextpdf.io.image.ImageData;
 import com.itextpdf.io.image.ImageDataFactory;
@@ -14,24 +15,25 @@ import com.itextpdf.layout.element.List;
 import com.itextpdf.layout.element.ListItem;
 import com.itextpdf.layout.element.Paragraph;
 
-import java.io.FileNotFoundException;
-import java.io.IOException;
+import java.io.*;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.util.concurrent.CompletableFuture;
 
 public class TourReportGenerator extends ReportGenerator {
 
     private TourDTO tour;
+    private Image image;
 
-    public TourReportGenerator (TourDTO tourDTO) throws FileNotFoundException {
+    public TourReportGenerator (File file, TourDTO tourDTO) {
         this.tour = tourDTO;
-        this.writer = new PdfWriter(tour.getName() + ".pdf");
+        try {
+            this.writer = new PdfWriter(file);
+        } catch (FileNotFoundException e) {
+            throw new RuntimeException(e);
+        }
         this.pdf = new PdfDocument(this.writer);
         this.document = new Document(this.pdf);
-    }
-
-    @Override
-    void generate() throws IOException {
-        this.setHeader();
-        this.setBody();
     }
 
     @Override
@@ -41,18 +43,23 @@ public class TourReportGenerator extends ReportGenerator {
                 .setFontSize(18)
                 .setBold();
         document.add(header);
+        document.add(this.image);
     }
 
     @Override
     void setBody() throws IOException {
-        this.setImage();
         this.setTourDetails();
         this.setTourLogs();
     }
 
-    private void setImage() {
-        //ImageData imageData = ImageDataFactory.createJpeg(this.tour.getImage());
-        //document.add(new Image(imageData));
+    public void setImage(String imageUrl) {
+        ImageData imageData = null;
+        try {
+            imageData = ImageDataFactory.createJpeg(new URL(imageUrl));
+        } catch (MalformedURLException e) {
+            throw new RuntimeException(e);
+        }
+        this.image = new Image(imageData);
     }
 
     private void setTourDetails() throws IOException {
@@ -77,8 +84,7 @@ public class TourReportGenerator extends ReportGenerator {
     private void setTourLogs() throws IOException {
         Paragraph logHeader = new Paragraph("Tourlogs: ")
                 .setFont(PdfFontFactory.createFont(StandardFonts.HELVETICA))
-                .setFontSize(14)
-                .setBold();
+                .setFontSize(14);
         document.add(logHeader);
 
         List logs = new List()

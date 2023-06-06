@@ -2,12 +2,12 @@ package at.fhtw.bif.swen.presentation.controller;
 
 import at.fhtw.bif.swen.presentation.model.TourDetailsModel;
 import at.fhtw.bif.swen.presentation.model.TourListModel;
-import at.fhtw.bif.swen.presentation.model.TourListItemModel;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import javax.persistence.criteria.CriteriaBuilder;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -16,10 +16,15 @@ public class MainController implements Initializable {
     private final TourListModel tourListModel;
     @FXML
     public TourListController tourListController;
-
     @FXML
     public TourDetailsController tourDetailsController;
-    @FXML MenubarController menubarController;
+    @FXML
+    public MenubarController menubarController;
+
+    @FXML
+    public SearchbarController searchbarController;
+
+
 
     private final Logger logger = LogManager.getLogger(getClass().getName());
     public MainController(TourListModel tourListModel) {
@@ -28,8 +33,7 @@ public class MainController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-
-        this.tourListModel.reloadTourList();
+        this.refreshTours();
         logger.debug("Tour List reloaded.");
 
         // set consumer for adding new tours
@@ -38,7 +42,7 @@ public class MainController implements Initializable {
                     logger.debug("Save tour event fired.");
                     this.tourListModel.addTour(TourDetailsModel.From(p));
                     this.tourListController.tourListView.getSelectionModel().clearSelection();
-                    this.tourListModel.reloadTourList();
+                    this.refreshTours();
                 }
         );
 
@@ -81,7 +85,12 @@ public class MainController implements Initializable {
                         this.tourDetailsController.tourDetailsRouteController.getAPIData(m.getApiData());
                         this.tourDetailsController.tourDetailsGeneralController.setTourDetailsModel(m);
                         this.tourDetailsController.tourDetailsLogsController.setTourDetailsModel(m);
+                        this.tourDetailsController.detailsTabPane.getSelectionModel().select(0);
                         logger.debug("Selected: " + p.getName() + p.getId());
+
+                        //enable tourreport button
+                        this.menubarController.setSelectedTourId(() -> Integer.valueOf(p.getId()));
+                        this.menubarController.setApiData(m.getApiData());
                     }
                     //display edit/delete buttons
                     this.tourDetailsController.tourDetailsGeneralController.tourForm.setDisable(true);
@@ -91,6 +100,16 @@ public class MainController implements Initializable {
                 }
         );
 
-        this.menubarController.setReloadListener(this.tourListModel::reloadTourList);
+        this.menubarController.setReloadListener(this::refreshTours);
+        this.searchbarController.setSearchAction(this::refreshTours);
+
+    }
+
+    private void refreshTours() {
+        if (this.searchbarController.searchbarModel.getSearchValue().isEmpty()) {
+            this.tourListModel.reloadTourList();
+        } else {
+            this.tourListModel.reloadTourList(this.searchbarController.searchbarModel.getSearchValue());
+        }
     }
 }

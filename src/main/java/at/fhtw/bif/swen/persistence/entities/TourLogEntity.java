@@ -4,7 +4,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
-import java.util.Date;
+import java.time.LocalDate;
 
 @Entity
 @Getter
@@ -18,8 +18,8 @@ public class TourLogEntity {
     @Column(name = "tour_id")
     Integer tourId;
 
-    @Temporal(TemporalType.DATE)
-    Date timestamp;
+    //@Temporal(TemporalType.DATE)
+    LocalDate timestamp;
 
     String comment;
 

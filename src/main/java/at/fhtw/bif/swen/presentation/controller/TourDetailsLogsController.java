@@ -2,13 +2,17 @@ package at.fhtw.bif.swen.presentation.controller;
 
 import at.fhtw.bif.swen.presentation.model.TourDetailsModel;
 import at.fhtw.bif.swen.presentation.model.TourLogModel;
+import javafx.beans.property.Property;
 import javafx.event.ActionEvent;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.VBox;
 
+import javax.persistence.Converter;
 import java.net.URL;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ResourceBundle;
 
 public class TourDetailsLogsController implements Initializable {
@@ -29,11 +33,12 @@ public class TourDetailsLogsController implements Initializable {
     public VBox addLogForm;
 
     //fields for new data
-    public TextField logDate;
+    //public TextField logDate;
+    public DatePicker logDate;
     public TextField logTotalTime;
     public TextField logComment;
-    public TextField logDifficulty;
-    public TextField logRating;
+    public Slider logDifficulty;
+    public Slider logRating;
 
     //models
     private final TourLogModel enterTourLogModel;
@@ -111,12 +116,15 @@ public class TourDetailsLogsController implements Initializable {
 
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
+        this.logDifficulty.setMax(10);
+        this.logRating.setMax(10);
         logTable.getSelectionModel().selectedItemProperty().addListener((observableValue, tourLogModel, t1) -> {
             if(observableValue != null) {
                 setSelectedTourLogModel(observableValue.getValue());
             }
         });
 
+        //init datepicker
         dateColumn.setCellValueFactory(new PropertyValueFactory<>("date"));
         totalTimeColumn.setCellValueFactory(new PropertyValueFactory<>("time"));
         difficultyColumn.setCellValueFactory(new PropertyValueFactory<>("difficulty"));
@@ -125,12 +133,13 @@ public class TourDetailsLogsController implements Initializable {
 
         logTable.setItems(this.tourDetailsModel.getTourLogs());
 
+        DateTimeFormatter fmt = DateTimeFormatter.ofPattern("dd/MM/yyyy");
         //data bindings for enter form
-        logDate.textProperty().bindBidirectional(enterTourLogModel.dateProperty());
+        logDate.valueProperty().bindBidirectional(enterTourLogModel.dateProperty());
         logTotalTime.textProperty().bindBidirectional(enterTourLogModel.timeProperty());
         logComment.textProperty().bindBidirectional(enterTourLogModel.commentProperty());
-        logDifficulty.textProperty().bindBidirectional(enterTourLogModel.difficultyProperty());
-        logRating.textProperty().bindBidirectional(enterTourLogModel.ratingProperty());
+        logDifficulty.valueProperty().bindBidirectional(enterTourLogModel.difficultyProperty());
+        logRating.valueProperty().bindBidirectional(enterTourLogModel.ratingProperty());
     }
 
     public void setSelectedTourLogModel(TourLogModel selectedTourLogModel) {

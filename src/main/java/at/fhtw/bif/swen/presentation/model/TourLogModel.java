@@ -1,22 +1,21 @@
 package at.fhtw.bif.swen.presentation.model;
 
-import javafx.beans.property.SimpleStringProperty;
-import javafx.beans.property.StringProperty;
+import javafx.beans.property.*;
 import lombok.AllArgsConstructor;
-import lombok.NoArgsConstructor;
 
-import javax.persistence.NamedEntityGraph;
+import javax.persistence.criteria.CriteriaBuilder;
+import java.time.LocalDate;
 
 @AllArgsConstructor
 public class TourLogModel {
-    private final StringProperty date = new SimpleStringProperty();
+    private final ObjectProperty<LocalDate> date = new SimpleObjectProperty<>();
     private final StringProperty time = new SimpleStringProperty();
     private final StringProperty comment = new SimpleStringProperty();
-    private final StringProperty difficulty = new SimpleStringProperty();
-    private final StringProperty rating = new SimpleStringProperty();
+    private final IntegerProperty difficulty = new SimpleIntegerProperty();
+    private final IntegerProperty rating = new SimpleIntegerProperty();
 
-    public TourLogModel(String date, String time, String comment, String difficulty, String rating) {
-        setDate(date);
+    public TourLogModel(String date, String time, String comment, Integer difficulty, Integer rating) {
+        setDate(LocalDate.parse(date));
         setTime(time);
         setComment(comment);
         setDifficulty(difficulty);
@@ -38,20 +37,20 @@ public class TourLogModel {
     }
 
     public void clear() {
-        setDate("");
+        setDate(LocalDate.now());
         setComment("");
-        setDifficulty("");
-        setRating("");
+        setDifficulty(0);
+        setRating(0);
         setTime("");
     }
 
-    public String getDate() {
+    public LocalDate getDate() {
         return date.get();
     }
-    public StringProperty dateProperty() {
+    public ObjectProperty<LocalDate> dateProperty() {
         return date;
     }
-    public void setDate(String date) {
+    public void setDate(LocalDate date) {
         this.date.set(date);
     }
     public String getTime() {
@@ -72,22 +71,22 @@ public class TourLogModel {
     public void setComment(String comment) {
         this.comment.set(comment);
     }
-    public String getDifficulty() {
+    public Integer getDifficulty() {
         return difficulty.get();
     }
-    public StringProperty difficultyProperty() {
+    public IntegerProperty difficultyProperty() {
         return difficulty;
     }
-    public void setDifficulty(String difficulty) {
+    public void setDifficulty(Integer difficulty) {
         this.difficulty.set(difficulty);
     }
-    public String getRating() {
+    public Integer getRating() {
         return rating.get();
     }
-    public StringProperty ratingProperty() {
+    public IntegerProperty ratingProperty() {
         return rating;
     }
-    public void setRating(String rating) {
+    public void setRating(Integer rating) {
         this.rating.set(rating);
     }
 }

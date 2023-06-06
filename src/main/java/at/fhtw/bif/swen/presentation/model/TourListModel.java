@@ -36,10 +36,13 @@ public class TourListModel {
 
     public void reloadTourList() {
         tours.clear();
-        //todo: add search filter
         tours.addAll(this.tourService.getTourList());
     }
 
+    public void reloadTourList(String searchString) {
+        tours.clear();
+        tours.addAll(this.tourService.searchTours(searchString));
+    }
     public void updateTour(TourDetailsModel tourDetailsModel) {
         tourService.updateTour(tourDetailsModel);
         for (var t : tours) {

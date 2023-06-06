@@ -73,7 +73,11 @@ public class TourLogic implements ITourLogic {
     public List<TourDTO> search(String searchString) {
         var tourDTOs = new ArrayList<TourDTO>();
         for (var entity : dataSource.search(searchString)) {
-            tourDTOs.add(TourMapper.fromEntity(entity));
+            TourDTO tourDTO = TourMapper.fromEntity(entity);
+            tourDTO.setEstimatedTime(2);
+            tourDTO.setChildFriendliness(1);
+            tourDTO.setPopularity(1);
+            tourDTOs.add(tourDTO);
         }
         return tourDTOs;
     }

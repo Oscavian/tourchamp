@@ -49,4 +49,7 @@ module at.fhtw.bif.swen {
 
     exports at.fhtw.bif.swen.util;
     opens at.fhtw.bif.swen.util to com.fasterxml.jackson.databind;
+
+    exports at.fhtw.bif.swen.presentation.service.MapQuestAPIService;
+    opens at.fhtw.bif.swen.presentation.service.MapQuestAPIService to javafx.fxml;
 }

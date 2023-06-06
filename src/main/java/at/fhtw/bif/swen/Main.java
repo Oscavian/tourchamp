@@ -69,7 +69,7 @@ public class Main extends Application {
         Scene scene = new Scene(fxmlLoader.load(), 1600, 900);
 
         scene.getStylesheets().add(Objects.requireNonNull(getClass().getResource("/css/Styles.css")).toExternalForm());
-
+        //scene.getStylesheets().add("./css/darkmode.css");
         stage.setTitle("TourChamp");
         stage.setScene(scene);
         stage.show();

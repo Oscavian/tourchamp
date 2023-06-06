@@ -2,6 +2,7 @@ package at.fhtw.bif.swen.presentation.service;
 
 import at.fhtw.bif.swen.businesslogic.ITourLogic;
 import at.fhtw.bif.swen.businesslogic.TourLogic;
+import at.fhtw.bif.swen.dto.TourDTO;
 import at.fhtw.bif.swen.mapper.TourMapper;
 import at.fhtw.bif.swen.presentation.model.TourDetailsModel;
 import at.fhtw.bif.swen.presentation.model.TourListItemModel;
@@ -60,6 +61,23 @@ public class TourService implements IService {
         }
 
         return newList;
+    }
+
+    public List<TourListItemModel> searchTours(String searchString) {
+        var list = tourLogic.search(searchString);
+        var newList = new ArrayList<TourListItemModel>();
+
+        for (var t : list) {
+            newList.add(TourListItemModel.From(TourMapper.fromDTO(t)));
+        }
+        return newList;
+    }
+
+    public ArrayList<TourDTO> getTourDTOs(){
+        return (ArrayList<TourDTO>) this.tourLogic.getAll();
+    }
+    public TourDTO getDTOById(Integer id) {
+        return this.tourLogic.getTourById(id);
     }
 
 }

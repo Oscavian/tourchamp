@@ -7,9 +7,11 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import java.io.IOException;
 import java.net.URI;
 import java.net.URISyntaxException;
+import java.net.URLEncoder;
 import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
+import java.nio.charset.StandardCharsets;
 import java.util.concurrent.CompletableFuture;
 
 public class MapQuestAPIService {
@@ -18,7 +20,8 @@ public class MapQuestAPIService {
     private static final String API_KEY = System.getProperty("MAP_API_KEY");
 
     public static CompletableFuture<TourMapData> getTourData(String from, String to) throws URISyntaxException {
-        String requestUrl = ROUTE_API + "?key=" + API_KEY + "&from=" + from + "&to=" + to;
+        String requestUrl = ROUTE_API + "?key=" + API_KEY + "&from=" + URLEncoder.encode(from, StandardCharsets.UTF_8)
+                    + "&to=" + URLEncoder.encode(to, StandardCharsets.UTF_8);
         HttpClient httpClient = HttpClient.newHttpClient();
         HttpRequest httpRequest = HttpRequest.newBuilder().uri(new URI(requestUrl)).build();
         return httpClient.sendAsync(httpRequest, HttpResponse.BodyHandlers.ofString())

@@ -10,17 +10,23 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 public class SearchbarController implements Initializable {
-    private final SearchbarModel searchbarModel;
+    public final SearchbarModel searchbarModel;
+    @FXML
     public TextField searchValue;
+
+    private Runnable searchAction;
 
     public SearchbarController(SearchbarModel searchbarModel) {
         this.searchbarModel = searchbarModel;
     }
 
-    @FXML
     public void search(ActionEvent actionEvent) {
         System.out.println(this.searchbarModel.getSearchValue());
-        //todo: search for searchValue in tours and tourLogs
+        this.searchAction.run();
+    }
+
+    public void setSearchAction(Runnable runnable) {
+        this.searchAction = runnable;
     }
 
     @Override

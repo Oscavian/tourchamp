@@ -10,7 +10,7 @@
           fx:controller="at.fhtw.bif.swen.presentation.controller.TourListController"
           alignment="center"
           hgap="10" vgap="5.0"
-          minHeight="400.0" minWidth="400.0"
+          minHeight="400.0" minWidth="200.0"
           prefHeight="400.0" prefWidth="400.0">
     <children>
 

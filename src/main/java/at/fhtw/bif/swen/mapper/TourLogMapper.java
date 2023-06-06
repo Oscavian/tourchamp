@@ -5,9 +5,12 @@ import at.fhtw.bif.swen.persistence.entities.TourLogEntity;
 import at.fhtw.bif.swen.presentation.model.TourLogModel;
 import org.hibernate.cfg.NotYetImplementedException;
 
+import java.sql.Time;
 import java.sql.Timestamp;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -64,11 +67,11 @@ public class TourLogMapper {
         }
         for (var dto : dtos){
             var model = new TourLogModel();
-            model.setDate(dto.getTimestamp().toString());
+            model.setDate(dto.getTimestamp());
             model.setTime(dto.getTotalTime().toString());
             model.setComment(dto.getComment());
-            model.setRating(dto.getRating().toString());
-            model.setDifficulty(dto.getDifficulty().toString());
+            model.setRating(dto.getRating());
+            model.setDifficulty(dto.getDifficulty());
             list.add(model);
         }
         return list;
@@ -84,14 +87,10 @@ public class TourLogMapper {
         for (var tourLogModel : tourLogModels) {
             var dto = new TourLogDTO();
             dto.setTotalTime(Integer.parseInt(tourLogModel.getTime()));
-            dto.setRating(Integer.parseInt(tourLogModel.getRating()));
-            try {
-                dto.setTimestamp(new Timestamp(new SimpleDateFormat("dd.MM.yyyy").parse(tourLogModel.getDate()).getTime()));
-            } catch (ParseException e) {
-                throw new RuntimeException(e);
-            }
+            dto.setRating(tourLogModel.getRating());
+            dto.setTimestamp(tourLogModel.getDate());
             dto.setComment(tourLogModel.getComment());
-            dto.setDifficulty(Integer.parseInt(tourLogModel.getDifficulty()));
+            dto.setDifficulty(tourLogModel.getDifficulty());
 
             list.add(dto);
         }

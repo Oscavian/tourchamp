@@ -30,7 +30,7 @@
             <HBox>
                 <VBox>
                     <Label text="Date"/>
-                    <TextField fx:id="logDate"/>
+                    <DatePicker fx:id="logDate"/>
                     <padding>
                         <Insets right="8.0"/>
                     </padding>
@@ -51,14 +51,14 @@
                 </VBox>
                 <VBox>
                     <Label text="Difficulty"/>
-                    <TextField fx:id="logDifficulty"/>
+                    <Slider fx:id="logDifficulty"/>
                     <padding>
                         <Insets left="8.0" right="8.0"/>
                     </padding>
                 </VBox>
                 <VBox>
                     <Label text="Rating"/>
-                    <TextField fx:id="logRating"/>
+                    <Slider fx:id="logRating"/>
                     <padding>
                         <Insets left="8.0" right="8.0"/>
                     </padding>
