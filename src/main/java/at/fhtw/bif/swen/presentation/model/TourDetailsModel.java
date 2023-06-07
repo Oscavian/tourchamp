@@ -30,10 +30,10 @@ public class TourDetailsModel {
 
     private final StringProperty transportTypeString = new SimpleStringProperty();
 
-
     @Getter
     @Setter
     private String mapURL;
+
     @Getter
     @Setter
     private CompletableFuture<TourMapData> apiData;
@@ -80,6 +80,10 @@ public class TourDetailsModel {
         }
         tourLogs.clear();
         tourLogs.addAll(logs);
+    }
+
+    public void update() {
+        tourService.updateTour(this);
     }
 
     public void requestAPIData() {

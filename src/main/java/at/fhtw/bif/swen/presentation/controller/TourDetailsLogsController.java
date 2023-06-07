@@ -81,6 +81,9 @@ public class TourDetailsLogsController implements Initializable {
         this.logTable.setDisable(false);
         if (!isEdit) {
             this.tourDetailsModel.addNewLog(enterTourLogModel);
+        } else {
+            this.tourDetailsModel.update();
+
         }
         enterTourLogModel.clear();
         isEdit = false;
