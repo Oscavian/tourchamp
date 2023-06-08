@@ -11,6 +11,7 @@ import at.fhtw.bif.swen.persistence.entities.TourLogEntity;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import javax.persistence.criteria.CriteriaBuilder;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -135,10 +136,22 @@ public class TourLogic implements ITourLogic {
         }
         return logs;
     }
+
+    private Integer getAvgDifficulty(TourDTO tourDTO) {
+        double difficulty = 0;
+        int i;
+        for (i = 0; i < tourDTO.getLogs().size(); i++) {
+            difficulty += tourDTO.getLogs().get(i).getDifficulty();
+        }
+        if (i > 0) {
+            return (int) difficulty / i;
+        }
+        return i;
+    }
     private Integer computeChildFriendliness(TourDTO tourDTO) {
         double childFriendliness = 0;
         childFriendliness += tourDTO.getPopularity() / 10.0;
-        childFriendliness += tourDTO.getEstimatedTime();
+        childFriendliness += (10 - this.getAvgDifficulty(tourDTO));
         return (int) childFriendliness / 2;
     }
 }

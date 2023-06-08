@@ -4,7 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="cbdfb15b-a979-4793-87ac-8d649901cf59" name="Changes" comment="merge0306" />
+    <list default="true" id="cbdfb15b-a979-4793-87ac-8d649901cf59" name="Changes" comment="merge0306">
+      <change beforePath="$PROJECT_DIR$/src/main/java/at/fhtw/bif/swen/businesslogic/TourLogic.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/at/fhtw/bif/swen/businesslogic/TourLogic.java" afterDir="false" />
+    </list>
     <list id="12786b16-4310-4068-8245-b91c0b1e110a" name="Changes by alex" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -202,12 +204,12 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/at/fhtw/bif/swen/businesslogic/TourLogic.java</url>
-          <line>60</line>
+          <line>61</line>
           <option name="timeStamp" value="40" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/at/fhtw/bif/swen/businesslogic/TourLogic.java</url>
-          <line>51</line>
+          <line>52</line>
           <option name="timeStamp" value="43" />
         </line-breakpoint>
       </breakpoints>
