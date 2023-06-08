@@ -59,11 +59,13 @@
             <HBox>
                 <Label text="Estimated Time: " styleClass="tourlabel"/>
                 <Label fx:id="tourDetailEstimatedTime"/>
+                <Label text=" hours"/>
             </HBox>
 
             <HBox>
                 <Label text="Child friendliness: " styleClass="tourlabel"/>
                 <Label fx:id="tourDetailChildFriendliness" text="Child friendliness"/>
+                <Label text="/ 10"/>
             </HBox>
             <HBox>
                 <Label text="Popularity: " styleClass="tourlabel"/>

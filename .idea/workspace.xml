@@ -4,16 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="cbdfb15b-a979-4793-87ac-8d649901cf59" name="Changes" comment="merge0306">
-      <change afterPath="$PROJECT_DIR$/src/main/java/at/fhtw/bif/swen/presentation/AlertUtil.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/at/fhtw/bif/swen/businesslogic/TourLogic.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/at/fhtw/bif/swen/businesslogic/TourLogic.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/at/fhtw/bif/swen/presentation/controller/MainController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/at/fhtw/bif/swen/presentation/controller/MainController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/at/fhtw/bif/swen/presentation/controller/TourDetailsGeneralController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/at/fhtw/bif/swen/presentation/controller/TourDetailsGeneralController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/at/fhtw/bif/swen/presentation/controller/TourDetailsLogsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/at/fhtw/bif/swen/presentation/controller/TourDetailsLogsController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/at/fhtw/bif/swen/presentation/model/EnterTourDetailsModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/at/fhtw/bif/swen/presentation/model/EnterTourDetailsModel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/at/fhtw/bif/swen/tourdetails-general-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/at/fhtw/bif/swen/tourdetails-general-view.fxml" afterDir="false" />
-    </list>
+    <list default="true" id="cbdfb15b-a979-4793-87ac-8d649901cf59" name="Changes" comment="merge0306" />
     <list id="12786b16-4310-4068-8245-b91c0b1e110a" name="Changes by alex" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -211,8 +202,13 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/at/fhtw/bif/swen/businesslogic/TourLogic.java</url>
-          <line>66</line>
+          <line>60</line>
           <option name="timeStamp" value="40" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/at/fhtw/bif/swen/businesslogic/TourLogic.java</url>
+          <line>51</line>
+          <option name="timeStamp" value="43" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
