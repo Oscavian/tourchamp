@@ -40,6 +40,11 @@ public class EnterTourDetailsModel {
         setId("");
     }
 
+    public boolean checkEmpty() {
+        return this.getName().isEmpty() || this.getDescription().isEmpty() || this.getStart().isEmpty()
+                || this.getDestination().isEmpty() || this.getTransportType().equals(TransportType.EMPTY);
+    }
+
     public String getName() {
         return name.get();
     }

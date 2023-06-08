@@ -1,9 +1,12 @@
 package at.fhtw.bif.swen.presentation.controller;
 
+import at.fhtw.bif.swen.presentation.AlertUtil;
 import at.fhtw.bif.swen.presentation.model.TourDetailsModel;
 import at.fhtw.bif.swen.presentation.model.TourListModel;
+import at.fhtw.bif.swen.util.TransportType;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -49,6 +52,12 @@ public class MainController implements Initializable {
         this.tourDetailsController.tourDetailsGeneralController.setEditListener(
                 p -> {
                     logger.debug("Edit tour event fired");
+                    if (p.getName().isEmpty() || p.getDescription().isEmpty() || p.getStart().isEmpty() ||
+                        p.getDestination().isEmpty() || p.getTransportType().equals(TransportType.EMPTY)) {
+                        AlertUtil.alert(Alert.AlertType.ERROR, "Empty input.",
+                                "Empty input. Fill out the form.");
+                        return;
+                    }
                     this.tourListModel.updateTour(TourDetailsModel.From(p));
                     int index = this.tourListController.tourListView.getSelectionModel().getSelectedIndex();
                     this.tourListController.tourListView.getSelectionModel().clearSelection();

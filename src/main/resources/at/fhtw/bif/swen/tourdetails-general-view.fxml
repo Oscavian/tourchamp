@@ -68,6 +68,7 @@
             <HBox>
                 <Label text="Popularity: " styleClass="tourlabel"/>
                 <Label fx:id="tourDetailPopularity" text="Popularity"/>
+                <Label text="\%"/>
             </HBox>
         </VBox>
     </center>

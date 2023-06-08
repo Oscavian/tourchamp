@@ -1,5 +1,6 @@
 package at.fhtw.bif.swen.presentation.controller;
 
+import at.fhtw.bif.swen.presentation.AlertUtil;
 import at.fhtw.bif.swen.presentation.model.EnterTourDetailsModel;
 import at.fhtw.bif.swen.presentation.model.TourDetailsModel;
 import at.fhtw.bif.swen.presentation.service.MapQuestAPIService.TourMapData;
@@ -98,13 +99,9 @@ public class TourDetailsGeneralController implements Initializable {
                 x -> {
                     Platform.runLater( () -> {
                         if (x == null) {
-                            Platform.runLater(() -> {
-                                String message = "Failed to load tour data from API";
-                                logger.debug(message);
-                                Alert a = new Alert(Alert.AlertType.ERROR, message , ButtonType.OK);
-                                a.setTitle("Error!");
-                                a.setHeaderText("API request failed.");
-                                a.show();
+                            String message = "Failed to load tour data from API";
+                            String header = "API request failed.";
+                            AlertUtil.alert(Alert.AlertType.ERROR, header, message, () -> {
                                 try {
                                     this.tourDetailTourDistance.setGraphic(new ImageView(new Image(
                                             new FileInputStream("./src/main/resources/img/error.png"),
@@ -201,6 +198,11 @@ public class TourDetailsGeneralController implements Initializable {
     //Action events
     public void saveTour(ActionEvent actionEvent) {
         logger.debug("Save tour");
+        if (this.enterTourDetailsModel.checkEmpty()) {
+            AlertUtil.alert(Alert.AlertType.ERROR, "Empty input.",
+                    "Empty input. Fill out the form.");
+            return;
+        }
         this.tourDetailsModel.resetGeneralValues();
         //fire event to other tourlist view
         this.saveTourListener.accept(this.enterTourDetailsModel);
@@ -251,13 +253,18 @@ public class TourDetailsGeneralController implements Initializable {
     }
 
     public void saveEditedTour(ActionEvent actionEvent) {
-        logger.debug("Tour edits saved");
+        if (this.enterTourDetailsModel.checkEmpty()) {
+            AlertUtil.alert(Alert.AlertType.ERROR, "Empty input.",
+                    "Empty input. Fill out the form.");
+            return;
+        }
         enterTourDetailsModel.setId(this.tourDetailsModel.getId());
         this.editTourListener.accept(enterTourDetailsModel);
         this.saveEditButtons.setVisible(false);
         this.tourForm.setDisable(true);
         this.editTourButtons.setVisible(true);
         this.enterTourDetailsModel.clear();
+        logger.debug("Tour edits saved");
     }
 
     public void cancelEdit(ActionEvent actionEvent) {

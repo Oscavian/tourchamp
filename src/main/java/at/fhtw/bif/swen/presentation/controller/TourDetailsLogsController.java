@@ -1,9 +1,8 @@
 package at.fhtw.bif.swen.presentation.controller;
 
+import at.fhtw.bif.swen.presentation.AlertUtil;
 import at.fhtw.bif.swen.presentation.model.TourDetailsModel;
 import at.fhtw.bif.swen.presentation.model.TourLogModel;
-import javafx.application.Platform;
-import javafx.beans.property.Property;
 import javafx.event.ActionEvent;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
@@ -12,9 +11,7 @@ import javafx.scene.layout.VBox;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import javax.persistence.Converter;
 import java.net.URL;
-import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ResourceBundle;
 
@@ -72,19 +69,21 @@ public class TourDetailsLogsController implements Initializable {
     }
 
     public void addLogEntry(ActionEvent actionEvent) {
+        if (enterTourLogModel.getTime().isEmpty() || enterTourLogModel.getComment().isEmpty()) {
+            String message = "Empty input.\nFill out the form.";
+            AlertUtil.alert(Alert.AlertType.ERROR, "Empty input fields.", message);
+            logger.debug(message);
+            return;
+        }
         try {
             Integer.valueOf(enterTourLogModel.getTime());
         } catch (NumberFormatException e) {
-            Platform.runLater(() -> {
-                String message = "Invalid format for total time '" + enterTourLogModel.getTime() + "'\n";
-                logger.debug(message);
-                Alert a = new Alert(Alert.AlertType.ERROR, message + "Enter a number", ButtonType.OK);
-                a.setTitle("Error!");
-                a.setHeaderText("Invalid format for total time.");
-                a.show();
-            });
+            String message = "Invalid format for total time '" + enterTourLogModel.getTime() + "'\n";
+            AlertUtil.alert(Alert.AlertType.ERROR,"Invalid format for total time.", message);
+            logger.debug(message);
             return;
         }
+
         if (isEdit) {
             logger.debug("Edit log entry");
             this.selectedTourLogModel.setDate(enterTourLogModel.getDate());
