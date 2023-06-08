@@ -19,7 +19,6 @@ public class TourListController implements Initializable {
     @FXML
     public ListView<TourListItemModel> tourListView = new ListView<>();
     private final TourListModel tourListModel;
-    //private Consumer<TourItemListCell> initTourFormListener;
     private Runnable initTourFormListener;
     private Consumer<TourListItemModel> selectedTourListItem;
 

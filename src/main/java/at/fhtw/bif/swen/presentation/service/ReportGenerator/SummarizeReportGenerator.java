@@ -13,6 +13,8 @@ import com.itextpdf.layout.element.ListItem;
 import com.itextpdf.layout.element.Paragraph;
 import com.itextpdf.layout.element.Text;
 import javafx.scene.text.Font;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -23,6 +25,8 @@ import java.util.concurrent.CompletableFuture;
 
 public class SummarizeReportGenerator extends ReportGenerator {
     private ArrayList<TourDTO> tours;
+    private final Logger logger = LogManager.getLogger(getClass().getName());
+
     public SummarizeReportGenerator(File file, ArrayList<TourDTO> tours) {
         this.tours = tours;
         try {

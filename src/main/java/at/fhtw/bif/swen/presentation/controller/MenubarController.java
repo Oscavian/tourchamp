@@ -19,6 +19,8 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import java.io.*;
 import java.net.URL;
@@ -39,21 +41,26 @@ public class MenubarController implements Initializable {
     private String mapUrl;
     @FXML
     public MenuItem tourReport;
+
+    private final Logger logger = LogManager.getLogger(getClass().getName());
+
     MenubarController(TourService tourService) {
         this.tourService = tourService;
     }
     public void _import(ActionEvent actionEvent) {
         File selectedFile = this.fileChooser.showOpenDialog(this.stage);
+        logger.debug("Menubar: Import Tours from File: '" + selectedFile.getName() + "'");
         this.tourService.importTours(selectedFile);
         this.reloadListener.run();
     }
     public void _export(ActionEvent actionEvent) {
         this.fileChooser.setInitialFileName("tours.json");
         File selectedFile = this.fileChooser.showSaveDialog(this.stage);
-
+        logger.debug("Menubar: Export Tours to file: '" + selectedFile.getName() + "'");
         try (PrintWriter writer = new PrintWriter(selectedFile)){
             writer.write(this.tourService.exportTours());
         } catch (FileNotFoundException e) {
+            logger.error("Menubar: Error writing Tours to file'" + selectedFile.getName() + "'");
             throw new RuntimeException(e);
         }
     }
@@ -61,7 +68,7 @@ public class MenubarController implements Initializable {
     public void generateSummarizeReport() {
         this.fileChooser.setInitialFileName("summarize.pdf");
         File selectedFile = this.fileChooser.showSaveDialog(this.stage);
-
+        logger.debug("Menubar: Generate summarize report to file: '"+ selectedFile.getName() + "'");
         SummarizeReportGenerator generator = new SummarizeReportGenerator(selectedFile, tourService.getTourDTOs());
         onSuccess(selectedFile, generator.generate(), generator);
     }
@@ -70,16 +77,17 @@ public class MenubarController implements Initializable {
         TourDTO tour = this.tourService.getDTOById(selectedTourId.get());
         this.fileChooser.setInitialFileName(tour.getName() + ".pdf");
         File selectedFile = this.fileChooser.showSaveDialog(this.stage);
+        logger.debug("Menubar: Generate summarize report to file: '"+ selectedFile.getName() + "'");
         TourReportGenerator generator = new TourReportGenerator(selectedFile, tour);
         generator.setImage(this.mapUrl);
         onSuccess(selectedFile, generator.generate(), generator);
-
     }
 
     private void onSuccess(File selectedFile, CompletableFuture<Void> generate, ReportGenerator generator) {
         generate.thenAccept(x -> {
             Platform.runLater(() -> {
                 String message = "Report '"+ selectedFile.getName() + "' successfully generated";
+                logger.debug("Menubar: " + message);
                 Alert a = new Alert(Alert.AlertType.INFORMATION, message , ButtonType.OK);
                 a.setTitle("Success!");
                 a.setHeaderText("Export finished.");
@@ -97,12 +105,26 @@ public class MenubarController implements Initializable {
     }
 
     public void setApiData(CompletableFuture<TourMapData> apiData) {
+        this.tourReport.setDisable(true);
         this.setTourReportSpinner();
         apiData.thenAccept(a -> {
             Platform.runLater(() -> {
-                this.tourReport.setGraphic(null);
-                this.tourReport.setDisable(false);
-                this.mapUrl = MapQuestAPIService.buildStaticMapRequest(a);
+                if (a == null) {
+                    logger.error("Error loading API data.");
+                    try {
+                        this.tourReport.setGraphic(new ImageView(new Image(
+                                new FileInputStream("./src/main/resources/img/error.png"),
+                                10, 10,false,false)));
+                    } catch (FileNotFoundException e) {
+                        throw new RuntimeException(e);
+                    }
+                } else {
+                    logger.debug("Menubar: Finished loading API data.");
+                    this.tourReport.setGraphic(null);
+                    this.tourReport.setDisable(false);
+                    this.mapUrl = MapQuestAPIService.buildStaticMapRequest(a);
+                }
+
             });
         });
     }
@@ -115,7 +137,6 @@ public class MenubarController implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         this.stage = new Stage();
         this.fileChooser = new FileChooser();
-        this.fileChooser.setInitialFileName("tours.json");
         this.tourReport.setDisable(true);
 
         try {

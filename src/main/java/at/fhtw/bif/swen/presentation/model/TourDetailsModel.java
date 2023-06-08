@@ -88,10 +88,12 @@ public class TourDetailsModel {
 
     public void requestAPIData() {
         try {
+            logger.debug("Request API data");
             CompletableFuture<TourMapData> apiData = MapQuestAPIService.getTourData(
                     this.getStart(), this.getDestination());
             this.setApiData(apiData);
         } catch (URISyntaxException e) {
+            logger.error("Error loading API data.");
             throw new RuntimeException(e);
         }
     }
@@ -248,5 +250,9 @@ public class TourDetailsModel {
 
     public ObservableList<TourLogModel> getTourLogs() {
         return tourLogs;
+    }
+
+    public CompletableFuture<TourMapData> getApiData() {
+        return apiData;
     }
 }

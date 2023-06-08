@@ -13,6 +13,7 @@ module at.fhtw.bif.swen {
     requires io;
     requires org.apache.logging.log4j.core;
     requires org.apache.logging.log4j;
+    requires com.fasterxml.jackson.datatype.jsr310;
 
 
     opens at.fhtw.bif.swen to javafx.fxml;

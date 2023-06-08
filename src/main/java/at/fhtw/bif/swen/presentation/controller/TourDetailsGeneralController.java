@@ -10,13 +10,13 @@ import javafx.event.ActionEvent;
 import javafx.fxml.Initializable;
 import javafx.scene.Cursor;
 import javafx.scene.Node;
-import javafx.scene.control.ChoiceBox;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
 import javafx.util.StringConverter;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -69,6 +69,8 @@ public class TourDetailsGeneralController implements Initializable {
     private CompletableFuture<TourMapData> apiData;
 
     private Node spinner;
+    private final Logger logger = LogManager.getLogger(getClass().getName());
+
     public TourDetailsGeneralController(TourDetailsModel tourDetailsModel, EnterTourDetailsModel enterTourDetailsModel) {
         this.enterTourDetailsModel = enterTourDetailsModel;
         this.tourDetailsModel = tourDetailsModel;
@@ -91,9 +93,29 @@ public class TourDetailsGeneralController implements Initializable {
 
     private void updateApiData() {
         this.tourDetailTourDistance.setGraphic(spinner);
+
         this.apiData.thenAccept(
                 x -> {
                     Platform.runLater( () -> {
+                        if (x == null) {
+                            Platform.runLater(() -> {
+                                String message = "Failed to load tour data from API";
+                                logger.debug(message);
+                                Alert a = new Alert(Alert.AlertType.ERROR, message , ButtonType.OK);
+                                a.setTitle("Error!");
+                                a.setHeaderText("API request failed.");
+                                a.show();
+                                try {
+                                    this.tourDetailTourDistance.setGraphic(new ImageView(new Image(
+                                            new FileInputStream("./src/main/resources/img/error.png"),
+                                            10, 10,false,false)));
+                                } catch (FileNotFoundException e) {
+                                    throw new RuntimeException(e);
+                                }
+                            });
+                            return;
+                        }
+                        logger.debug("Finished loading API data");
                         this.tourDetailsModel.setTourDistance(String.valueOf(x.getDistance()));
                         this.tourDetailTourDistance.setGraphic(null);
                     });
@@ -178,6 +200,7 @@ public class TourDetailsGeneralController implements Initializable {
 
     //Action events
     public void saveTour(ActionEvent actionEvent) {
+        logger.debug("Save tour");
         this.tourDetailsModel.resetGeneralValues();
         //fire event to other tourlist view
         this.saveTourListener.accept(this.enterTourDetailsModel);
@@ -189,6 +212,7 @@ public class TourDetailsGeneralController implements Initializable {
     }
 
     public void cancelNew(ActionEvent actionEvent) {
+        logger.debug("Create tour canceled");
         this.newTourButtons.setVisible(false);
         this.editTourButtons.setVisible(false);
         this.tourForm.setDisable(true);
@@ -197,6 +221,7 @@ public class TourDetailsGeneralController implements Initializable {
     }
 
     public void initNewTour(){
+        logger.debug("Create new tour");
         this.tourDetailsModel.resetGeneralValues();
         this.enterTourDetailsModel.clear();
         this.tourDetailName.setCursor(Cursor.DEFAULT);
@@ -206,6 +231,7 @@ public class TourDetailsGeneralController implements Initializable {
     }
 
     public void editTour(ActionEvent actionEvent) {
+        logger.debug("Edit tour");
         this.tourForm.setDisable(false);
         this.editTourButtons.setVisible(false);
         this.saveEditButtons.setVisible(true);
@@ -218,12 +244,14 @@ public class TourDetailsGeneralController implements Initializable {
     }
 
     public void removeTour(ActionEvent actionEvent) {
+        logger.debug("Remove tour");
         this.removeTourListener.accept(this.tourDetailsModel);
         this.tourDetailsModel.resetGeneralValues();
         this.tourForm.setDisable(true);
     }
 
     public void saveEditedTour(ActionEvent actionEvent) {
+        logger.debug("Tour edits saved");
         enterTourDetailsModel.setId(this.tourDetailsModel.getId());
         this.editTourListener.accept(enterTourDetailsModel);
         this.saveEditButtons.setVisible(false);
@@ -233,6 +261,7 @@ public class TourDetailsGeneralController implements Initializable {
     }
 
     public void cancelEdit(ActionEvent actionEvent) {
+        logger.debug("Tour edits canceled");
         this.saveEditButtons.setVisible(false);
         this.editTourButtons.setVisible(true);
         this.tourForm.setDisable(true);

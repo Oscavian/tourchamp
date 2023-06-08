@@ -18,7 +18,6 @@ public class TourDTO {
         private String start;
         private String destination;
         private TransportType transportType;
-        private Integer distance;
         private Integer estimatedTime;
         private Integer childFriendliness;
         private Integer popularity;

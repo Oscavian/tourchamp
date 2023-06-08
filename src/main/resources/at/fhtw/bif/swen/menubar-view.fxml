@@ -15,11 +15,10 @@
                 <MenuItem text="Import" onAction="#_import"/>
                 <MenuItem text="Export" onAction="#_export"/>
             </Menu>
-            <Menu text="Options">
+            <Menu text="Reports">
                 <MenuItem text="Summarize Report" onAction="#generateSummarizeReport"/>
                 <MenuItem text="Tour Report" fx:id="tourReport" onAction="#generateTourReport"/>
             </Menu>
-            <Menu text="About"/>
         </menus>
     </MenuBar>
 </VBox>

@@ -11,6 +11,8 @@ import javafx.scene.control.SelectionModel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 public class EnterTourDetailsModel {
 

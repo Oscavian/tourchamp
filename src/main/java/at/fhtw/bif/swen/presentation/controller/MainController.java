@@ -107,8 +107,10 @@ public class MainController implements Initializable {
 
     private void refreshTours() {
         if (this.searchbarController.searchbarModel.getSearchValue().isEmpty()) {
+            logger.debug("Refresh tour list");
             this.tourListModel.reloadTourList();
         } else {
+            logger.debug("Refresh tour list with search filter");
             this.tourListModel.reloadTourList(this.searchbarController.searchbarModel.getSearchValue());
         }
     }

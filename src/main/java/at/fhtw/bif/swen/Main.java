@@ -68,6 +68,8 @@ public class Main extends Application {
         scene.getStylesheets().add(Objects.requireNonNull(getClass().getResource("/css/Styles.css")).toExternalForm());
         //scene.getStylesheets().add("./css/darkmode.css");
         stage.setTitle("TourChamp");
+        stage.setMinHeight(800);
+        stage.setMinWidth(1000);
         stage.setScene(scene);
         stage.show();
         logger.info("Application successfully started!");

@@ -14,6 +14,8 @@ import com.itextpdf.layout.element.Image;
 import com.itextpdf.layout.element.List;
 import com.itextpdf.layout.element.ListItem;
 import com.itextpdf.layout.element.Paragraph;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import java.io.*;
 import java.net.MalformedURLException;
@@ -24,6 +26,8 @@ public class TourReportGenerator extends ReportGenerator {
 
     private TourDTO tour;
     private Image image;
+    private final Logger logger = LogManager.getLogger(getClass().getName());
+
 
     public TourReportGenerator (File file, TourDTO tourDTO) {
         this.tour = tourDTO;

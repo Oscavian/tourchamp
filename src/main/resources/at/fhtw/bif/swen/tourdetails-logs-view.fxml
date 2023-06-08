@@ -36,7 +36,7 @@
                     </padding>
                 </VBox>
                 <VBox>
-                    <Label text="Total Time"/>
+                    <Label text="Total Time in hours"/>
                     <TextField fx:id="logTotalTime"/>
                     <padding>
                         <Insets left="8.0" right="8.0"/>

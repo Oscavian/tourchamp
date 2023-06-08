@@ -7,6 +7,8 @@ import at.fhtw.bif.swen.mapper.TourMapper;
 import at.fhtw.bif.swen.presentation.model.TourDetailsModel;
 import at.fhtw.bif.swen.presentation.model.TourListItemModel;
 import at.fhtw.bif.swen.presentation.model.TourLogModel;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -16,7 +18,9 @@ import java.util.Random;
 
 public class TourService implements IService {
 
-    private ITourLogic tourLogic;
+    private final ITourLogic tourLogic;
+    private final Logger logger = LogManager.getLogger(getClass().getName());
+
 
     public TourService(ITourLogic tourLogic) {
         this.tourLogic = tourLogic;

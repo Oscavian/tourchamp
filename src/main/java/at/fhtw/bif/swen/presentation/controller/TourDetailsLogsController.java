@@ -2,12 +2,15 @@ package at.fhtw.bif.swen.presentation.controller;
 
 import at.fhtw.bif.swen.presentation.model.TourDetailsModel;
 import at.fhtw.bif.swen.presentation.model.TourLogModel;
+import javafx.application.Platform;
 import javafx.beans.property.Property;
 import javafx.event.ActionEvent;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.VBox;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import javax.persistence.Converter;
 import java.net.URL;
@@ -45,6 +48,8 @@ public class TourDetailsLogsController implements Initializable {
     public final TourDetailsModel tourDetailsModel;
 
     private TourLogModel selectedTourLogModel;
+    private final Logger logger = LogManager.getLogger(getClass().getName());
+
 
     public TourDetailsLogsController(TourDetailsModel tourDetailsModel, TourLogModel tourLogModel) {
         this.enterTourLogModel = tourLogModel;
@@ -67,7 +72,21 @@ public class TourDetailsLogsController implements Initializable {
     }
 
     public void addLogEntry(ActionEvent actionEvent) {
+        try {
+            Integer.valueOf(enterTourLogModel.getTime());
+        } catch (NumberFormatException e) {
+            Platform.runLater(() -> {
+                String message = "Invalid format for total time '" + enterTourLogModel.getTime() + "'\n";
+                logger.debug(message);
+                Alert a = new Alert(Alert.AlertType.ERROR, message + "Enter a number", ButtonType.OK);
+                a.setTitle("Error!");
+                a.setHeaderText("Invalid format for total time.");
+                a.show();
+            });
+            return;
+        }
         if (isEdit) {
+            logger.debug("Edit log entry");
             this.selectedTourLogModel.setDate(enterTourLogModel.getDate());
             this.selectedTourLogModel.setComment(enterTourLogModel.getComment());
             this.selectedTourLogModel.setDifficulty(enterTourLogModel.getDifficulty());
@@ -80,6 +99,7 @@ public class TourDetailsLogsController implements Initializable {
         }
         this.logTable.setDisable(false);
         if (!isEdit) {
+            logger.debug("Add new log entry");
             this.tourDetailsModel.addNewLog(enterTourLogModel);
         } else {
             this.tourDetailsModel.update();
@@ -100,6 +120,7 @@ public class TourDetailsLogsController implements Initializable {
     private boolean isEdit = false;
 
     public void editLogEntry(ActionEvent actionEvent) {
+
         //move values to enter model
         if (selectedTourLogModel == null) {
             return;
@@ -116,7 +137,6 @@ public class TourDetailsLogsController implements Initializable {
         this.enterTourLogModel.setRating(selectedTourLogModel.getRating());
     }
     @Override
-
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
         this.logDifficulty.setMax(10);
