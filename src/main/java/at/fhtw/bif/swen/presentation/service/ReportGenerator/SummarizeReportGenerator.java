@@ -59,7 +59,9 @@ public class SummarizeReportGenerator extends ReportGenerator {
             LogStats logstats = getLogStats(tour);
             Text text = new Text("Avg difficulty: " + logstats.getDifficulty() + "\n" +
                     "Avg time: " + logstats.getTotalTime() + "\n" +
-                    "Avg rating: " + logstats.getRating() + "\n\n");
+                    "Avg rating: " + logstats.getRating() + "\n" +
+                    "Popularity: "+ tour.getPopularity() +"\n" +
+                    "ChildFriendliness: "+ tour.getChildFriendliness()+"\n\n");
             text.setFont(font);
             tourStats.add(text);
             document.add(tourStats);

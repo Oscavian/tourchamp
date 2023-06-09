@@ -37,6 +37,9 @@ public class ImportService {
         // remove ids to avoid hibernate persistent object exception (detached entity)
         for (TourDTO tour : tours) {
             tour.setId(null);
+           // TourDTO tmpTour = tour;
+          //  tmpTour.setLogs(null);
+           // repository.save(Tou);
             tour.getLogs().forEach(log -> {
                 log.setId(null);
             });

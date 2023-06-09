@@ -73,7 +73,7 @@ public class TourReportGenerator extends ReportGenerator {
                 .setBold();
         document.add(tourDetailsHeader);
 
-        Paragraph tourDetails = new Paragraph("Name: " + tour.getName() +
+        Paragraph tourDetails = new Paragraph("Name: " + tour.getName() + "\n" +
                 "Description: " + tour.getDescription() + "\n" +
                 "Start: " + tour.getStart() + "\n" +
                 "Destination: " + tour.getDestination() + "\n" +

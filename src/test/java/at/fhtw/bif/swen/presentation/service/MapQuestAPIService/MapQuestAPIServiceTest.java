@@ -18,11 +18,6 @@ import static org.mockito.Mockito.when;
 
 class MapQuestAPIServiceTest {
 
-    @BeforeEach
-    void setUp() {
-
-    }
-
     @Test
     void getTourData_ReturnsCompletableFutureWithTourMapData() throws URISyntaxException, ExecutionException, InterruptedException {
         // Arrange

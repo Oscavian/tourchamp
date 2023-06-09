@@ -24,6 +24,8 @@ import org.apache.logging.log4j.Logger;
 
 import java.io.*;
 import java.net.URL;
+import java.net.URLEncoder;
+import java.nio.charset.StandardCharsets;
 import java.util.ResourceBundle;
 import java.util.concurrent.CompletableFuture;
 import java.util.function.Consumer;
@@ -91,7 +93,9 @@ public class MenubarController implements Initializable {
 
     public void browseTickets() {
         TourDTO tour = this.tourService.getDTOById(selectedTourId.get());
-        String URL = "https://www.happyrail.com/en/depart?from="+ tour.getStart() +"&to=" + tour.getDestination()+"";
+        String URL = "https://www.happyrail.com/en/depart?from="+
+                URLEncoder.encode(tour.getStart(), StandardCharsets.UTF_8) +"&to=" +
+                URLEncoder.encode(tour.getDestination(), StandardCharsets.UTF_8)+"";
         this.ticketURLConsumer.accept(URL);
     }
 
