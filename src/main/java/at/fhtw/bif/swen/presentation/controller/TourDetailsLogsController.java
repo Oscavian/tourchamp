@@ -69,7 +69,8 @@ public class TourDetailsLogsController implements Initializable {
     }
 
     public void addLogEntry(ActionEvent actionEvent) {
-        if (enterTourLogModel.getTime().isEmpty() || enterTourLogModel.getComment().isEmpty()) {
+        if (enterTourLogModel.getTime().isEmpty() || enterTourLogModel.getComment().isEmpty()
+            || enterTourLogModel.getDate() == null) {
             String message = "Empty input.\nFill out the form.";
             AlertUtil.alert(Alert.AlertType.ERROR, "Empty input fields.", message);
             logger.debug(message);

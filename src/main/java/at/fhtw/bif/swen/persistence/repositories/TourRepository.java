@@ -46,8 +46,10 @@ public class TourRepository implements ITourDataSource  {
 
     @Override
     public List<TourEntity> search(String searchString) {
-        Query query = entityManager.createQuery("SELECT t FROM TourEntity t WHERE name LIKE '%" + searchString + "%' OR t.id IN"
-                + "(SELECT tl.tourId FROM TourLogEntity tl WHERE tl.comment LIKE '%" + searchString +"%')");
+        Query query = entityManager.createQuery("SELECT t FROM TourEntity t WHERE name LIKE '%" + searchString + "%' " +
+                "OR description LIKE '%" + searchString + "%' OR start LIKE '%" + searchString + "%' " +
+                "OR start LIKE '%" + searchString + "%' OR t.id IN" +
+                "(SELECT tl.tourId FROM TourLogEntity tl WHERE tl.comment LIKE '%" + searchString +"%')");
         return new ArrayList<>(query.getResultList());
     }
 

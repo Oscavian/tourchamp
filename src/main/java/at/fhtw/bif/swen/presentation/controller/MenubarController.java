@@ -24,9 +24,9 @@ import org.apache.logging.log4j.Logger;
 
 import java.io.*;
 import java.net.URL;
-import java.nio.file.Files;
 import java.util.ResourceBundle;
 import java.util.concurrent.CompletableFuture;
+import java.util.function.Consumer;
 import java.util.function.Supplier;
 
 public class MenubarController implements Initializable {
@@ -36,16 +36,22 @@ public class MenubarController implements Initializable {
     private final TourService tourService;
     private FileChooser fileChooser;
     private Supplier<Integer> selectedTourId;
+
+    private Consumer<String> ticketURLConsumer;
     private Node spinner;
 
     private String mapUrl;
     @FXML
     public MenuItem tourReport;
 
+    @FXML
+    public MenuItem browseTickets;
+
     private final Logger logger = LogManager.getLogger(getClass().getName());
 
-    MenubarController(TourService tourService) {
+    MenubarController(TourService tourService, Consumer<String> ticketURLConsumer) {
         this.tourService = tourService;
+        this.ticketURLConsumer = ticketURLConsumer;
     }
     public void _import(ActionEvent actionEvent) {
         File selectedFile = this.fileChooser.showOpenDialog(this.stage);
@@ -83,6 +89,12 @@ public class MenubarController implements Initializable {
         onSuccess(selectedFile, generator.generate(), generator);
     }
 
+    public void browseTickets() {
+        TourDTO tour = this.tourService.getDTOById(selectedTourId.get());
+        String URL = "https://www.happyrail.com/en/depart?from="+ tour.getStart() +"&to=" + tour.getDestination()+"";
+        this.ticketURLConsumer.accept(URL);
+    }
+
     private void onSuccess(File selectedFile, CompletableFuture<Void> generate, ReportGenerator generator) {
         generate.thenAccept(x -> {
             Platform.runLater(() -> {
@@ -106,13 +118,16 @@ public class MenubarController implements Initializable {
 
     public void setApiData(CompletableFuture<TourMapData> apiData) {
         this.tourReport.setDisable(true);
-        this.setTourReportSpinner();
+        this.setTourLoadingSpinner();
         apiData.thenAccept(a -> {
             Platform.runLater(() -> {
                 if (a == null) {
                     logger.error("Error loading API data.");
                     try {
                         this.tourReport.setGraphic(new ImageView(new Image(
+                                new FileInputStream("./src/main/resources/img/error.png"),
+                                10, 10,false,false)));
+                        this.browseTickets.setGraphic(new ImageView(new Image(
                                 new FileInputStream("./src/main/resources/img/error.png"),
                                 10, 10,false,false)));
                     } catch (FileNotFoundException e) {
@@ -122,6 +137,8 @@ public class MenubarController implements Initializable {
                     logger.debug("Menubar: Finished loading API data.");
                     this.tourReport.setGraphic(null);
                     this.tourReport.setDisable(false);
+                    this.browseTickets.setGraphic(null);
+                    this.browseTickets.setDisable(false);
                     this.mapUrl = MapQuestAPIService.buildStaticMapRequest(a);
                 }
 
@@ -129,8 +146,9 @@ public class MenubarController implements Initializable {
         });
     }
 
-    private void setTourReportSpinner() {
+    private void setTourLoadingSpinner() {
         this.tourReport.setGraphic(this.spinner);
+        this.browseTickets.setGraphic(this.spinner);
     }
 
     @Override
@@ -138,6 +156,7 @@ public class MenubarController implements Initializable {
         this.stage = new Stage();
         this.fileChooser = new FileChooser();
         this.tourReport.setDisable(true);
+        this.browseTickets.setDisable(true);
 
         try {
             this.spinner = new ImageView(new Image(
