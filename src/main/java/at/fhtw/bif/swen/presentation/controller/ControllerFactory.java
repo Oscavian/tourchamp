@@ -3,6 +3,8 @@ package at.fhtw.bif.swen.presentation.controller;
 import at.fhtw.bif.swen.presentation.model.*;
 import at.fhtw.bif.swen.presentation.service.TourService;
 
+import java.util.function.Consumer;
+
 public class ControllerFactory {
 
     //define models
@@ -28,11 +30,11 @@ public class ControllerFactory {
         this.tourLogModel = new TourLogModel();
     }
 
-    public Object create(Class controllerClass) throws Exception {
+    public Object create(Class controllerClass, Consumer consumer) throws Exception {
         if (controllerClass == TourDetailsGeneralController.class) {
             return new TourDetailsGeneralController(this.tourDetailsModel, this.enterTourDetailsModel);
         } else if (controllerClass == MenubarController.class) {
-            return new MenubarController(this.tourService);
+            return new MenubarController(this.tourService, consumer);
         } else if (controllerClass == SearchbarController.class) {
             return new SearchbarController(this.searchbarModel);
         } else if (controllerClass == TourListController.class) {

@@ -19,6 +19,9 @@
                 <MenuItem text="Summarize Report" onAction="#generateSummarizeReport"/>
                 <MenuItem text="Tour Report" fx:id="tourReport" onAction="#generateTourReport"/>
             </Menu>
+            <Menu text="Tickets">
+                <MenuItem text="Browse tickets" fx:id="browseTickets" onAction="#"/>
+            </Menu>
         </menus>
     </MenuBar>
 </VBox>

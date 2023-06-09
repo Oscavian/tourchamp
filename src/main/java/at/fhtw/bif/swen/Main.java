@@ -7,6 +7,7 @@ import at.fhtw.bif.swen.persistence.ITourDataSource;
 import at.fhtw.bif.swen.presentation.controller.ControllerFactory;
 import at.fhtw.bif.swen.presentation.service.TourService;
 import javafx.application.Application;
+import javafx.application.HostServices;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.JavaFXBuilderFactory;
 import javafx.scene.Scene;
@@ -19,6 +20,9 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.Objects;
 import java.util.Properties;
+import java.util.concurrent.Callable;
+import java.util.function.Consumer;
+
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -69,6 +73,7 @@ public class Main extends Application {
         stage.setMinWidth(1000);
         stage.setScene(scene);
         stage.show();
+
         logger.info("Application successfully started!");
 
     }
@@ -80,7 +85,7 @@ public class Main extends Application {
                 new JavaFXBuilderFactory(),
                 controller -> {
                     try {
-                        return factory.create(controller);
+                        return factory.create(controller, this.callBrowser());
                     } catch (Exception e) {
                         e.printStackTrace();
                     }
@@ -91,5 +96,12 @@ public class Main extends Application {
 
     public static void main(String[] args) {
         launch();
+    }
+
+    private Consumer<String> callBrowser() {
+        return s -> this.getHs().showDocument(s);
+    }
+    private HostServices getHs(){
+        return this.getHostServices();
     }
 }
