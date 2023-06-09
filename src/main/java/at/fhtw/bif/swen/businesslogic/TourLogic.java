@@ -104,7 +104,7 @@ public class TourLogic implements ITourLogic {
         tourDTO.setChildFriendliness(this.computeChildFriendliness(tourDTO));
     }
     // calculate average total time of tour logs
-    private Integer computeEstimatedTime(TourDTO tourDTO) {
+    protected Integer computeEstimatedTime(TourDTO tourDTO) {
         int estimatedTime = 0;
         int i = 0;
 
@@ -118,7 +118,7 @@ public class TourLogic implements ITourLogic {
     }
 
     // calculate percentage of number of tour logs
-    private Integer computePopularity(TourDTO tour, int totalLogRatingCount) {
+    protected Integer computePopularity(TourDTO tour, int totalLogRatingCount) {
         int tourLogRatingCount = 0;
         for (TourLogDTO l : tour.getLogs()) {
             tourLogRatingCount += l.getRating();
@@ -126,7 +126,7 @@ public class TourLogic implements ITourLogic {
         return (int)((double) tourLogRatingCount / (double) totalLogRatingCount * 100);
     }
 
-    private Integer getLogRatingCount() {
+    protected Integer getLogRatingCount() {
         int logs = 0;
 
         for (TourEntity e : this.dataSource.getAll()) {
@@ -148,7 +148,7 @@ public class TourLogic implements ITourLogic {
         }
         return i;
     }
-    private Integer computeChildFriendliness(TourDTO tourDTO) {
+    protected Integer computeChildFriendliness(TourDTO tourDTO) {
         double childFriendliness = 0;
         childFriendliness += tourDTO.getPopularity() / 10.0;
         childFriendliness += (10 - this.getAvgDifficulty(tourDTO));
