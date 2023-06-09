@@ -1,4 +1,4 @@
-package at.fhtw.bif.swen.persistence.repositories;
+package at.fhtw.bif.swen.persistence;
 
 import at.fhtw.bif.swen.persistence.entities.TourEntity;
 import at.fhtw.bif.swen.persistence.ITourDataSource;

@@ -42,9 +42,6 @@ module at.fhtw.bif.swen {
     exports at.fhtw.bif.swen.presentation;
     opens at.fhtw.bif.swen.presentation to javafx.fxml;
 
-    exports at.fhtw.bif.swen.persistence.repositories;
-    opens at.fhtw.bif.swen.persistence.repositories to javafx.fxml;
-
     exports at.fhtw.bif.swen.persistence.entities;
     opens at.fhtw.bif.swen.persistence.entities to org.hibernate.orm.core;
 
