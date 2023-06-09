@@ -2,9 +2,7 @@ package at.fhtw.bif.swen;
 
 import at.fhtw.bif.swen.businesslogic.ITourLogic;
 import at.fhtw.bif.swen.businesslogic.TourLogic;
-import at.fhtw.bif.swen.persistence.ITourLogDataSource;
-import at.fhtw.bif.swen.persistence.repositories.TourLogRepository;
-import at.fhtw.bif.swen.persistence.repositories.TourRepository;
+import at.fhtw.bif.swen.persistence.TourRepository;
 import at.fhtw.bif.swen.persistence.ITourDataSource;
 import at.fhtw.bif.swen.presentation.controller.ControllerFactory;
 import at.fhtw.bif.swen.presentation.service.TourService;
@@ -51,7 +49,6 @@ public class Main extends Application {
 
         //create concrete data source layer
         ITourDataSource tourDataSource = new TourRepository(entityManager);
-        ITourLogDataSource tourLogDataSource = new TourLogRepository(entityManager);
 
         //create concrete business layer
         ITourLogic tourLogic = new TourLogic(tourDataSource);
