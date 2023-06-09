@@ -20,7 +20,7 @@
                 <MenuItem text="Tour Report" fx:id="tourReport" onAction="#generateTourReport"/>
             </Menu>
             <Menu text="Tickets">
-                <MenuItem text="Browse tickets" fx:id="browseTickets" onAction="#"/>
+                <MenuItem text="Browse tickets" fx:id="browseTickets" onAction="#browseTickets"/>
             </Menu>
         </menus>
     </MenuBar>
