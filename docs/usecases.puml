@@ -1,0 +1,56 @@
+@startuml
+!define AWSPUML http://raw.githubusercontent.com/awslabs/aws-icons-for-plantuml/v14.0/dist
+
+!includeurl AWSPUML/AWSCommon.puml
+!includeurl AWSPUML/General/User.puml
+
+left to right direction
+skinparam packageStyle rect
+
+actor User as user #black
+
+rectangle "Tour Management" {
+  usecase "Create Tour" as createTour
+  usecase "Edit Tour" as editTour
+  usecase "Delete Tour" as deleteTour
+  usecase "View Tour" as viewTour
+  usecase "Create Tour Log" as createTourLog
+  usecase "Edit Tour Log" as editTourLog
+  usecase "Delete Tour Log" as deleteTourLog
+  usecase "View Tour Log" as viewTourLog
+  usecase "Search Tours" as searchTours
+  usecase "Search Tour Logs" as searchTourLogs
+  usecase "Generate Tour Report" as generateTourReport
+  usecase "Generate Summarize Report" as generateSummarizeReport
+  usecase "Import/Export Tour Data" as importExportTourData
+
+  user -- createTour
+  user -- editTour
+  user -- deleteTour
+  user -- viewTour
+  user -- createTourLog
+  user -- editTourLog
+  user -- deleteTourLog
+  user -- viewTourLog
+  user -- searchTours
+  user -- searchTourLogs
+  user -- generateTourReport
+  user -- generateSummarizeReport
+  user -- importExportTourData
+
+  createTour ..> MapQuestAPI : Retrieves route information and map image
+  editTour ..> Tour
+  deleteTour ..> Tour
+  viewTour ..> Tour
+  createTourLog ..> Tour
+  editTourLog ..> TourLog
+  deleteTourLog ..> TourLog
+  viewTourLog ..> TourLog
+  searchTours ..> Tour
+  searchTourLogs ..> TourLog
+  generateTourReport ..> Tour
+  generateSummarizeReport ..> TourLog
+  importExportTourData ..> Tour
+}
+
+@enduml
