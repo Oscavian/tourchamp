@@ -1,0 +1,1 @@
+bash -c "psql -U postgres -c 'create database tourdb;'"
